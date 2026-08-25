@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Science Missions</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="site-header">
+      <a class="site-brand" href="index.html">
+        <span class="site-brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+        </span>
+        <span class="site-brand-name">Science Missions</span>
+      </a>
+    </div>
+
+    <div class="site-shell">
+      <div class="landing-hero" style="flex-direction: row; align-items: center; flex-wrap: wrap; max-width: none; gap: 20px;">
+        <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 12px;">
+          <h1 class="headline" style="font-size: clamp(28px, 4vw, 38px);">Little mysteries. Real science.</h1>
+          <p>Each mission turns a real-life question into an investigation &mdash; predictions, evidence, a bit of chemistry or physics, and a tiny coding challenge.</p>
+        </div>
+        <div data-mascot="idle" data-mascot-size="110" style="flex-shrink: 0;"></div>
+      </div>
+
+      <div class="mission-grid">
+        <a class="mission-card is-live" href="missions/mission-1/index.html">
+          <span class="mission-card-tag">Mission 1</span>
+          <h3>Why do plants grow toward light?</h3>
+          <p>Predict, investigate a real plant, uncover wavelength and photon energy, meet the hormone auxin, and model it with a few lines of code.</p>
+          <div class="mission-card-meta">
+            <span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+              Science &#9733;&#9733;&#9733;&#9733;&#9734;
+            </span>
+            <span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"></polyline><polyline points="16 7 21 12 16 17"></polyline></svg>
+              Coding &#9733;&#9733;&#9734;&#9734;&#9734;
+            </span>
+            <span>25&ndash;35 min</span>
+          </div>
+          <span class="mission-card-cta">
+            Start mission
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </a>
+
+        <div class="mission-card is-disabled">
+          <span class="mission-card-tag">Mission 2</span>
+          <h3>Why do roots know which way is down?</h3>
+          <p>If shoots grow toward light, how do roots know to grow the other way? The next mystery in the series.</p>
+          <div class="mission-card-meta">
+            <span>Coming soon</span>
+          </div>
+          <span class="mission-card-cta">In progress</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/mascot.js"></script>
+  </body>
+</html>

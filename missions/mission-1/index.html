@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission 1 | Why Do Plants Grow Toward Light?</title>
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <div class="site-header">
+      <a class="site-brand" href="../../index.html">
+        <span class="site-brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+        </span>
+        <span class="site-brand-name">Science Missions</span>
+      </a>
+    </div>
+
+    <div class="page-mascot" id="page-mascot">
+      <div data-mascot="idle" data-mascot-size="150" id="page-mascot-figure"></div>
+      <span class="page-mascot-bubble" id="page-mascot-bubble">Hi there!</span>
+    </div>
+
+    <svg class="side-decor side-decor-left" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="vine-pattern-left" width="130" height="300" patternUnits="userSpaceOnUse">
+          <path d="M55,18 C118,95 12,165 78,235 C122,278 22,300 55,295" fill="none" stroke="var(--muted-soft)" stroke-width="4" stroke-dasharray="1 16" stroke-linecap="round" opacity="0.8"/>
+          <ellipse cx="52" cy="15" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(-20 52 15)"/>
+          <ellipse cx="52" cy="15" rx="11" ry="24" fill="var(--primary)" opacity="0.55" transform="rotate(30 52 15)"/>
+          <ellipse cx="78" cy="233" rx="11" ry="24" fill="var(--primary)" opacity="0.6" transform="rotate(-15 78 233)"/>
+          <ellipse cx="78" cy="233" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(35 78 233)"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#vine-pattern-left)"/>
+    </svg>
+    <svg class="side-decor side-decor-right" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="vine-pattern-right" width="130" height="300" patternUnits="userSpaceOnUse">
+          <path d="M55,18 C118,95 12,165 78,235 C122,278 22,300 55,295" fill="none" stroke="var(--muted-soft)" stroke-width="4" stroke-dasharray="1 16" stroke-linecap="round" opacity="0.8"/>
+          <ellipse cx="52" cy="15" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(-20 52 15)"/>
+          <ellipse cx="52" cy="15" rx="11" ry="24" fill="var(--primary)" opacity="0.55" transform="rotate(30 52 15)"/>
+          <ellipse cx="78" cy="233" rx="11" ry="24" fill="var(--primary)" opacity="0.6" transform="rotate(-15 78 233)"/>
+          <ellipse cx="78" cy="233" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(35 78 233)"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#vine-pattern-right)"/>
+    </svg>
+
+    <div class="hero-wrap">
+      <header class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+        <span class="eyebrow">Mission 1 &middot; Science + Coding</span>
+        <h1>Why do plants grow toward light?</h1>
+        <p class="hero-text">
+          This mission turns a real-life mystery into an investigation with choices, clues, and a tiny coding challenge.
+        </p>
+
+        <div class="hero-meta">
+          <span>Middle school &ndash; early high school</span>
+          <span>25&ndash;35 minutes</span>
+        </div>
+
+        <div class="hero-badges">
+          <span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6E4B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+            Science &#9733;&#9733;&#9733;&#9733;&#9734;
+          </span>
+          <span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6E4B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"></polyline><polyline points="16 7 21 12 16 17"></polyline></svg>
+            Coding &#9733;&#9733;&#9734;&#9734;&#9734;
+          </span>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-top">
+            <span>Mission progress</span>
+            <span id="progress-label">Step 1 of 15</span>
+          </div>
+          <div class="progress-track" id="progress-track">
+            <div class="progress-line"></div>
+            <div class="progress-line-fill" id="progress-line-fill"></div>
+          </div>
+        </div>
+        </div>
+      </header>
+    </div>
+
+    <main class="mission-shell">
+
+      <!-- Intro : mission overview, shown before Step 1 -->
+      <div class="intro-card" id="mission-intro">
+        <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 14px;">
+            <h2>&#128300; Ready to investigate?</h2>
+            <p class="step-copy">Here's what you'll walk away understanding by the end of this mission:</p>
+            <ul class="learn-list">
+              <li><span>&#127811;</span> Explain why plants need light.</li>
+              <li><span>&#127811;</span> Understand that light is electromagnetic radiation that carries energy.</li>
+              <li><span>&#127811;</span> Understand that different wavelengths of light correspond to different colors.</li>
+              <li><span>&#127811;</span> Explain that shorter wavelengths carry more energy than longer ones.</li>
+              <li><span>&#127811;</span> Understand what pigments are and how plants use chlorophyll to absorb light.</li>
+              <li><span>&#127811;</span> Understand that plants have photoreceptors that help them detect light.</li>
+              <li><span>&#127811;</span> Explain the basic process of phototropism.</li>
+              <li><span>&#127811;</span> Understand how unequal growth causes a plant to bend.</li>
+              <li><span>&#127811;</span> Use simple code to model a plant responding to light.</li>
+            </ul>
+          </div>
+          <div data-mascot="idle" data-mascot-size="140" style="flex-shrink: 0;"></div>
+        </div>
+        <button class="btn btn-accent" id="start-mission-btn" type="button" style="align-self: flex-end;">
+          Start Mission <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Step 1 : WONDER -->
+      <section class="step-card" data-step="1">
+        <div class="step-header">
+          <span class="step-number">Step 1</span>
+          <h2>&#127793; A strange-looking plant</h2>
+        </div>
+        <p class="step-copy">
+          Imagine you put a plant in a room with only one window. You leave it there for several days.
+          When you come back, what do you think the plant will look like?
+        </p>
+
+        <div class="question-block">
+          <div class="choice-grid" data-mode="ack" data-message="Awesome! There's no need to reveal the correct answer yet &mdash; keep your prediction in mind as we investigate.">
+            <button class="choice-btn" type="button">&#127807; It keeps growing straight up.</button>
+            <button class="choice-btn" type="button">&#9728;&#65039; It bends toward the window.</button>
+            <button class="choice-btn" type="button">&#127758; It bends away from the window.</button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <p class="step-copy"><strong>Why do you think that happens?</strong></p>
+
+        <div class="question-block">
+          <div class="choice-grid" data-mode="ack" data-message="Keep your prediction in mind! We're going to collect some clues and see if the evidence supports your idea.">
+            <button class="choice-btn" type="button">&#127774; Plants like warmth.</button>
+            <button class="choice-btn" type="button">&#128167; Plants are looking for water.</button>
+            <button class="choice-btn" type="button">&#9728;&#65039; Plants need sunlight.</button>
+            <button class="choice-btn" type="button">&#129300; I'm not sure.</button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <p class="step-copy">
+          The plant can't walk toward the window. It doesn't have eyes. So how does it "know" where the light is coming from?
+          That's today's mystery.
+        </p>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 2 : PREDICT -->
+      <section class="step-card" data-step="2">
+        <div class="step-header">
+          <span class="step-number">Step 2</span>
+          <h2>Make a prediction</h2>
+        </div>
+        <p class="step-copy">Before we investigate, think about what a plant actually needs light for.</p>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>What does light help a plant do?</strong></p>
+          <div class="choice-grid" data-mode="reveal" data-explain="Plants use light energy to make sugars through photosynthesis &mdash; converting light energy into chemical energy stored in molecules such as glucose.">
+            <button class="choice-btn" type="button" data-correct="false">&#127777;&#65039; Stay warm<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">&#128167; Find water<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="true">&#127852; Make food<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">&#127793; Grow roots<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <div class="callout callout-gold">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Key idea</h3>
+            <p>
+              This is a pretty amazing energy journey: light energy &rarr; plant &rarr; food &rarr; you.
+              When we eat plants &mdash; or animals that ate plants &mdash; we are ultimately using energy that originally came from sunlight.
+            </p>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>If light is important for making food, would it be useful for a plant to grow toward a brighter area?</strong></p>
+          <div class="choice-grid" data-mode="reveal" data-explain="But now we have a much bigger question: how does the plant detect where the light is coming from? Let's investigate a real plant.">
+            <button class="choice-btn" type="button" data-correct="true">Yes<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">No<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">I'm not sure<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 3 : INVESTIGATE -->
+      <section class="step-card" data-step="3">
+        <div class="step-header">
+          <span class="step-number">Step 3</span>
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -3px; margin-right: 4px;"><circle cx="10.5" cy="10.5" r="6"></circle><path d="m20.5 20.5-4.6-4.6"></path></svg>
+            Become a plant scientist
+          </h2>
+        </div>
+        <p class="step-copy">
+          Find one plant &mdash; outside, in your house, at school, or in a classroom. Spend about 2 minutes simply observing it
+          before answering the questions below. Don't worry about getting the "right" answer &mdash; scientists begin by observing
+          what is actually happening. Your job is to collect evidence: look closely at the stem, leaves, and light around the plant.
+        </p>
+
+        <div class="mini-card">
+          <h3>Observation 1 &middot; Look at the stem</h3>
+          <p>Is the stem...</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Noted &mdash; keep that in mind as you look at the leaves next.">
+              <button class="choice-btn" type="button">Mostly straight</button>
+              <button class="choice-btn" type="button">Curving in one direction</button>
+              <button class="choice-btn" type="button">Curving in several directions</button>
+              <button class="choice-btn" type="button">Hard to tell</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-1">&#128300; Scientist's Notebook &mdash; describe what you see in your own words</label>
+          <textarea id="notebook-1" class="notebook-textarea" placeholder="For example: The stem is mostly straight near the bottom, but it curves toward the window near the top."></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>Observation 2 &middot; Look at the leaves</h3>
+          <p>Are the leaves...</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Good eye &mdash; now let's find the light source.">
+              <button class="choice-btn" type="button">Spread evenly</button>
+              <button class="choice-btn" type="button">Concentrated on one side</button>
+              <button class="choice-btn" type="button">Mostly growing upward</button>
+              <button class="choice-btn" type="button">Hard to tell</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-2">&#128300; Scientist's Notebook &mdash; give at least two details about what you see</label>
+          <textarea id="notebook-2" class="notebook-textarea" placeholder="Describe where the leaves are located, whether they face a particular direction, and whether one side looks different from the other."></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>Observation 3 &middot; Find the light</h3>
+          <p>Where does the strongest light seem to be coming from?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Great &mdash; now compare that to what you saw in the stem and leaves.">
+              <button class="choice-btn" type="button">Above</button>
+              <button class="choice-btn" type="button">Left</button>
+              <button class="choice-btn" type="button">Right</button>
+              <button class="choice-btn" type="button">Several directions</button>
+              <button class="choice-btn" type="button">I'm not sure</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-3">&#128300; Scientist's Notebook &mdash; use evidence from your surroundings</label>
+          <textarea id="notebook-3" class="notebook-textarea" placeholder="Where is the brightest area? Is there a window, lamp, or opening nearby? Does one side of the plant seem brighter?"></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>Observation 4 &middot; Connect your evidence</h3>
+          <p>Does the direction of the plant seem related to the direction of the light?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Nice work connecting your evidence &mdash; that's exactly how scientists build a conclusion.">
+              <button class="choice-btn" type="button">Yes</button>
+              <button class="choice-btn" type="button">Maybe</button>
+              <button class="choice-btn" type="button">No</button>
+              <button class="choice-btn" type="button">I'm not sure</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-4">&#128300; Scientist's Notebook &mdash; connect at least two observations</label>
+          <textarea id="notebook-4" class="notebook-textarea" placeholder="For example: The stem curves toward the window, and most of the leaves also face the window. The window is the brightest source of light nearby."></textarea>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Scientist tip</h3>
+            <p>
+              One observation doesn't always tell us the answer. Scientists often collect multiple pieces of evidence and look for
+              patterns before drawing a conclusion. If your plant's behavior is ambiguous, that's okay &mdash; try the investigation
+              again with a second plant.
+            </p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 4 : WHAT IS LIGHT -->
+      <section class="step-card" data-step="4">
+        <div class="step-header">
+          <span class="step-number">Step 4</span>
+          <h2>&#128161; Light is energy</h2>
+        </div>
+        <p class="step-copy">We usually think of light as something that lets us see.</p>
+        <p class="step-copy">
+          But light does much more than that &mdash; light is a form of <strong>electromagnetic radiation</strong>. The basic idea
+          is simple: light can travel through space and carry energy from one place to another.
+        </p>
+        <p class="step-copy">
+          The light from the Sun travels through space, reaches Earth, and provides energy that plants can capture. Sunlight
+          shining on a leaf isn't just making the leaf brighter &mdash; it is delivering energy.
+        </p>
+
+        <div class="icon-row">
+          <div class="icon-row-line"></div>
+          <div class="icon-node">
+            <div class="icon-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg>
+            </div>
+            <span>Light energy</span>
+          </div>
+          <span class="icon-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+          <div class="icon-node">
+            <div class="icon-badge tone-primary">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E4A35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+            </div>
+            <span>Plant</span>
+          </div>
+          <span class="icon-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+          <div class="icon-node">
+            <div class="icon-badge tone-accent">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1552A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8c-3.5 0-6 2.7-6 6.4C6 18 8.3 21 11 21c.7 0 1.3-.2 1.9-.5.5.3 1.2.5 1.9.5 2.7 0 5-3 5-6.6C19.8 10.7 17.3 8 13.8 8c-.6 0-1.2.1-1.8.4"></path><path d="M12 8V5.5c0-1 .8-2 2-2.3"></path></svg>
+            </div>
+            <span>Food</span>
+          </div>
+          <span class="icon-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+          <div class="icon-node">
+            <div class="icon-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.2"></circle><path d="M5 20c1-4 4-6 7-6s6 2 7 6"></path></svg>
+            </div>
+            <span>You</span>
+          </div>
+        </div>
+
+        <p class="step-copy">
+          Plants use that energy during photosynthesis to build energy-rich molecules &mdash; molecules that are later used by the
+          plant, and ultimately by other organisms that eat the plant.
+        </p>
+        <p class="step-copy">
+          But here's something interesting: not all light is the same. The light we see as different colors is made up of
+          electromagnetic radiation with different wavelengths.
+        </p>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 5 : WAVELENGTH -->
+      <section class="step-card" data-step="5">
+        <div class="step-header">
+          <span class="step-number">Step 5</span>
+          <h2>&#127754; What is wavelength?</h2>
+        </div>
+        <p class="step-copy">Imagine watching waves move across the surface of water.</p>
+        <p class="step-copy">The distance from one wave peak to the next is called the <strong>wavelength</strong>.</p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20,85 Q35,55 50,85 Q65,115 80,85 Q95,55 110,85 Q125,115 140,85 Q155,55 170,85 Q185,115 200,85 Q215,55 230,85 Q245,115 260,85 Q275,55 290,85 Q305,115 320,85 Q335,55 350,85 Q365,115 380,85 Q395,55 410,85 Q425,115 440,85 Q455,55 470,85 Q485,115 500,85 Q515,55 530,85 Q545,115 560,85 Q575,55 590,85 Q605,115 620,85" fill="none" stroke="#3b7dd8" stroke-width="4" stroke-linecap="round"/>
+            <line x1="95" y1="55" x2="95" y2="30" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="155" y1="55" x2="155" y2="30" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <path d="M95,32 L95,26 L155,26 L155,32" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+            <text x="125" y="18" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">wavelength (&#955;)</text>
+          </svg>
+          <p class="concept-visual-caption">The distance from one peak to the next &mdash; here, every peak is spaced the same distance apart.</p>
+        </div>
+
+        <p class="step-copy">
+          Light can behave like a wave too &mdash; except the wavelengths of visible light are incredibly small. Wavelength is
+          usually measured in nanometers (nm). To put that into perspective, 1 millimeter is about the thickness of a penny. One
+          nanometer is one millionth of a millimeter &mdash; 1&nbsp;mm&nbsp;=&nbsp;1,000,000&nbsp;nm.
+        </p>
+
+        <p class="step-copy"><strong>&#127752; Different wavelengths, different colors.</strong> Visible light contains a range of wavelengths that our eyes perceive as different colors:</p>
+
+        <div class="spectrum-row">
+          <div class="spectrum-chip" style="background:#3b7dd8;"><span>&#128309; Blue</span><span>~450 nm</span></div>
+          <div class="spectrum-chip" style="background:#3f9d5e;"><span>&#128994; Green</span><span>500&ndash;550 nm</span></div>
+          <div class="spectrum-chip" style="background:#c99a2e;"><span>&#128993; Yellow</span><span>570&ndash;590 nm</span></div>
+          <div class="spectrum-chip" style="background:#c1712f;"><span>&#128992; Orange</span><span>600&ndash;650 nm</span></div>
+          <div class="spectrum-chip" style="background:#b8462f;"><span>&#128308; Red</span><span>650&ndash;700 nm</span></div>
+        </div>
+        <p class="step-copy" style="font-size: 13px;">Blue light has a shorter wavelength than red light. Red light has a longer wavelength than blue light.</p>
+
+        <p class="step-copy"><strong>&#127752; Quick check</strong> &mdash; look at the rainbow above.</p>
+
+        <div class="mini-card">
+          <p>Which color has the longest wavelength?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Red sits at the long-wavelength end of visible light.">
+              <button class="choice-btn" type="button" data-correct="false">&#128309; Blue<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">&#128994; Green<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">&#128308; Red<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>Which color has the shortest wavelength?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Blue sits at the short-wavelength end of visible light.">
+              <button class="choice-btn" type="button" data-correct="true">&#128309; Blue<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">&#128993; Yellow<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">&#128308; Red<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>Which has the longer wavelength: blue or red?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="">
+              <button class="choice-btn" type="button" data-correct="false">&#128309; Blue<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">&#128308; Red<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="sequence-block">
+          <p class="step-copy"><strong>Challenge</strong> &mdash; put these colors in order from shortest wavelength to longest wavelength.</p>
+          <div class="sequence-builder" data-answer='["🔵 Blue","🟢 Green","🟡 Yellow","🔴 Red"]'>
+            <div class="sequence-pool"></div>
+            <div class="sequence-slots"></div>
+          </div>
+          <button class="check-btn" type="button">Submit order</button>
+          <div class="feedback-box">Tap the cards to build the sequence, then submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 6 : ENERGY AND LIGHT -->
+      <section class="step-card" data-step="6">
+        <div class="step-header">
+          <span class="step-number">Step 6</span>
+          <h2>&#9889; Energy and light</h2>
+        </div>
+        <p class="step-copy">We know light carries energy. But does the amount of energy depend on the wavelength? <strong>Yes.</strong></p>
+        <p class="step-copy">
+          Light travels as individual particles called photons. A shorter-wavelength photon carries more energy than a
+          longer-wavelength one.
+        </p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20,90 Q30,60 40,90 Q50,120 60,90 Q70,60 80,90 Q90,120 100,90 Q110,60 120,90 Q130,120 140,90 Q150,60 160,90 Q170,120 180,90 Q190,60 200,90 Q210,120 220,90 Q230,60 240,90 Q250,120 260,90" fill="none" stroke="#3b7dd8" stroke-width="4" stroke-linecap="round"/>
+            <line x1="30" y1="60" x2="30" y2="35" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="70" y1="60" x2="70" y2="35" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <path d="M30,37 L30,31 L70,31 L70,37" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+            <text x="140" y="20" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">shorter wavelength</text>
+            <text x="140" y="150" text-anchor="middle" font-size="12" font-weight="800" fill="#2f6b9c" font-family="'Baloo 2', sans-serif">&#9889; more energy / photon</text>
+
+            <path d="M340,90 Q362.5,60 385,90 Q407.5,120 430,90 Q452.5,60 475,90 Q497.5,120 520,90 Q542.5,60 565,90 Q587.5,120 610,90" fill="none" stroke="#b8462f" stroke-width="4" stroke-linecap="round"/>
+            <line x1="362.5" y1="60" x2="362.5" y2="35" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="452.5" y1="60" x2="452.5" y2="35" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <path d="M362.5,37 L362.5,31 L452.5,31 L452.5,37" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+            <text x="480" y="20" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">longer wavelength</text>
+            <text x="480" y="150" text-anchor="middle" font-size="12" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">less energy / photon</text>
+          </svg>
+          <p class="concept-visual-caption">A useful relationship: <strong>Energy &prop; 1 / wavelength</strong> &mdash; the shorter the wavelength, the more energy each photon carries.</p>
+        </div>
+
+        <p class="step-copy">
+          So within visible light: blue light (shorter wavelength) carries more energy per photon, while red light (longer
+          wavelength) carries less.
+        </p>
+        <p class="step-copy">
+          When a plant absorbs light, it isn't simply absorbing "color" &mdash; it is absorbing energy carried by photons of
+          particular wavelengths.
+        </p>
+
+        <div class="mini-card">
+          <p>Which photon has more energy?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Shorter wavelength means more energy per photon.">
+              <button class="choice-btn" type="button" data-correct="true">&#128309; Blue light<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">&#128308; Red light<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>Which has the longer wavelength?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="">
+              <button class="choice-btn" type="button" data-correct="false">&#128309; Blue light<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">&#128308; Red light<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>If wavelength gets shorter, what happens to the energy of each photon?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="">
+              <button class="choice-btn" type="button" data-correct="true">It increases<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">It decreases<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">It stays the same<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Think about it</h3>
+            <p>If plants need light energy... do you think plants respond equally to every wavelength of light? Keep your prediction in mind.</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 7 : DO PLANTS RESPOND TO ALL LIGHT EQUALLY -->
+      <section class="step-card" data-step="7">
+        <div class="step-header">
+          <span class="step-number">Step 7</span>
+          <h2>Do plants respond to all light equally?</h2>
+        </div>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>&#129300; Make your prediction:</strong></p>
+          <div class="choice-grid" data-mode="reveal" data-explain="Plants contain molecules called pigments that absorb certain wavelengths of light. One of the most important is chlorophyll.">
+            <button class="choice-btn" type="button" data-correct="false">Yes, all light is basically the same to a plant.<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="true">No, plants respond differently to different wavelengths.<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">I'm not sure.<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <p class="step-copy">
+          <strong>&#127807; Chlorophyll</strong> absorbs light especially strongly in the blue and red parts of the spectrum. It
+          absorbs green light much less strongly.
+        </p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 700 170" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="320" cy="85" rx="45" ry="62" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <line x1="320" y1="26" x2="320" y2="144" stroke="var(--primary-dark)" stroke-width="2"/>
+
+            <line x1="20" y1="45" x2="266" y2="45" stroke="#3b7dd8" stroke-width="4" stroke-linecap="round"/>
+            <polygon points="266,38 280,45 266,52" fill="#3b7dd8"/>
+            <text x="140" y="32" text-anchor="middle" font-size="11.5" font-weight="800" fill="#2f6b9c" font-family="'Baloo 2', sans-serif">blue light</text>
+            <text x="270" y="20" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--muted)">absorbed</text>
+
+            <line x1="20" y1="120" x2="266" y2="120" stroke="#b8462f" stroke-width="4" stroke-linecap="round"/>
+            <polygon points="266,113 280,120 266,127" fill="#b8462f"/>
+            <text x="140" y="140" text-anchor="middle" font-size="11.5" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">red light</text>
+            <text x="270" y="155" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--muted)">absorbed</text>
+
+            <line x1="20" y1="82" x2="640" y2="82" stroke="#3f9d5e" stroke-width="4" stroke-linecap="round"/>
+            <polygon points="640,75 654,82 640,89" fill="#3f9d5e"/>
+            <text x="480" y="70" text-anchor="middle" font-size="11.5" font-weight="800" fill="#2f6b3f" font-family="'Baloo 2', sans-serif">green light &mdash; reflected</text>
+            <ellipse cx="672" cy="82" rx="15" ry="9" fill="#ffffff" stroke="var(--text)" stroke-width="1.8"/>
+            <circle cx="672" cy="82" r="4" fill="var(--text)"/>
+            <text x="672" y="105" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--muted)">what we see</text>
+          </svg>
+          <p class="concept-visual-caption">Blue and red light are absorbed by chlorophyll. Green light is reflected back to our eyes &mdash; one reason leaves look green.</p>
+        </div>
+
+        <p class="step-copy">
+          So when sunlight reaches a leaf, some wavelengths are absorbed, and some are reflected or transmitted. The wavelengths
+          that reach our eyes influence the color we see.
+        </p>
+
+        <div class="callout callout-primary">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Key idea</h3>
+            <p>
+              Plants aren't simply responding to "light." They are interacting with specific wavelengths of light using specialized
+              molecules. And this brings us back to our original mystery: if plants can detect light, how do they know which
+              direction the light is coming from?
+            </p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 8 : RETURN TO THE MYSTERY -->
+      <section class="step-card" data-step="8">
+        <div class="step-header">
+          <span class="step-number">Step 8</span>
+          <h2>Return to the mystery</h2>
+        </div>
+        <p class="step-copy">We now know:</p>
+        <ul class="recap-list">
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Plants need light energy for photosynthesis.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Light comes in different wavelengths.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Shorter-wavelength light carries more energy per photon.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Plants contain pigments that absorb certain wavelengths.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Plants have specialized light-sensing molecules that let them respond to light.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Plants can respond to the direction of light.</li>
+        </ul>
+        <p class="step-copy">But we still haven't answered the original question: &#127793; how does a plant actually grow toward the light?</p>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 9 : PHOTOTROPISM -->
+      <section class="step-card" data-step="9">
+        <div class="step-header">
+          <span class="step-number">Step 9</span>
+          <h2>&#127793; Plants respond to the direction of light</h2>
+        </div>
+        <p class="step-copy">
+          The growth of a plant in response to the direction of light is called <strong>phototropism</strong>. Photo = light,
+          tropism = directional growth response.
+        </p>
+        <p class="step-copy">
+          Many plant shoots show <strong>positive phototropism</strong>, meaning they grow toward a light source.
+        </p>
+
+        <div class="concept-visual">
+          <div class="compare-row" style="width: 100%;">
+            <div class="compare-panel is-no">
+              <span class="compare-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span>
+              <svg width="60" height="60" viewBox="0 0 60 60"><path d="M46,30 A16,16 0 1 1 40,17.5" fill="none" stroke="var(--accent-dark)" stroke-width="3.5" stroke-linecap="round"/><polygon points="40,10 40,22 30,16" fill="var(--accent-dark)"/></svg>
+              <p>An animal can turn instantly, all at once.</p>
+            </div>
+            <div class="compare-panel is-yes">
+              <span class="compare-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <div class="stem-steps">
+                <div class="stem-step">
+                  <svg width="30" height="50" viewBox="0 0 30 50"><line x1="15" y1="48" x2="15" y2="6" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/><ellipse cx="9" cy="20" rx="7" ry="4" fill="var(--primary-soft)" transform="rotate(-30 9 20)"/></svg>
+                  <span>Day 1</span>
+                </div>
+                <div class="stem-step">
+                  <svg width="30" height="50" viewBox="0 0 30 50"><line x1="15" y1="48" x2="20" y2="6" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/><ellipse cx="12" cy="21" rx="7" ry="4" fill="var(--primary-soft)" transform="rotate(-40 12 21)"/></svg>
+                  <span>Day 2</span>
+                </div>
+                <div class="stem-step">
+                  <svg width="30" height="50" viewBox="0 0 30 50"><line x1="15" y1="48" x2="26" y2="6" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/><ellipse cx="16" cy="21" rx="7" ry="4" fill="var(--primary-soft)" transform="rotate(-55 16 21)"/></svg>
+                  <span>Day 3</span>
+                </div>
+              </div>
+              <p>A plant gradually grows toward the light, a little more each day.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-primary">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Important distinction</h3>
+            <p>
+              A plant doesn't turn toward the light the way an animal turns its head. Instead, the plant changes how quickly
+              different parts of its stem grow. That difference in growth causes the stem to bend. The plant isn't physically
+              moving toward the light &mdash; it is <strong>growing</strong> toward the light. That's an important difference.
+            </p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 10 : THE AUXIN CLUE -->
+      <section class="step-card" data-step="10">
+        <div class="step-header">
+          <span class="step-number">Step 10</span>
+          <h2>&#129514; Meet auxin</h2>
+        </div>
+        <p class="step-copy">
+          Plants use chemical signals called hormones to control growth. One important plant hormone is called <strong>auxin</strong>.
+        </p>
+        <p class="step-copy">
+          When light comes mainly from one side of a plant shoot, specialized light-sensing molecules help the plant detect the
+          direction of the light. The plant then changes how auxin is distributed within the shoot.
+        </p>
+        <p class="step-copy">
+          In a typical shoot showing positive phototropism, more auxin accumulates on the <strong>shaded side</strong>, and the
+          cells on that side elongate more &mdash; so: more growth on one side &rarr; unequal growth &rarr; stem bends &rarr; plant
+          grows toward the light.
+        </p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="178" x2="880" y2="178" stroke="var(--border)" stroke-width="2"/>
+
+            <!-- Stage 1: no auxin yet -->
+            <circle cx="55" cy="45" r="7" fill="none" stroke="var(--gold)" stroke-width="2"/>
+            <path d="M55,28v6M55,56v6M38,45h6M66,45h6M43,33l4,4M63,53l4,4M63,33l-4,4M43,53l-4,4" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="65" y="128" width="16" height="50" rx="4" fill="var(--border)"/>
+            <rect x="89" y="128" width="16" height="50" rx="4" fill="var(--border)"/>
+            <text x="85" y="200" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">No auxin yet</text>
+
+            <path d="M155,153 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="185,146 199,153 185,160" fill="var(--muted-soft)"/>
+
+            <!-- Stage 2: auxin moves to shaded side -->
+            <circle cx="235" cy="45" r="7" fill="none" stroke="var(--gold)" stroke-width="2"/>
+            <path d="M235,28v6M235,56v6M218,45h6M246,45h6M223,33l4,4M243,53l4,4M243,33l-4,4M223,53l-4,4" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="245" y="128" width="16" height="50" rx="4" fill="var(--border)"/>
+            <rect x="269" y="128" width="16" height="50" rx="4" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="1.5"/>
+            <circle cx="273" cy="142" r="2.6" fill="var(--primary)"/>
+            <circle cx="281" cy="150" r="2.6" fill="var(--primary)"/>
+            <circle cx="274" cy="160" r="2.6" fill="var(--primary)"/>
+            <circle cx="282" cy="168" r="2.6" fill="var(--primary)"/>
+            <text x="265" y="200" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Auxin moves to</text>
+            <text x="265" y="213" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">the shaded side</text>
+
+            <path d="M335,153 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="365,146 379,153 365,160" fill="var(--muted-soft)"/>
+
+            <!-- Stage 3: shaded side grows taller -->
+            <circle cx="415" cy="45" r="7" fill="none" stroke="var(--gold)" stroke-width="2"/>
+            <path d="M415,28v6M415,56v6M398,45h6M426,45h6M403,33l4,4M423,53l4,4M423,33l-4,4M403,53l-4,4" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="425" y="128" width="16" height="50" rx="4" fill="var(--accent)"/>
+            <rect x="449" y="88" width="16" height="90" rx="4" fill="var(--primary)"/>
+            <text x="445" y="200" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Shaded side</text>
+            <text x="445" y="213" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">grows taller</text>
+
+            <path d="M515,153 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="545,146 559,153 545,160" fill="var(--muted-soft)"/>
+
+            <!-- Stage 4: macro - the real stem bends -->
+            <circle cx="615" cy="55" r="9" fill="none" stroke="var(--gold)" stroke-width="2.2"/>
+            <path d="M615,34v8M615,68v8M594,55h8M628,55h8M600,40l5,5M625,65l5,5M625,40l-5,5M600,65l-5,5" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M735,178 C740,120 700,95 650,75" fill="none" stroke="var(--primary-dark)" stroke-width="7" stroke-linecap="round"/>
+            <ellipse cx="722" cy="145" rx="16" ry="8" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="1.5" transform="rotate(-35 722 145)"/>
+            <ellipse cx="705" cy="112" rx="15" ry="8" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="1.5" transform="rotate(-55 705 112)"/>
+            <text x="715" y="200" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">The stem bends toward the light</text>
+          </svg>
+          <p class="concept-visual-caption">Auxin builds up on the shaded side &rarr; that side's cells elongate more &rarr; the uneven growth bends the whole stem toward the light.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Think about it</h3>
+            <p>
+              The plant didn't move its stem all at once &mdash; tiny differences in growth accumulated over time. That means if we
+              change the direction of the light, the plant's growth can eventually change direction too.
+            </p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 11 : SOLVE THE MYSTERY -->
+      <section class="step-card" data-step="11">
+        <div class="step-header">
+          <span class="step-number">Step 11</span>
+          <h2>Solve the mystery</h2>
+        </div>
+        <p class="step-copy">Let's put all of the evidence together. Why does a plant grow toward light?</p>
+        <ol class="recap-steps">
+          <li>Plants need light energy for photosynthesis.</li>
+          <li>Light contains different wavelengths and carries energy.</li>
+          <li>Plants contain pigments such as chlorophyll that absorb particular wavelengths of light.</li>
+          <li>Plants also have specialized light-sensing molecules that can detect the direction of light.</li>
+          <li>When light comes mainly from one side, the plant changes its growth response.</li>
+          <li>Auxin becomes redistributed toward the shaded side of the shoot.</li>
+          <li>Cells on that side elongate more.</li>
+          <li>Unequal growth causes the stem to bend toward the light.</li>
+        </ol>
+        <p class="step-copy">This directional growth response is called:</p>
+        <div class="reveal-banner">&#127793; PHOTOTROPISM</div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 12 : ONE MORE INVESTIGATION -->
+      <section class="step-card" data-step="12">
+        <div class="step-header">
+          <span class="step-number">Step 12</span>
+          <h2>&#128300; What if we move the light?</h2>
+        </div>
+        <p class="step-copy">Imagine this experiment.</p>
+
+        <div style="display: flex; gap: 12px;">
+          <div style="flex: 1; background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px; padding: 14px; text-align: center;">
+            <p style="font-weight: 800; font-size: 12px; color: var(--muted); margin-bottom: 8px;">DAY 1</p>
+            <p style="font-size: 13px; color: var(--text);">The light is on the right side of the plant. The plant begins growing toward the light.</p>
+          </div>
+          <div style="flex: 1; background: var(--bg); border: 1.5px solid var(--border); border-radius: 14px; padding: 14px; text-align: center;">
+            <p style="font-weight: 800; font-size: 12px; color: var(--muted); margin-bottom: 8px;">DAY 4</p>
+            <p style="font-size: 13px; color: var(--text);">We move the lamp to the other side.</p>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>What do you predict will happen over the next several days?</strong></p>
+          <div class="choice-grid" data-mode="ack" data-message="Plants don't move instantly &mdash; they respond through growth. So changing the direction of light can change the direction the plant grows over time. Let's try building that model ourselves.">
+            <button class="choice-btn" type="button">The plant stays exactly where it is.</button>
+            <button class="choice-btn" type="button">The plant eventually bends toward the new light.</button>
+            <button class="choice-btn" type="button">The plant immediately flips around.</button>
+            <button class="choice-btn" type="button">I'm not sure.</button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 13 : BUILD THE RESPONSE (sequence builder) -->
+      <section class="step-card" data-step="13">
+        <div class="step-header">
+          <span class="step-number">Step 13</span>
+          <h2>&#129513; Build the response</h2>
+        </div>
+        <p class="step-copy">
+          We've spent the last part of the mission figuring out how plants respond to light. Before we turn this into code, put
+          the steps in the correct order.
+        </p>
+
+        <div class="sequence-block">
+          <div class="sequence-builder" data-answer='["Light comes mainly from one side","The plant detects the direction of the light","Auxin becomes redistributed","Cells on one side elongate more","The stem bends","The plant grows toward the light"]'>
+            <div class="sequence-pool"></div>
+            <div class="sequence-slots"></div>
+          </div>
+          <button class="check-btn" type="button">Submit order</button>
+          <div class="feedback-box">Tap the cards to build the sequence, then submit.</div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-body">
+            <h3 style="font-size: 14px;">Bonus</h3>
+            <p>What happens if the light moves to the other side? Imagine moving the sun to a different position &mdash; predict how the plant will eventually respond.</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 14 : CODE IT -->
+      <section class="step-card" data-step="14">
+        <div class="step-header">
+          <span class="step-number">Step 14</span>
+          <h2>&#128187; Model the response in code</h2>
+        </div>
+        <p class="step-copy">
+          Now let's build a very simple model &mdash; not a realistic simulation, just something that represents the basic idea
+          that a plant grows over time in a particular direction.
+        </p>
+
+        <div class="code-console">
+          <div class="code-toolbar">
+            <div class="code-toolbar-left">
+              <span>Python console</span>
+              <span class="lang-pill">Python</span>
+            </div>
+            <button id="run-code-btn" class="console-btn" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1B2A20" stroke="none"><polygon points="6 4 20 12 6 20"></polygon></svg>
+              Run
+            </button>
+          </div>
+          <div class="code-editor-shell">
+            <div class="line-numbers" id="line-numbers"></div>
+            <div class="code-editor-wrapper">
+              <textarea id="mission-code" spellcheck="false">direction = "window"
+
+for day in range(5):
+    print("Day", day + 1)
+    print("Growing toward the", direction)</textarea>
+              <pre id="code-highlight" class="code-highlight" aria-hidden="true"></pre>
+            </div>
+          </div>
+          <pre id="code-output" class="code-output">Output will appear here.</pre>
+        </div>
+
+        <div class="challenge-box" id="challenge-box">
+          <div class="challenge-head">
+            <h3 id="challenge-title">Challenge 1</h3>
+            <span id="challenge-counter">Try 0 of 5</span>
+          </div>
+          <p id="challenge-prompt">Can you find the line that defines the direction?</p>
+          <p id="challenge-hint" class="challenge-hint is-hidden"></p>
+          <div class="challenge-actions">
+            <button id="hint-btn" class="hint-btn" type="button">Hint</button>
+            <button id="check-challenge" class="check-btn is-ready" type="button">Submit</button>
+            <button id="next-challenge" class="challenge-icon-btn" type="button" aria-label="Next challenge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </div>
+          <div id="challenge-feedback" class="challenge-feedback">Edit the code and press Submit.</div>
+          <button id="reveal-challenge-btn" class="reveal-btn is-hidden" type="button">Reveal answer</button>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-body">
+            <h3 style="font-size: 14px;">Coding ideas</h3>
+            <p>A <strong>variable</strong> is a name that stores information a program can use. A <strong>for loop</strong> lets us repeat instructions multiple times &mdash; here, once per day.</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 15 : FINAL CHECKPOINT -->
+      <section class="step-card" data-step="15">
+        <div class="step-header">
+          <span class="step-number">Step 15</span>
+          <h2>&#129504; Can you explain the mystery?</h2>
+        </div>
+        <p class="step-copy"><strong>Complete the sentence:</strong> Plants grow toward light because...</p>
+        <textarea class="notebook-textarea" style="min-height: 100px;" placeholder="Write your explanation here."></textarea>
+
+        <details class="callout callout-primary">
+          <summary>Reveal a possible answer</summary>
+          <p>
+            Plants need light energy for photosynthesis. When light comes from one direction, plants can detect the direction of
+            the light and change their growth patterns. Hormonal signals such as auxin cause cells on one side of the stem to
+            elongate more than cells on the other side, causing the stem to bend toward the light.
+          </p>
+        </details>
+
+        <details class="callout callout-tip">
+          <summary>Bonus question &mdash; why is this called phototropism?</summary>
+          <p>Photo means light, and tropism refers to directional growth.</p>
+        </details>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 16 : NEXT MYSTERY -->
+      <section class="step-card" data-step="16">
+        <div class="step-header">
+          <span class="step-number">Step 16</span>
+          <h2>&#127775; Next mystery</h2>
+        </div>
+        <div class="callout callout-gold">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+          </div>
+          <div class="callout-body">
+            <h3>We've figured out why shoots grow toward light.</h3>
+            <p>But plants have another strange behavior. If shoots grow toward light, why do roots grow down? Do roots know which way is "down"?</p>
+          </div>
+        </div>
+
+        <a class="btn btn-accent" href="../../index.html" style="align-self: flex-end;">
+          Mission 2 &middot; Why Do Roots Know Which Way Is Down?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <p style="font-size: 12px; color: var(--muted-soft); align-self: flex-end;">Coming soon &mdash; takes you back to all missions for now.</p>
+      </section>
+
+    </main>
+
+    <script src="mission.js"></script>
+    <script src="../../assets/mascot.js"></script>
+    <script src="../../assets/mission-engine.js"></script>
+  </body>
+</html>
