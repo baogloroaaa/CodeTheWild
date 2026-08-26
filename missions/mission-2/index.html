@@ -4,15 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mission 2 | Why Do Apples Turn Brown?</title>
+    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
     <link rel="stylesheet" href="../../style.css" />
   </head>
   <body>
     <div class="site-header">
       <a class="site-brand" href="../../index.html">
         <span class="site-brand-mark">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+          <svg width="34" height="34" viewBox="0 0 100 100">
+            <g transform="rotate(-56 50 28)"><polygon points="50,10 46,30 54,30" fill="#7A5738"/></g>
+            <g transform="rotate(-28 50 28)"><polygon points="50,8 46,30 54,30" fill="#7A5738"/></g>
+            <polygon points="50,6 46,30 54,30" fill="#7A5738"/>
+            <g transform="rotate(28 50 28)"><polygon points="50,8 46,30 54,30" fill="#7A5738"/></g>
+            <g transform="rotate(56 50 28)"><polygon points="50,10 46,30 54,30" fill="#7A5738"/></g>
+            <ellipse cx="32" cy="32" rx="8" ry="9" fill="#9C7350"/>
+            <ellipse cx="68" cy="32" rx="8" ry="9" fill="#9C7350"/>
+            <ellipse cx="32" cy="33" rx="4" ry="4.5" fill="#E8D2B0"/>
+            <ellipse cx="68" cy="33" rx="4" ry="4.5" fill="#E8D2B0"/>
+            <circle cx="50" cy="58" r="34" fill="#9C7350"/>
+            <ellipse cx="50" cy="66" rx="27" ry="22" fill="#E8D2B0"/>
+            <circle cx="33" cy="71" r="5" fill="#E2703A" opacity="0.3"/>
+            <circle cx="41" cy="60" r="4.2" fill="#22301F"/>
+            <circle cx="42.5" cy="58.5" r="1.3" fill="#FFFFFF"/>
+            <circle cx="59" cy="60" r="5.6" fill="#22301F"/>
+            <circle cx="60.8" cy="58.2" r="1.7" fill="#FFFFFF"/>
+            <circle cx="59" cy="60" r="14" fill="none" stroke="#C1552A" stroke-width="4"/>
+            <line x1="68.5" y1="69.5" x2="76" y2="77" stroke="#C1552A" stroke-width="5" stroke-linecap="round"/>
+            <ellipse cx="50" cy="68" rx="3.4" ry="2.4" fill="#22301F"/>
+            <path d="M44,73 Q50,77 56,73" stroke="#22301F" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          </svg>
         </span>
-        <span class="site-brand-name">Science Missions</span>
+        <span class="site-brand-name">Code the Wild</span>
       </a>
     </div>
 
@@ -61,14 +83,14 @@
           </span>
           <span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6E4B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"></polyline><polyline points="16 7 21 12 16 17"></polyline></svg>
-            Coding &#9733;&#9733;&#9734;&#9734;&#9734;
+            Coding &#9733;&#9734;&#9734;&#9734;&#9734;
           </span>
         </div>
 
         <div class="progress-card">
           <div class="progress-top">
             <span>Mission progress</span>
-            <span id="progress-label">Step 1 of 21</span>
+            <span id="progress-label">Step 1 of 22</span>
           </div>
           <div class="progress-track" id="progress-track">
             <div class="progress-line"></div>
@@ -213,38 +235,7 @@
             else you notice.</p>
           <label class="notebook-label" for="notebook-3">&#128300; Scientist's Notebook &mdash; describe what you see</label>
           <textarea id="notebook-3" class="notebook-textarea" placeholder="For example: The cut surface is pale yellow-white and looks a little wet."></textarea>
-        </div>
-
-        <div class="mini-card">
-          <h3>Observation 2 &middot; A few minutes later</h3>
-          <p>Look at the apple again. Do you notice any changes?</p>
-          <div class="question-block">
-            <div class="choice-grid compact" data-mode="ack" data-message="Keep watching &mdash; we'll come back to this.">
-              <button class="choice-btn" type="button">No noticeable change</button>
-              <button class="choice-btn" type="button">A little darker</button>
-              <button class="choice-btn" type="button">Brown spots are beginning to appear</button>
-              <button class="choice-btn" type="button">Much browner</button>
-            </div>
-            <button class="check-btn" type="button">Submit</button>
-            <div class="feedback-box">Pick a choice and submit.</div>
-          </div>
-          <label class="notebook-label" for="notebook-4">&#128300; Scientist's Notebook &mdash; describe what changed</label>
-          <textarea id="notebook-4" class="notebook-textarea" placeholder="For example: The edges of the cut surface look a bit darker than a few minutes ago."></textarea>
-        </div>
-
-        <div class="mini-card">
-          <h3>Question 3</h3>
-          <p>Where do you notice the browning?</p>
-          <div class="question-block">
-            <div class="choice-grid compact" data-mode="ack" data-message="Keep that in mind as we dig into what's happening inside the apple.">
-              <button class="choice-btn" type="button">On the cut surface</button>
-              <button class="choice-btn" type="button">On the skin</button>
-              <button class="choice-btn" type="button">Throughout the entire apple</button>
-              <button class="choice-btn" type="button">I'm not sure</button>
-            </div>
-            <button class="check-btn" type="button">Submit</button>
-            <div class="feedback-box">Pick a choice and submit.</div>
-          </div>
+          <p style="font-size: 13px; color: var(--muted); font-style: italic; margin-top: 10px;">Leave the apple sitting out &mdash; we'll come back to observe it again a little later.</p>
         </div>
 
         <div class="callout callout-primary">
@@ -284,22 +275,32 @@
         <p class="step-copy">This gives us our first major clue.</p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="35" width="140" height="80" rx="10" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-            <circle cx="90" cy="75" r="26" fill="none" stroke="var(--primary-dark)" stroke-width="2" stroke-dasharray="3 4"/>
-            <text x="90" y="80" text-anchor="middle" font-size="11" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">cells sealed</text>
-            <text x="90" y="128" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Whole apple</text>
+          <svg viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg">
+            <!-- sealed apple -->
+            <circle cx="120" cy="125" r="95" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <circle cx="120" cy="125" r="55" fill="none" stroke="var(--primary-dark)" stroke-width="2" stroke-dasharray="4 3"/>
+            <rect x="98" y="88" width="24" height="24" rx="5" fill="var(--primary-dark)"/>
+            <text x="110" y="78" text-anchor="middle" font-size="10.5" font-weight="800" fill="var(--primary-dark)" font-family="'Baloo 2', sans-serif">PPO</text>
+            <polygon points="100,150 132,136 132,164" fill="var(--gold)"/>
+            <text x="127" y="188" text-anchor="middle" font-size="10" font-weight="800" fill="var(--gold-dark)" font-family="'Baloo 2', sans-serif">polyphenol</text>
+            <circle cx="45" cy="35" r="6" fill="var(--accent)"/>
+            <circle cx="59" cy="35" r="6" fill="var(--accent)"/>
+            <text x="52" y="22" text-anchor="middle" font-size="11" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">O&#8322;</text>
 
-            <path d="M175,75 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="205,68 219,75 205,82" fill="var(--muted-soft)"/>
+            <path d="M223,125 h28" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="251,118 265,125 251,132" fill="var(--muted-soft)"/>
+            <line x1="227" y1="95" x2="257" y2="65" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="4 3" stroke-linecap="round"/>
 
-            <rect x="240" y="35" width="140" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
-            <path d="M290,55 a26,26 0 1,0 0.1,0" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-dasharray="5 3"/>
-            <text x="310" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">O&#8322;</text>
-            <text x="310" y="72" text-anchor="middle" font-size="12" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">O&#8322;</text>
-            <text x="310" y="128" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Cut apple &mdash; O&#8322; gets in</text>
+            <!-- cut apple -->
+            <circle cx="360" cy="125" r="95" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+            <path d="M360,78 a47,47 0 1,0 28,14" fill="none" stroke="var(--primary-dark)" stroke-width="2" stroke-dasharray="4 3"/>
+            <rect x="336" y="102" width="24" height="24" rx="5" fill="var(--primary-dark)"/>
+            <polygon points="362,114 394,100 394,128" fill="var(--gold)"/>
+            <circle cx="404" cy="60" r="6" fill="var(--accent)"/>
+            <circle cx="418" cy="60" r="6" fill="var(--accent)"/>
+            <path d="M408,69 q-15,16 -24,27" fill="none" stroke="var(--accent-dark)" stroke-width="1.5" stroke-dasharray="2 3"/>
           </svg>
-          <p class="concept-visual-caption">Cutting the apple breaks the seal &mdash; oxygen from the air can now reach molecules that used to be protected inside the cells.</p>
+          <p class="concept-visual-caption">Sealed inside the cell, the enzyme and its target molecule never touch. Cut the apple, and the seal breaks &mdash; O&#8322; from the air moves in, and the enzyme and its target end up side by side.</p>
         </div>
 
         <div class="question-block">
@@ -334,19 +335,31 @@
         </p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg">
-            <rect x="15" y="30" width="110" height="50" rx="8" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-            <text x="70" y="60" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Enzyme</text>
-            <text x="145" y="60" text-anchor="middle" font-size="18" font-weight="800" fill="var(--muted)">+</text>
-            <rect x="165" y="30" width="110" height="50" rx="8" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-            <text x="220" y="60" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Molecules</text>
-            <path d="M285,55 h20" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="305,48 319,55 305,62" fill="var(--muted-soft)"/>
-            <rect x="325" y="30" width="60" height="50" rx="8" fill="var(--accent)" opacity="0.9"/>
-            <text x="355" y="55" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff" font-family="'Baloo 2', sans-serif">Faster</text>
-            <text x="355" y="68" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff" font-family="'Baloo 2', sans-serif">reaction</text>
+          <svg viewBox="0 0 800 190" xmlns="http://www.w3.org/2000/svg">
+            <!-- panel 1: apart -->
+            <path d="M35,40 L95,40 Q108,40 108,53 L108,65 L135,80 L108,95 L108,107 Q108,120 95,120 L35,120 Q22,120 22,107 L22,53 Q22,40 35,40 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <text x="65" y="30" text-anchor="middle" font-size="10.5" font-weight="800" fill="var(--primary-dark)" font-family="'Baloo 2', sans-serif">PPO</text>
+            <polygon points="180,80 210,65 210,95" fill="var(--gold)"/>
+            <text x="195" y="115" text-anchor="middle" font-size="10" font-weight="800" fill="var(--gold-dark)" font-family="'Baloo 2', sans-serif">polyphenol</text>
+            <path d="M228,95 h24" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="252,88 266,95 252,102" fill="var(--muted-soft)"/>
+
+            <!-- panel 2: fitted / bound -->
+            <g transform="translate(300,0)">
+              <path d="M35,40 L95,40 Q108,40 108,53 L108,65 L135,80 L108,95 L108,107 Q108,120 95,120 L35,120 Q22,120 22,107 L22,53 Q22,40 35,40 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+              <polygon points="112,80 142,65 142,95" fill="var(--gold)"/>
+            </g>
+            <path d="M528,95 h24" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="552,88 566,95 552,102" fill="var(--muted-soft)"/>
+
+            <!-- panel 3: released, enzyme unchanged, product transformed -->
+            <g transform="translate(600,0)">
+              <path d="M35,40 L95,40 Q108,40 108,53 L108,65 L135,80 L108,95 L108,107 Q108,120 95,120 L35,120 Q22,120 22,107 L22,53 Q22,40 35,40 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            </g>
+            <polygon points="750,65 782,80 750,95" fill="var(--accent-dark)"/>
+            <text x="760" y="115" text-anchor="middle" font-size="10" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">brown pigment</text>
           </svg>
-          <p class="concept-visual-caption">Enzyme + molecules &rarr; the chemical reaction happens faster.</p>
+          <p class="concept-visual-caption">The enzyme's shape lets one specific molecule fit, like a puzzle piece. The reaction happens, a new molecule is released &mdash; and the enzyme comes out unchanged, ready to do it again.</p>
         </div>
 
         <p class="step-copy">
@@ -375,36 +388,30 @@
         </p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 300 460" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="10" width="260" height="56" rx="10" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-            <text x="150" y="34" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Apple is cut</text>
-            <text x="150" y="52" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">&rarr; cells damaged</text>
+          <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="65" cy="95" r="52" fill="#fdf8ec" stroke="var(--primary)" stroke-width="2"/>
+            <circle cx="225" cy="95" r="52" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+            <circle cx="385" cy="95" r="52" fill="#e3bd76" stroke="var(--accent)" stroke-width="2"/>
+            <circle cx="545" cy="95" r="52" fill="var(--accent-dark)" stroke="var(--accent-dark)" stroke-width="2"/>
 
-            <path d="M150,66 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="143,88 150,102 157,88" fill="var(--muted-soft)"/>
+            <path d="M124,95 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="150,88 164,95 150,102" fill="var(--muted-soft)"/>
+            <line x1="130" y1="65" x2="160" y2="35" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="4 3" stroke-linecap="round"/>
 
-            <rect x="20" y="112" width="260" height="56" rx="10" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-            <text x="150" y="136" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">PPO meets its</text>
-            <text x="150" y="154" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">substrates + O&#8322;</text>
+            <path d="M284,95 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="310,88 324,95 310,102" fill="var(--muted-soft)"/>
+            <rect x="286" y="42" width="14" height="14" rx="3" fill="var(--primary-dark)"/>
+            <polygon points="304,49 316,42 316,56" fill="var(--gold)"/>
+            <circle cx="322" cy="45" r="4" fill="var(--accent)"/>
+            <circle cx="330" cy="45" r="4" fill="var(--accent)"/>
 
-            <path d="M150,168 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="143,190 150,204 157,190" fill="var(--muted-soft)"/>
+            <path d="M444,95 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="470,88 484,95 470,102" fill="var(--muted-soft)"/>
 
-            <rect x="20" y="214" width="260" height="56" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
-            <text x="150" y="248" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Chemical reactions occur</text>
-
-            <path d="M150,270 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="143,292 150,306 157,292" fill="var(--muted-soft)"/>
-
-            <rect x="20" y="316" width="260" height="56" rx="10" fill="var(--accent)" opacity="0.9"/>
-            <text x="150" y="350" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff" font-family="'Baloo 2', sans-serif">Brown pigments form</text>
-
-            <path d="M150,372 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="143,394 150,408 157,394" fill="var(--muted-soft)"/>
-
-            <text x="150" y="440" text-anchor="middle" font-size="16" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">&#127822; The apple turns brown</text>
+            <text x="65" y="163" text-anchor="middle" font-size="12" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">fresh cut</text>
+            <text x="545" y="163" text-anchor="middle" font-size="12" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">browned</text>
           </svg>
-          <p class="concept-visual-caption">Each step depends on the one before it &mdash; break the chain anywhere, and the apple stays paler for longer.</p>
+          <p class="concept-visual-caption">Cut &rarr; enzyme, target molecule, and O&#8322; come together &rarr; the color deepens over time. Each step depends on the one before it &mdash; break the chain anywhere, and the apple stays paler for longer.</p>
         </div>
 
         <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
@@ -412,10 +419,58 @@
         </span></button>
       </section>
 
-      <!-- Step 7 : WHAT IS OXIDATION -->
+      <!-- Step 7 : OBSERVE AGAIN -->
       <section class="step-card" data-step="7">
         <div class="step-header">
           <span class="step-number">Step 7</span>
+          <h2>&#128064; Check on your apple</h2>
+        </div>
+        <p class="step-copy">
+          While you were learning about enzymes, oxygen, and the browning reaction, your apple has been sitting out the
+          whole time. Go take another look at it.
+        </p>
+
+        <div class="mini-card">
+          <h3>Observation 2 &middot; A few minutes later</h3>
+          <p>Look at the apple again. Do you notice any changes?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="That matches what you'd expect once PPO, polyphenols, and O&#8322; start reacting.">
+              <button class="choice-btn" type="button">No noticeable change</button>
+              <button class="choice-btn" type="button">A little darker</button>
+              <button class="choice-btn" type="button">Brown spots are beginning to appear</button>
+              <button class="choice-btn" type="button">Much browner</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-4">&#128300; Scientist's Notebook &mdash; describe what changed</label>
+          <textarea id="notebook-4" class="notebook-textarea" placeholder="For example: The edges of the cut surface look a bit darker than a few minutes ago."></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>Question</h3>
+          <p>Where do you notice the browning?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Right &mdash; browning starts exactly where PPO, polyphenols, and O&#8322; can all reach each other.">
+              <button class="choice-btn" type="button">On the cut surface</button>
+              <button class="choice-btn" type="button">On the skin</button>
+              <button class="choice-btn" type="button">Throughout the entire apple</button>
+              <button class="choice-btn" type="button">I'm not sure</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 8 : WHAT IS OXIDATION -->
+      <section class="step-card" data-step="8">
+        <div class="step-header">
+          <span class="step-number">Step 8</span>
           <h2>&#127788;&#65039; What is oxidation?</h2>
         </div>
         <p class="step-copy">You may have heard the word <strong>oxidation</strong> before.</p>
@@ -485,10 +540,10 @@
         </span></button>
       </section>
 
-      <!-- Step 8 : WHY DOESN'T THE APPLE BROWN BEFORE WE CUT IT -->
-      <section class="step-card" data-step="8">
+      <!-- Step 9 : WHY DOESN'T THE APPLE BROWN BEFORE WE CUT IT -->
+      <section class="step-card" data-step="9">
         <div class="step-header">
-          <span class="step-number">Step 8</span>
+          <span class="step-number">Step 9</span>
           <h2>Why doesn't the apple brown before we cut it?</h2>
         </div>
         <p class="step-copy">Think back to the beginning of the mission. The inside of a whole apple is usually not brown.</p>
@@ -518,10 +573,10 @@
         </span></button>
       </section>
 
-      <!-- Step 9 : CAN WE SLOW DOWN THE BROWNING -->
-      <section class="step-card" data-step="9">
+      <!-- Step 10 : CAN WE SLOW DOWN THE BROWNING -->
+      <section class="step-card" data-step="10">
         <div class="step-header">
-          <span class="step-number">Step 9</span>
+          <span class="step-number">Step 10</span>
           <h2>&#128300; Can we slow down the browning?</h2>
         </div>
         <p class="step-copy">Now let's become experimental scientists. Imagine you have three identical apple slices.</p>
@@ -578,10 +633,10 @@
         </span></button>
       </section>
 
-      <!-- Step 10 : THE LEMON JUICE CLUE -->
-      <section class="step-card" data-step="10">
+      <!-- Step 11 : THE LEMON JUICE CLUE -->
+      <section class="step-card" data-step="11">
         <div class="step-header">
-          <span class="step-number">Step 10</span>
+          <span class="step-number">Step 11</span>
           <h2>&#127819; The lemon juice clue</h2>
         </div>
         <p class="step-copy">
@@ -618,10 +673,10 @@
         </span></button>
       </section>
 
-      <!-- Step 11 : A LITTLE MORE ABOUT pH -->
-      <section class="step-card" data-step="11">
+      <!-- Step 12 : A LITTLE MORE ABOUT pH -->
+      <section class="step-card" data-step="12">
         <div class="step-header">
-          <span class="step-number">Step 11</span>
+          <span class="step-number">Step 12</span>
           <h2>&#129514; A little more about pH</h2>
         </div>
         <p class="step-copy">You may have heard people describe lemons as <strong>acidic</strong>. But what does that actually mean?</p>
@@ -654,10 +709,10 @@
         </span></button>
       </section>
 
-      <!-- Step 12 : WHY pH MATTERS TO ENZYMES -->
-      <section class="step-card" data-step="12">
+      <!-- Step 13 : WHY pH MATTERS TO ENZYMES -->
+      <section class="step-card" data-step="13">
         <div class="step-header">
-          <span class="step-number">Step 12</span>
+          <span class="step-number">Step 13</span>
           <h2>&#127777;&#65039; Why pH matters to enzymes</h2>
         </div>
         <p class="step-copy">Remember that enzymes are proteins that help chemical reactions happen faster.</p>
@@ -694,10 +749,10 @@
         </span></button>
       </section>
 
-      <!-- Step 13 : pH QUICK CHECK -->
-      <section class="step-card" data-step="13">
+      <!-- Step 14 : pH QUICK CHECK -->
+      <section class="step-card" data-step="14">
         <div class="step-header">
-          <span class="step-number">Step 13</span>
+          <span class="step-number">Step 14</span>
           <h2>&#9989; pH quick check</h2>
         </div>
 
@@ -756,10 +811,10 @@
         </span></button>
       </section>
 
-      <!-- Step 14 : SOLVE THE MYSTERY -->
-      <section class="step-card" data-step="14">
+      <!-- Step 15 : SOLVE THE MYSTERY -->
+      <section class="step-card" data-step="15">
         <div class="step-header">
-          <span class="step-number">Step 14</span>
+          <span class="step-number">Step 15</span>
           <h2>&#129514; Solve the mystery</h2>
         </div>
         <p class="step-copy">Let's put all of our clues together. Why does an apple turn brown?</p>
@@ -789,10 +844,10 @@
         </span></button>
       </section>
 
-      <!-- Step 15 : CODE IT (intro) -->
-      <section class="step-card" data-step="15">
+      <!-- Step 16 : CODE IT (intro) -->
+      <section class="step-card" data-step="16">
         <div class="step-header">
-          <span class="step-number">Step 15</span>
+          <span class="step-number">Step 16</span>
           <h2>&#128187; Code it</h2>
         </div>
         <p class="step-copy">We've just learned that the apple behaves differently depending on its environment. For example:</p>
@@ -814,10 +869,10 @@
         </span></button>
       </section>
 
-      <!-- Step 16 : WHAT IS AN IF STATEMENT -->
-      <section class="step-card" data-step="16">
+      <!-- Step 17 : WHAT IS AN IF STATEMENT -->
+      <section class="step-card" data-step="17">
         <div class="step-header">
-          <span class="step-number">Step 16</span>
+          <span class="step-number">Step 17</span>
           <h2>&#10067; What is an if statement?</h2>
         </div>
         <p class="step-copy">Sometimes a computer needs to make a decision.</p>
@@ -846,10 +901,10 @@ else:
         </span></button>
       </section>
 
-      <!-- Step 17 : READ THE CODE -->
-      <section class="step-card" data-step="17">
+      <!-- Step 18 : READ THE CODE -->
+      <section class="step-card" data-step="18">
         <div class="step-header">
-          <span class="step-number">Step 17</span>
+          <span class="step-number">Step 18</span>
           <h2>&#128064; Read the code</h2>
         </div>
         <p class="step-copy">
@@ -894,10 +949,10 @@ lemon_juice = False</code>
         </span></button>
       </section>
 
-      <!-- Step 18 : RUN THE MODEL -->
-      <section class="step-card" data-step="18">
+      <!-- Step 19 : RUN THE MODEL -->
+      <section class="step-card" data-step="19">
         <div class="step-header">
-          <span class="step-number">Step 18</span>
+          <span class="step-number">Step 19</span>
           <h2>&#127919; Run the model</h2>
         </div>
         <div class="question-block">
@@ -958,10 +1013,10 @@ else:
         </span></button>
       </section>
 
-      <!-- Step 19 : WHICH APPLE BROWNS FASTEST -->
-      <section class="step-card" data-step="19">
+      <!-- Step 20 : WHICH APPLE BROWNS FASTEST -->
+      <section class="step-card" data-step="20">
         <div class="step-header">
-          <span class="step-number">Step 19</span>
+          <span class="step-number">Step 20</span>
           <h2>&#127822; Which apple browns fastest?</h2>
         </div>
         <p class="step-copy">
@@ -986,10 +1041,10 @@ else:
         </span></button>
       </section>
 
-      <!-- Step 20 : FINAL CHECKPOINT -->
-      <section class="step-card" data-step="20">
+      <!-- Step 21 : FINAL CHECKPOINT -->
+      <section class="step-card" data-step="21">
         <div class="step-header">
-          <span class="step-number">Step 20</span>
+          <span class="step-number">Step 21</span>
           <h2>&#129504; Can you explain the mystery?</h2>
         </div>
         <p class="step-copy"><strong>Complete the sentence:</strong> An apple turns brown because...</p>
@@ -1016,10 +1071,10 @@ else:
         </span></button>
       </section>
 
-      <!-- Step 21 : NEXT MYSTERY -->
-      <section class="step-card" data-step="21">
+      <!-- Step 22 : NEXT MYSTERY -->
+      <section class="step-card" data-step="22">
         <div class="step-header">
-          <span class="step-number">Step 21</span>
+          <span class="step-number">Step 22</span>
           <h2>&#127775; Next mystery</h2>
         </div>
         <div class="callout callout-gold">
