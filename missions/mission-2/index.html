@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission 2 | Why Do Apples Turn Brown?</title>
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <div class="site-header">
+      <a class="site-brand" href="../../index.html">
+        <span class="site-brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+        </span>
+        <span class="site-brand-name">Science Missions</span>
+      </a>
+    </div>
+
+    <div class="page-mascot" id="page-mascot">
+      <div data-mascot="idle" data-mascot-size="185" id="page-mascot-figure"></div>
+      <span class="page-mascot-bubble" id="page-mascot-bubble"></span>
+    </div>
+
+    <svg class="side-decor side-decor-left" viewBox="0 0 130 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M55,20 C118,150 12,280 78,410 C142,540 8,670 70,800 C110,880 30,950 55,990" fill="none" stroke="var(--muted-soft)" stroke-width="4" stroke-dasharray="1 16" stroke-linecap="round" opacity="0.8"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(-20 55 20)"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--primary)" opacity="0.55" transform="rotate(30 55 20)"/>
+      <ellipse cx="70" cy="500" rx="10" ry="20" fill="var(--primary)" opacity="0.5" transform="rotate(10 70 500)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--primary)" opacity="0.6" transform="rotate(-15 55 990)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(35 55 990)"/>
+    </svg>
+    <svg class="side-decor side-decor-right" viewBox="0 0 130 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M55,20 C118,150 12,280 78,410 C142,540 8,670 70,800 C110,880 30,950 55,990" fill="none" stroke="var(--muted-soft)" stroke-width="4" stroke-dasharray="1 16" stroke-linecap="round" opacity="0.8"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(-20 55 20)"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--primary)" opacity="0.55" transform="rotate(30 55 20)"/>
+      <ellipse cx="70" cy="500" rx="10" ry="20" fill="var(--primary)" opacity="0.5" transform="rotate(10 70 500)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--primary)" opacity="0.6" transform="rotate(-15 55 990)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(35 55 990)"/>
+    </svg>
+
+    <div class="hero-wrap">
+      <header class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+        <span class="eyebrow">Mission 2 &middot; Science + Coding</span>
+        <h1>Why do apples turn brown?</h1>
+        <p class="hero-text">
+          This mission turns a kitchen mystery into an investigation with a real apple, some clues about enzymes and oxygen,
+          and a tiny coding challenge.
+        </p>
+
+        <div class="hero-meta">
+          <span>Middle school &ndash; early high school</span>
+          <span>25&ndash;35 minutes</span>
+        </div>
+
+        <div class="hero-badges">
+          <span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6E4B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+            Science &#9733;&#9733;&#9733;&#9733;&#9734;
+          </span>
+          <span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6E4B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"></polyline><polyline points="16 7 21 12 16 17"></polyline></svg>
+            Coding &#9733;&#9733;&#9734;&#9734;&#9734;
+          </span>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-top">
+            <span>Mission progress</span>
+            <span id="progress-label">Step 1 of 21</span>
+          </div>
+          <div class="progress-track" id="progress-track">
+            <div class="progress-line"></div>
+            <div class="progress-line-fill" id="progress-line-fill"></div>
+          </div>
+        </div>
+        </div>
+      </header>
+    </div>
+
+    <main class="mission-shell">
+
+      <!-- Intro : mission overview, shown before Step 1 -->
+      <div class="intro-card" id="mission-intro">
+        <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 14px;">
+            <h2>&#128300; Ready to investigate?</h2>
+            <p class="step-copy">Here's what you'll walk away understanding by the end of this mission:</p>
+            <ul class="learn-list">
+              <li><span>&#127811;</span> Explain why cutting an apple changes what happens inside its cells.</li>
+              <li><span>&#127811;</span> Understand that enzymes help chemical reactions happen faster.</li>
+              <li><span>&#127811;</span> Understand the role of oxygen in the browning of apples.</li>
+              <li><span>&#127811;</span> Explain what oxidation means in a simple chemical context.</li>
+              <li><span>&#127811;</span> Understand how changing an environment can affect an enzyme's activity.</li>
+              <li><span>&#127811;</span> Explain why lemon juice can slow down the browning process.</li>
+              <li><span>&#127811;</span> Use an if statement to represent a simple scientific condition.</li>
+              <li><span>&#127811;</span> Connect observations from a real experiment to a simple computer model.</li>
+            </ul>
+            <p style="font-size: 13px; color: var(--muted); font-weight: 700;">
+              &#127865;&#65039; What you'll need: an apple (cut in half partway through), and optionally a lemon.
+            </p>
+          </div>
+          <div data-mascot="idle" data-mascot-size="140" style="flex-shrink: 0;"></div>
+        </div>
+        <button class="btn btn-accent" id="start-mission-btn" type="button" style="align-self: flex-end;">
+          Start Mission <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Step 1 : WONDER -->
+      <section class="step-card" data-step="1">
+        <div class="step-header">
+          <span class="step-number">Step 1</span>
+          <h2>&#127822; A fresh apple</h2>
+        </div>
+        <p class="step-copy">Imagine you cut an apple in half.</p>
+        <p class="step-copy">The inside is pale, crisp, and almost white.</p>
+        <p class="step-copy">You leave it sitting on the table. You come back a few minutes later...</p>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>What do you think happened?</strong></p>
+          <div class="choice-grid" data-mode="ack" data-message="Keep your prediction in mind! We're going to watch it happen ourselves.">
+            <button class="choice-btn" type="button">&#127822; It still looks exactly the same.</button>
+            <button class="choice-btn" type="button">&#128122; It started turning brown.</button>
+            <button class="choice-btn" type="button">&#128167; It became wet and transparent.</button>
+            <button class="choice-btn" type="button">&#129300; I'm not sure.</button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 2 : GET READY TO INVESTIGATE -->
+      <section class="step-card" data-step="2">
+        <div class="step-header">
+          <span class="step-number">Step 2</span>
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -3px; margin-right: 4px;"><circle cx="10.5" cy="10.5" r="6"></circle><path d="m20.5 20.5-4.6-4.6"></path></svg>
+            Become a food scientist
+          </h2>
+        </div>
+        <p class="step-copy">Get a small piece of apple. You can use:</p>
+        <ul class="recap-list">
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> An apple slice.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> A small piece of apple.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Another freshly cut fruit if an apple isn't available.</li>
+        </ul>
+        <p class="step-copy">
+          Place the apple somewhere you can observe it for the next several minutes. Don't eat it yet! We're going to see
+          what happens when the inside of an apple is exposed to the environment.
+        </p>
+
+        <div class="mini-card">
+          <h3>Question 1</h3>
+          <p>What do you think the apple will look like after 5 minutes?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Good guess &mdash; let's find out for real.">
+              <button class="choice-btn" type="button">&#127822; It will look exactly the same.</button>
+              <button class="choice-btn" type="button">&#128122; It will become slightly brown.</button>
+              <button class="choice-btn" type="button">&#128122; It will become completely brown.</button>
+              <button class="choice-btn" type="button">&#129300; I'm not sure.</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-1">&#128300; Scientist's Notebook &mdash; why do you think that?</label>
+          <textarea id="notebook-1" class="notebook-textarea" placeholder="Write a short reason for your guess."></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>Question 2</h3>
+          <p>What do you think causes the apple to turn brown?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Don't worry if you're not sure yet. Scientists often begin an investigation without knowing the answer.">
+              <button class="choice-btn" type="button">&#9728;&#65039; Light</button>
+              <button class="choice-btn" type="button">&#128167; Water</button>
+              <button class="choice-btn" type="button">&#127788;&#65039; Oxygen in the air</button>
+              <button class="choice-btn" type="button">&#127777;&#65039; Heat</button>
+              <button class="choice-btn" type="button">&#129300; I'm not sure</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-2">&#128300; Scientist's Notebook &mdash; why do you think that?</label>
+          <textarea id="notebook-2" class="notebook-textarea" placeholder="Write a short reason for your guess."></textarea>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 3 : OBSERVE -->
+      <section class="step-card" data-step="3">
+        <div class="step-header">
+          <span class="step-number">Step 3</span>
+          <h2>&#128064; Watch the apple</h2>
+        </div>
+        <p class="step-copy">
+          Now leave your apple sitting out while we investigate what is happening inside it. Take a close look at your apple.
+        </p>
+
+        <div class="mini-card">
+          <h3>Observation 1 &middot; Right now</h3>
+          <p>What does the apple look like right now? Describe its color, its texture, which parts are exposed, and anything
+            else you notice.</p>
+          <label class="notebook-label" for="notebook-3">&#128300; Scientist's Notebook &mdash; describe what you see</label>
+          <textarea id="notebook-3" class="notebook-textarea" placeholder="For example: The cut surface is pale yellow-white and looks a little wet."></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>Observation 2 &middot; A few minutes later</h3>
+          <p>Look at the apple again. Do you notice any changes?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Keep watching &mdash; we'll come back to this.">
+              <button class="choice-btn" type="button">No noticeable change</button>
+              <button class="choice-btn" type="button">A little darker</button>
+              <button class="choice-btn" type="button">Brown spots are beginning to appear</button>
+              <button class="choice-btn" type="button">Much browner</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-4">&#128300; Scientist's Notebook &mdash; describe what changed</label>
+          <textarea id="notebook-4" class="notebook-textarea" placeholder="For example: The edges of the cut surface look a bit darker than a few minutes ago."></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>Question 3</h3>
+          <p>Where do you notice the browning?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Keep that in mind as we dig into what's happening inside the apple.">
+              <button class="choice-btn" type="button">On the cut surface</button>
+              <button class="choice-btn" type="button">On the skin</button>
+              <button class="choice-btn" type="button">Throughout the entire apple</button>
+              <button class="choice-btn" type="button">I'm not sure</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="callout callout-primary">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Think about it</h3>
+            <p>
+              The inside of the apple was not brown when it was inside the apple. So what changed when we cut it? Something
+              from the environment was suddenly able to reach the inside of the apple. What could that be?
+            </p>
+            <p><strong>&#127788;&#65039; Air.</strong></p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 4 : WHAT HAPPENS WHEN WE CUT AN APPLE -->
+      <section class="step-card" data-step="4">
+        <div class="step-header">
+          <span class="step-number">Step 4</span>
+          <h2>&#128298; Cells get exposed</h2>
+        </div>
+        <p class="step-copy">
+          An apple may look like one solid object, but it is actually made of <strong>millions of cells</strong>.
+        </p>
+        <p class="step-copy">
+          When the apple is intact, many of the molecules inside those cells are separated from the outside environment.
+        </p>
+        <p class="step-copy">
+          When you cut the apple, you break open many cells. Suddenly, molecules that were separated inside the cells can
+          come into contact with molecules in the air &mdash; especially one important molecule:
+        </p>
+        <p class="step-copy" style="text-align: center;"><strong>Oxygen (O&#8322;)</strong></p>
+        <p class="step-copy">This gives us our first major clue.</p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="35" width="140" height="80" rx="10" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <circle cx="90" cy="75" r="26" fill="none" stroke="var(--primary-dark)" stroke-width="2" stroke-dasharray="3 4"/>
+            <text x="90" y="80" text-anchor="middle" font-size="11" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">cells sealed</text>
+            <text x="90" y="128" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Whole apple</text>
+
+            <path d="M175,75 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="205,68 219,75 205,82" fill="var(--muted-soft)"/>
+
+            <rect x="240" y="35" width="140" height="80" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+            <path d="M290,55 a26,26 0 1,0 0.1,0" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-dasharray="5 3"/>
+            <text x="310" y="60" text-anchor="middle" font-size="12" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">O&#8322;</text>
+            <text x="310" y="72" text-anchor="middle" font-size="12" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">O&#8322;</text>
+            <text x="310" y="128" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Cut apple &mdash; O&#8322; gets in</text>
+          </svg>
+          <p class="concept-visual-caption">Cutting the apple breaks the seal &mdash; oxygen from the air can now reach molecules that used to be protected inside the cells.</p>
+        </div>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>Make a prediction:</strong> do you think an apple would brown faster or slower if we could prevent oxygen from reaching the cut surface?</p>
+          <div class="choice-grid" data-mode="ack" data-message="Keep your answer in mind &mdash; we'll come back to it.">
+            <button class="choice-btn" type="button">Faster</button>
+            <button class="choice-btn" type="button">Slower</button>
+            <button class="choice-btn" type="button">No difference</button>
+            <button class="choice-btn" type="button">I'm not sure</button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 5 : MEET THE ENZYMES -->
+      <section class="step-card" data-step="5">
+        <div class="step-header">
+          <span class="step-number">Step 5</span>
+          <h2>&#129514; What is an enzyme?</h2>
+        </div>
+        <p class="step-copy">Inside living cells, thousands of different chemical reactions are happening.</p>
+        <p class="step-copy">But many of these reactions would happen too slowly on their own.</p>
+        <p class="step-copy">
+          Cells use special proteins called <strong>enzymes</strong> to help chemical reactions happen faster. Think of an
+          enzyme as a tiny molecular helper. An enzyme doesn't usually get used up in the reaction &mdash; instead, it helps
+          the reaction happen more easily.
+        </p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 400 110" xmlns="http://www.w3.org/2000/svg">
+            <rect x="15" y="30" width="110" height="50" rx="8" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <text x="70" y="60" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Enzyme</text>
+            <text x="145" y="60" text-anchor="middle" font-size="18" font-weight="800" fill="var(--muted)">+</text>
+            <rect x="165" y="30" width="110" height="50" rx="8" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <text x="220" y="60" text-anchor="middle" font-size="12.5" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Molecules</text>
+            <path d="M285,55 h20" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="305,48 319,55 305,62" fill="var(--muted-soft)"/>
+            <rect x="325" y="30" width="60" height="50" rx="8" fill="var(--accent)" opacity="0.9"/>
+            <text x="355" y="55" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff" font-family="'Baloo 2', sans-serif">Faster</text>
+            <text x="355" y="68" text-anchor="middle" font-size="10.5" font-weight="800" fill="#ffffff" font-family="'Baloo 2', sans-serif">reaction</text>
+          </svg>
+          <p class="concept-visual-caption">Enzyme + molecules &rarr; the chemical reaction happens faster.</p>
+        </div>
+
+        <p class="step-copy">
+          Different enzymes help with different reactions. Apples contain an enzyme that is important for browning:
+        </p>
+        <p class="step-copy" style="text-align: center;"><strong>Polyphenol oxidase (PPO)</strong></p>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 6 : THE BROWNING REACTION -->
+      <section class="step-card" data-step="6">
+        <div class="step-header">
+          <span class="step-number">Step 6</span>
+          <h2>&#129514; The browning reaction</h2>
+        </div>
+        <p class="step-copy">
+          When you cut an apple, cells are damaged and their contents become mixed together. The enzyme <strong>polyphenol
+          oxidase (PPO)</strong> can now interact with molecules called <strong>polyphenols</strong>.
+        </p>
+        <p class="step-copy">
+          When oxygen is also present, a series of chemical reactions occurs. These reactions produce new compounds that
+          eventually form <strong>brown-colored pigments</strong>.
+        </p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 300 460" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="10" width="260" height="56" rx="10" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <text x="150" y="34" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Apple is cut</text>
+            <text x="150" y="52" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">&rarr; cells damaged</text>
+
+            <path d="M150,66 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="143,88 150,102 157,88" fill="var(--muted-soft)"/>
+
+            <rect x="20" y="112" width="260" height="56" rx="10" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <text x="150" y="136" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">PPO meets its</text>
+            <text x="150" y="154" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">substrates + O&#8322;</text>
+
+            <path d="M150,168 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="143,190 150,204 157,190" fill="var(--muted-soft)"/>
+
+            <rect x="20" y="214" width="260" height="56" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
+            <text x="150" y="248" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">Chemical reactions occur</text>
+
+            <path d="M150,270 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="143,292 150,306 157,292" fill="var(--muted-soft)"/>
+
+            <rect x="20" y="316" width="260" height="56" rx="10" fill="var(--accent)" opacity="0.9"/>
+            <text x="150" y="350" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff" font-family="'Baloo 2', sans-serif">Brown pigments form</text>
+
+            <path d="M150,372 v22" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="143,394 150,408 157,394" fill="var(--muted-soft)"/>
+
+            <text x="150" y="440" text-anchor="middle" font-size="16" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">&#127822; The apple turns brown</text>
+          </svg>
+          <p class="concept-visual-caption">Each step depends on the one before it &mdash; break the chain anywhere, and the apple stays paler for longer.</p>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 7 : WHAT IS OXIDATION -->
+      <section class="step-card" data-step="7">
+        <div class="step-header">
+          <span class="step-number">Step 7</span>
+          <h2>&#127788;&#65039; What is oxidation?</h2>
+        </div>
+        <p class="step-copy">You may have heard the word <strong>oxidation</strong> before.</p>
+        <p class="step-copy">
+          In everyday life, oxidation often involves a substance reacting with oxygen. For example, iron can react with
+          oxygen and form rust. Apples can also undergo oxidation.
+        </p>
+        <div class="callout callout-primary">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>In chemistry</h3>
+            <p>
+              Oxidation is a chemical process involving the loss of electrons. You don't need to memorize the electron
+              details for this mission &mdash; for now, remember: <strong>oxidation = a chemical change involving electron
+              transfer.</strong> In a cut apple, oxygen participates in a series of reactions that ultimately contribute to
+              the formation of brown compounds.
+            </p>
+          </div>
+        </div>
+
+        <p class="step-copy"><strong>&#9989; Quick check</strong></p>
+
+        <div class="mini-card">
+          <p>Which molecule from the air is important for the browning reaction?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Oxygen is the key ingredient from the air.">
+              <button class="choice-btn" type="button" data-correct="false">Nitrogen<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">Oxygen<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Carbon dioxide<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Water vapor<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>What helps the chemical reactions involved in browning happen faster?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Enzymes are the tiny molecular helpers behind the reaction.">
+              <button class="choice-btn" type="button" data-correct="true">Enzymes<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Water<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Sugar<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Light<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>What is the enzyme involved in apple browning called?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Polyphenol oxidase, or PPO for short.">
+              <button class="choice-btn" type="button" data-correct="false">Chlorophyll<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">Polyphenol oxidase (PPO)<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Amylase<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Insulin<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 8 : WHY DOESN'T THE APPLE BROWN BEFORE WE CUT IT -->
+      <section class="step-card" data-step="8">
+        <div class="step-header">
+          <span class="step-number">Step 8</span>
+          <h2>Why doesn't the apple brown before we cut it?</h2>
+        </div>
+        <p class="step-copy">Think back to the beginning of the mission. The inside of a whole apple is usually not brown.</p>
+        <p class="step-copy">But after we cut it, browning begins. Why?</p>
+        <p class="step-copy">
+          Before cutting, the apple's cells keep many of their molecules separated from one another. The enzyme and its
+          substrates are kept in different parts of the cell.
+        </p>
+        <p class="step-copy">
+          When the cells are damaged, <strong>the barriers between them are broken.</strong> Now the enzyme can interact
+          with molecules it couldn't easily reach before &mdash; and the cut surface is exposed to oxygen from the air.
+        </p>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Think about it</h3>
+            <p>
+              Cutting the apple doesn't create the enzyme &mdash; the enzyme was already there. Cutting the apple changes
+              the environment so that the reaction can happen.
+            </p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 9 : CAN WE SLOW DOWN THE BROWNING -->
+      <section class="step-card" data-step="9">
+        <div class="step-header">
+          <span class="step-number">Step 9</span>
+          <h2>&#128300; Can we slow down the browning?</h2>
+        </div>
+        <p class="step-copy">Now let's become experimental scientists. Imagine you have three identical apple slices.</p>
+
+        <div class="compare-row" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="compare-panel">
+            <div style="font-size: 40px; line-height: 1;">&#127822;&#128168;</div>
+            <p>Apple A &mdash; left sitting in the open air.</p>
+          </div>
+          <div class="compare-panel">
+            <div style="font-size: 40px; line-height: 1;">&#127822;&#128230;</div>
+            <p>Apple B &mdash; cut surface covered so less air can reach it.</p>
+          </div>
+          <div class="compare-panel">
+            <div style="font-size: 40px; line-height: 1;">&#127822;&#127819;</div>
+            <p>Apple C &mdash; lemon juice on the cut surface.</p>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>Which apple do you think will turn brown the <strong>fastest</strong>?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Keep that guess in mind as we investigate what's really happening.">
+              <button class="choice-btn" type="button">Apple A</button>
+              <button class="choice-btn" type="button">Apple B</button>
+              <button class="choice-btn" type="button">Apple C</button>
+              <button class="choice-btn" type="button">They'll all brown at the same speed</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-5">&#128300; Scientist's Notebook &mdash; why do you think that?</label>
+          <textarea id="notebook-5" class="notebook-textarea" placeholder="Write a short explanation."></textarea>
+        </div>
+
+        <div class="mini-card">
+          <p>Which apple do you think will turn brown the <strong>slowest</strong>?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="Keep that guess in mind too &mdash; we'll revisit both later.">
+              <button class="choice-btn" type="button">Apple A</button>
+              <button class="choice-btn" type="button">Apple B</button>
+              <button class="choice-btn" type="button">Apple C</button>
+              <button class="choice-btn" type="button">They'll all brown at the same speed</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-6">&#128300; Scientist's Notebook &mdash; why do you think that?</label>
+          <textarea id="notebook-6" class="notebook-textarea" placeholder="Write a short explanation."></textarea>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 10 : THE LEMON JUICE CLUE -->
+      <section class="step-card" data-step="10">
+        <div class="step-header">
+          <span class="step-number">Step 10</span>
+          <h2>&#127819; The lemon juice clue</h2>
+        </div>
+        <p class="step-copy">
+          You may have noticed that lemon juice is often used to keep cut fruit from turning brown. Why?
+        </p>
+        <p class="step-copy">
+          Lemon juice contains <strong>citric acid</strong>, which makes it acidic. That changes the chemical environment
+          around the enzyme.
+        </p>
+        <p class="step-copy">Enzymes work best under particular conditions. Changes in things like:</p>
+        <ul class="recap-list">
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> pH</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Temperature</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Salt concentration</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> The molecules surrounding the enzyme</li>
+        </ul>
+        <p class="step-copy">
+          ...can all change how well an enzyme works. If the conditions are unfavorable for an enzyme, the reaction it
+          helps carry out can slow down. So lemon juice can help slow the reactions involved in browning.
+        </p>
+
+        <div class="callout callout-gold">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+          </div>
+          <div class="callout-body">
+            <h3>Important idea</h3>
+            <p>The lemon juice isn't simply "washing the brown color away." It is changing the <strong>chemical conditions</strong> around the reaction.</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 11 : A LITTLE MORE ABOUT pH -->
+      <section class="step-card" data-step="11">
+        <div class="step-header">
+          <span class="step-number">Step 11</span>
+          <h2>&#129514; A little more about pH</h2>
+        </div>
+        <p class="step-copy">You may have heard people describe lemons as <strong>acidic</strong>. But what does that actually mean?</p>
+        <p class="step-copy">
+          When certain substances dissolve in water, they can affect the amount of <strong>hydrogen ions (H&#8314;)</strong>
+          in the solution.
+        </p>
+        <p class="step-copy">
+          Acids increase the concentration of hydrogen ions, and are often what make foods taste sour &mdash; both lemon
+          juice and vinegar have a low pH. Bases, on the other hand, have a low concentration of hydrogen ions, and are
+          often associated with a bitter taste, like baking soda.
+        </p>
+        <p class="step-copy">
+          The <strong>pH scale</strong> describes how acidic or basic a solution is, usually ranging from about 0 to 14:
+        </p>
+        <ul class="recap-list">
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Low pH &rarr; more acidic &rarr; more H&#8314;</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> pH 7 &rarr; neutral</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> High pH &rarr; more basic &rarr; less H&#8314;</li>
+        </ul>
+
+        <div class="spectrum-row">
+          <div class="spectrum-chip" style="background:#b8462f;"><span>&#127819; Lemon juice</span><span>pH ~2 &middot; acidic</span></div>
+          <div class="spectrum-chip" style="background:#8a8f86;"><span>&#128167; Pure water</span><span>pH ~7 &middot; neutral</span></div>
+          <div class="spectrum-chip" style="background:#3b7dd8;"><span>&#129474; Baking soda</span><span>pH ~9 &middot; basic</span></div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 12 : WHY pH MATTERS TO ENZYMES -->
+      <section class="step-card" data-step="12">
+        <div class="step-header">
+          <span class="step-number">Step 12</span>
+          <h2>&#127777;&#65039; Why pH matters to enzymes</h2>
+        </div>
+        <p class="step-copy">Remember that enzymes are proteins that help chemical reactions happen faster.</p>
+        <p class="step-copy">
+          But enzymes don't work equally well under every condition. An enzyme has a particular <strong>shape</strong>,
+          and that shape helps it interact with the molecules involved in a reaction.
+        </p>
+        <p class="step-copy">
+          Changing the environment around an enzyme &mdash; including changing the pH &mdash; can affect the shape and
+          behavior of the enzyme. If conditions become very different from what the enzyme normally prefers, the enzyme
+          may work less effectively.
+        </p>
+        <ul class="recap-list">
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Right conditions &rarr; enzyme works well.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Different conditions &rarr; enzyme may work less effectively.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Very different conditions &rarr; enzyme may lose its shape and stop working properly.</li>
+        </ul>
+
+        <div class="callout callout-primary">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>&#127819; So what does lemon juice do?</h3>
+            <p>
+              Lemon juice contains acids such as citric acid, which gives it a low pH. When lemon juice is added to a cut
+              apple, it changes the chemical environment around the enzymes involved in browning, slowing the reactions
+              that produce brown pigments. Lemon juice doesn't wash away the brown color &mdash; it changes the conditions
+              under which the chemical reaction is happening.
+            </p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 13 : pH QUICK CHECK -->
+      <section class="step-card" data-step="13">
+        <div class="step-header">
+          <span class="step-number">Step 13</span>
+          <h2>&#9989; pH quick check</h2>
+        </div>
+
+        <div class="mini-card">
+          <p>Which has a lower pH?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Lemon juice is acidic, so it sits at a lower pH than neutral water.">
+              <button class="choice-btn" type="button" data-correct="true">&#127819; Lemon juice<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">&#128167; Pure water<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>Which is more acidic?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Lower pH numbers mean more acidic.">
+              <button class="choice-btn" type="button" data-correct="true">A solution with pH 3<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">A solution with pH 7<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p>What can happen when the pH around an enzyme changes?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Changing pH can change how well &mdash; or whether &mdash; an enzyme works.">
+              <button class="choice-btn" type="button" data-correct="false">The enzyme always works exactly the same.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">The enzyme's activity can change.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">The enzyme immediately disappears.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <p><strong>Think about it</strong> &mdash; if lemon juice changes the pH around the enzyme, and the enzyme's activity changes, what do you predict will happen to the rate of apple browning?</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Lower enzyme activity means the browning reactions happen more slowly.">
+              <button class="choice-btn" type="button" data-correct="false">&#127822; It will speed up.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">&#127819; It will slow down.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">&#129300; Nothing will change.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 14 : SOLVE THE MYSTERY -->
+      <section class="step-card" data-step="14">
+        <div class="step-header">
+          <span class="step-number">Step 14</span>
+          <h2>&#129514; Solve the mystery</h2>
+        </div>
+        <p class="step-copy">Let's put all of our clues together. Why does an apple turn brown?</p>
+        <ul class="recap-steps">
+          <li>An apple is made of millions of cells.</li>
+          <li>Inside those cells are many different molecules, including enzymes.</li>
+          <li>One enzyme involved in browning is polyphenol oxidase (PPO).</li>
+          <li>When we cut the apple, many cells are damaged.</li>
+          <li>This allows PPO to interact with molecules it was previously separated from.</li>
+          <li>The cut surface is also exposed to oxygen in the air.</li>
+          <li>PPO helps chemical reactions involving these molecules happen faster.</li>
+          <li>Oxidation reactions produce compounds that eventually form brown pigments.</li>
+        </ul>
+
+        <div class="callout callout-gold">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+          </div>
+          <div class="callout-body">
+            <h3>&#127822; The apple turns brown.</h3>
+            <p>So the browning isn't simply the apple "getting old." It is the result of a series of chemical reactions happening inside damaged plant tissue.</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 15 : CODE IT (intro) -->
+      <section class="step-card" data-step="15">
+        <div class="step-header">
+          <span class="step-number">Step 15</span>
+          <h2>&#128187; Code it</h2>
+        </div>
+        <p class="step-copy">We've just learned that the apple behaves differently depending on its environment. For example:</p>
+        <ul class="recap-list">
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Oxygen present &rarr; browning reaction can occur.</li>
+          <li><span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c8 0 14-6 14-16-10 0-16 6-16 14z"></path><path d="M6 18c3-4 6-7 12-12"></path></svg></span> Oxygen absent &rarr; browning reaction slows down.</li>
+        </ul>
+        <p class="step-copy">Computers can also make decisions based on conditions. Before we run our model, let's learn one new coding idea.</p>
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>No typing required</h3>
+            <p>You won't need to write any code from scratch. We'll read it together, predict what it does, then run it.</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 16 : WHAT IS AN IF STATEMENT -->
+      <section class="step-card" data-step="16">
+        <div class="step-header">
+          <span class="step-number">Step 16</span>
+          <h2>&#10067; What is an if statement?</h2>
+        </div>
+        <p class="step-copy">Sometimes a computer needs to make a decision.</p>
+        <p class="step-copy">An <strong>if statement</strong> tells the computer: "If this condition is true, do something. Otherwise, do something else."</p>
+        <div class="code-console">
+          <div class="code-toolbar">
+            <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
+          </div>
+          <pre class="code-static" data-code-static>oxygen = True
+
+if oxygen:
+    print("The apple begins to brown!")
+else:
+    print("The apple stays fresh.")</pre>
+        </div>
+        <p class="step-copy">
+          The computer checks: is <code class="code-inline" style="display: inline; padding: 1px 6px;">oxygen</code> true?
+          Since it is, the computer runs the <code class="code-inline" style="display: inline; padding: 1px 6px;">if</code>
+          branch and prints the first message. If <code class="code-inline" style="display: inline; padding: 1px 6px;">oxygen</code>
+          were <code class="code-inline" style="display: inline; padding: 1px 6px;">False</code> instead, it would run the
+          <code class="code-inline" style="display: inline; padding: 1px 6px;">else</code> branch instead.
+        </p>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 17 : READ THE CODE -->
+      <section class="step-card" data-step="17">
+        <div class="step-header">
+          <span class="step-number">Step 17</span>
+          <h2>&#128064; Read the code</h2>
+        </div>
+        <p class="step-copy">
+          Now let's model all three of our apple slices at once &mdash; Apple A (air, no lemon juice), Apple B (no oxygen),
+          and Apple C (lemon juice). Our code will check both conditions and decide which message to print.
+        </p>
+        <div class="code-console">
+          <div class="code-toolbar">
+            <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
+          </div>
+          <pre class="code-static" data-code-static>oxygen = True
+lemon_juice = False
+
+if lemon_juice:
+    print("The apple browns slowly.")
+elif oxygen:
+    print("The apple browns quickly!")
+else:
+    print("The apple stays fresh.")</pre>
+        </div>
+        <p class="step-copy"><strong>Before you run it &mdash; let's read it line by line.</strong></p>
+        <div class="code-walk-item">
+          <code class="code-inline">oxygen = True
+lemon_juice = False</code>
+          <p>This represents Apple A: air can reach the cut surface, and there's no lemon juice on it yet.</p>
+        </div>
+        <div class="code-walk-item">
+          <code class="code-inline">if lemon_juice:</code>
+          <p>First the computer checks: did we add lemon juice? If so, that changes the enzyme's environment and slows the reaction down.</p>
+        </div>
+        <div class="code-walk-item">
+          <code class="code-inline">elif oxygen:</code>
+          <p>If there's no lemon juice, the computer checks the next condition: is oxygen reaching the cut surface? If so, browning can happen quickly.</p>
+        </div>
+        <div class="code-walk-item">
+          <code class="code-inline">else:</code>
+          <p>If neither condition is true &mdash; no lemon juice and no oxygen &mdash; the enzyme can't react, so the apple stays fresh.</p>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 18 : RUN THE MODEL -->
+      <section class="step-card" data-step="18">
+        <div class="step-header">
+          <span class="step-number">Step 18</span>
+          <h2>&#127919; Run the model</h2>
+        </div>
+        <div class="question-block">
+          <p class="step-copy"><strong>Before you run it &mdash; for Apple A (oxygen = True, lemon_juice = False), which message do you predict will print?</strong></p>
+          <div class="choice-grid" data-mode="ack" data-message="Let's find out &mdash; press Run below.">
+            <button class="choice-btn" type="button">"The apple browns slowly."</button>
+            <button class="choice-btn" type="button">"The apple browns quickly!"</button>
+            <button class="choice-btn" type="button">"The apple stays fresh."</button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <div class="code-console">
+          <div class="code-toolbar">
+            <div class="code-toolbar-left">
+              <span>Python console</span>
+              <span class="lang-pill">Python</span>
+            </div>
+            <button id="run-code-btn" class="console-btn" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1B2A20" stroke="none"><polygon points="6 4 20 12 6 20"></polygon></svg>
+              Run
+            </button>
+          </div>
+          <div class="code-editor-shell">
+            <div class="line-numbers" id="line-numbers"></div>
+            <div class="code-editor-wrapper">
+              <textarea id="mission-code" spellcheck="false">oxygen = True
+lemon_juice = False
+
+if lemon_juice:
+    print("The apple browns slowly.")
+elif oxygen:
+    print("The apple browns quickly!")
+else:
+    print("The apple stays fresh.")</textarea>
+              <pre id="code-highlight" class="code-highlight" aria-hidden="true"></pre>
+            </div>
+          </div>
+          <pre id="code-output" class="code-output">Output will appear here.</pre>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Think about it</h3>
+            <p>
+              Try changing <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = False</code>
+              to <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = True</code> and press
+              Run again &mdash; that's Apple C. Then try setting
+              <code class="code-inline" style="display: inline; padding: 1px 6px;">oxygen = False</code> too &mdash; that's Apple B.
+            </p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 19 : WHICH APPLE BROWNS FASTEST -->
+      <section class="step-card" data-step="19">
+        <div class="step-header">
+          <span class="step-number">Step 19</span>
+          <h2>&#127822; Which apple browns fastest?</h2>
+        </div>
+        <p class="step-copy">
+          Suppose you changed the code so that <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = True</code>,
+          while <code class="code-inline" style="display: inline; padding: 1px 6px;">oxygen</code> stayed
+          <code class="code-inline" style="display: inline; padding: 1px 6px;">True</code>.
+        </p>
+        <div class="question-block">
+          <p class="step-copy"><strong>Which message would now print?</strong></p>
+          <div class="choice-grid" data-mode="reveal" data-explain="Because the code checks 'if lemon_juice' first, changing lemon_juice to True makes that branch run &mdash; matching Apple C, the slice with lemon juice on it.">
+            <button class="choice-btn" type="button" data-correct="false">"The apple begins to brown!"<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">"The apple browns quickly!"<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="true">"The apple browns slowly."<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">"The apple stays fresh."<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 20 : FINAL CHECKPOINT -->
+      <section class="step-card" data-step="20">
+        <div class="step-header">
+          <span class="step-number">Step 20</span>
+          <h2>&#129504; Can you explain the mystery?</h2>
+        </div>
+        <p class="step-copy"><strong>Complete the sentence:</strong> An apple turns brown because...</p>
+        <textarea class="notebook-textarea" style="min-height: 100px;" placeholder="Write your explanation here."></textarea>
+
+        <details class="callout callout-primary">
+          <summary>Reveal a possible answer</summary>
+          <p>
+            Cutting an apple damages its cells and breaks down the barriers that normally keep the enzyme polyphenol
+            oxidase (PPO) separated from its target molecules. Once mixed together and exposed to oxygen from the air,
+            PPO speeds up chemical reactions that produce brown pigments. Changing the environment &mdash; like covering
+            the cut surface or adding acidic lemon juice &mdash; can slow the enzyme down and keep the apple fresher for
+            longer.
+          </p>
+        </details>
+
+        <details class="callout callout-tip">
+          <summary>Bonus question &mdash; why does lemon juice work, exactly?</summary>
+          <p>Lemon juice is acidic (low pH), and changing the pH around an enzyme can change its shape and slow its activity &mdash; it doesn't wash the brown color away, it changes the chemistry.</p>
+        </details>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- Step 21 : NEXT MYSTERY -->
+      <section class="step-card" data-step="21">
+        <div class="step-header">
+          <span class="step-number">Step 21</span>
+          <h2>&#127775; Next mystery</h2>
+        </div>
+        <div class="callout callout-gold">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+          </div>
+          <div class="callout-body">
+            <h3>We've figured out why apples turn brown.</h3>
+            <p>There are more everyday mysteries hiding all around you &mdash; more missions are on the way.</p>
+          </div>
+        </div>
+
+        <a class="btn btn-accent" href="../../index.html" style="align-self: flex-end;">
+          Back to all missions
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </section>
+
+    </main>
+
+    <script src="mission.js"></script>
+    <script src="../../assets/mascot.js"></script>
+    <script src="../../assets/mission-engine.js"></script>
+  </body>
+</html>

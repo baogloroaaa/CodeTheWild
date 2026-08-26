@@ -394,16 +394,21 @@
   }
 
   /* A small, deliberately limited Python-subset interpreter: variable
-     assignment, "var + N" / "var - N" expressions, a single top-level
-     for-loop over range(N), and print() with comma-separated args.
-     Handles the two-variable growth model used in this mission's code
-     step, plus reasonable student edits (different numbers, loop count). */
+     assignment (numbers, strings, True/False), "var + N" / "var - N"
+     expressions, one or more "for var in range(N):" loops, "if / elif /
+     else" chains with a bare-variable / "not var" / comparison condition,
+     and print() with comma-separated args. Blocks are found by indentation
+     and executed recursively, so a for-loop and an if-chain can nest
+     inside each other. Deliberately not a general parser — scoped to what
+     missions' code examples need, while surviving reasonable student edits. */
   function runSimplePythonCode(code) {
     const vars = {};
     const output = [];
 
-    function evalExpr(expr) {
+    function evalValue(expr) {
       const trimmed = expr.trim();
+      if (trimmed === 'True') return true;
+      if (trimmed === 'False') return false;
       const strMatch = trimmed.match(/^["']([^"']*)["']$/);
       if (strMatch) return strMatch[1];
       if (/^-?\d+(\.\d+)?$/.test(trimmed)) return Number(trimmed);
@@ -415,6 +420,31 @@
       }
       if (Object.prototype.hasOwnProperty.call(vars, trimmed)) return vars[trimmed];
       return trimmed;
+    }
+
+    function evalCondition(expr) {
+      let trimmed = expr.trim();
+      let negate = false;
+      const notMatch = trimmed.match(/^not\s+(.+)$/);
+      if (notMatch) {
+        negate = true;
+        trimmed = notMatch[1];
+      }
+      const cmpMatch = trimmed.match(/^(.+?)\s*(==|!=|>=|<=|>|<)\s*(.+)$/);
+      let result;
+      if (cmpMatch) {
+        const left = evalValue(cmpMatch[1]);
+        const right = evalValue(cmpMatch[3]);
+        if (cmpMatch[2] === '==') result = left === right;
+        else if (cmpMatch[2] === '!=') result = left !== right;
+        else if (cmpMatch[2] === '>') result = left > right;
+        else if (cmpMatch[2] === '<') result = left < right;
+        else if (cmpMatch[2] === '>=') result = left >= right;
+        else result = left <= right;
+      } else {
+        result = Boolean(evalValue(trimmed));
+      }
+      return negate ? !result : result;
     }
 
     function splitArgs(argsStr) {
@@ -439,60 +469,123 @@
       return parts;
     }
 
-    function runLine(line) {
-      const trimmed = line.trim();
-      if (!trimmed || trimmed.startsWith('#')) return;
+    function indentOf(line) {
+      return (line.match(/^\s*/) || [''])[0].length;
+    }
 
-      const printMatch = trimmed.match(/^print\((.*)\)$/);
-      if (printMatch) {
-        const rendered = splitArgs(printMatch[1]).map((part) => {
-          const strPart = part.trim().match(/^["']([^"']*)["']$/);
-          return strPart ? strPart[1] : String(evalExpr(part));
-        });
-        output.push(rendered.join(' '));
-        return;
+    function findBlockEnd(lines, bodyStart, indent, end) {
+      let cursor = bodyStart;
+      while (cursor < end) {
+        const line = lines[cursor];
+        if (line.trim() === '') {
+          cursor += 1;
+          continue;
+        }
+        if (indentOf(line) < indent) break;
+        cursor += 1;
       }
+      return cursor;
+    }
 
-      const assignMatch = trimmed.match(/^(\w+)\s*=\s*(.+)$/);
-      if (assignMatch) {
-        vars[assignMatch[1]] = evalExpr(assignMatch[2]);
+    function runBlock(lines, start, end) {
+      let i = start;
+      while (i < end) {
+        const line = lines[i];
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('#')) {
+          i += 1;
+          continue;
+        }
+
+        const forMatch = trimmed.match(/^for\s+\w+\s+in\s+range\((\w+)\)\s*:$/);
+        if (forMatch) {
+          const bodyStart = i + 1;
+          const bodyIndent = bodyStart < end ? indentOf(lines[bodyStart]) : indentOf(line) + 4;
+          const bodyEnd = findBlockEnd(lines, bodyStart, bodyIndent, end);
+          const arg = forMatch[1];
+          const count = /^\d+$/.test(arg) ? Number(arg) : Number(vars[arg] ?? 0);
+          for (let n = 0; n < count; n += 1) {
+            runBlock(lines, bodyStart, bodyEnd);
+          }
+          i = bodyEnd;
+          continue;
+        }
+
+        const ifMatch = trimmed.match(/^if\s+(.+):$/);
+        if (ifMatch) {
+          const headerIndent = indentOf(line);
+          const branches = [];
+          let cursor = i;
+
+          let bodyStart = cursor + 1;
+          let bodyIndent = bodyStart < end ? indentOf(lines[bodyStart]) : headerIndent + 4;
+          let bodyEnd = findBlockEnd(lines, bodyStart, bodyIndent, end);
+          branches.push({ condExpr: ifMatch[1], bodyStart, bodyEnd });
+          cursor = bodyEnd;
+
+          while (cursor < end) {
+            const nextLine = lines[cursor];
+            if (nextLine.trim() === '') {
+              cursor += 1;
+              continue;
+            }
+            if (indentOf(nextLine) !== headerIndent) break;
+            const elifMatch = nextLine.trim().match(/^elif\s+(.+):$/);
+            const elseMatch = nextLine.trim().match(/^else\s*:$/);
+            if (elifMatch) {
+              bodyStart = cursor + 1;
+              bodyIndent = bodyStart < end ? indentOf(lines[bodyStart]) : headerIndent + 4;
+              bodyEnd = findBlockEnd(lines, bodyStart, bodyIndent, end);
+              branches.push({ condExpr: elifMatch[1], bodyStart, bodyEnd });
+              cursor = bodyEnd;
+            } else if (elseMatch) {
+              bodyStart = cursor + 1;
+              bodyIndent = bodyStart < end ? indentOf(lines[bodyStart]) : headerIndent + 4;
+              bodyEnd = findBlockEnd(lines, bodyStart, bodyIndent, end);
+              branches.push({ condExpr: null, bodyStart, bodyEnd });
+              cursor = bodyEnd;
+              break;
+            } else {
+              break;
+            }
+          }
+
+          for (const branch of branches) {
+            if (branch.condExpr === null || evalCondition(branch.condExpr)) {
+              runBlock(lines, branch.bodyStart, branch.bodyEnd);
+              break;
+            }
+          }
+          i = cursor;
+          continue;
+        }
+
+        const printMatch = trimmed.match(/^print\((.*)\)$/);
+        if (printMatch) {
+          const rendered = splitArgs(printMatch[1]).map((part) => {
+            const strPart = part.trim().match(/^["']([^"']*)["']$/);
+            if (strPart) return strPart[1];
+            const val = evalValue(part);
+            return typeof val === 'boolean' ? (val ? 'True' : 'False') : String(val);
+          });
+          output.push(rendered.join(' '));
+          i += 1;
+          continue;
+        }
+
+        const assignMatch = trimmed.match(/^(\w+)\s*=\s*(.+)$/);
+        if (assignMatch) {
+          vars[assignMatch[1]] = evalValue(assignMatch[2]);
+          i += 1;
+          continue;
+        }
+
+        i += 1;
       }
     }
 
     const lines = code.replace(/\r/g, '').split('\n');
-    const loopStart = lines.findIndex((line) => /^\s*for\s+\w+\s+in\s+range\(/.test(line));
-
-    if (loopStart === -1) {
-      lines.forEach(runLine);
-      return { output: output.join('\n'), vars };
-    }
-
-    lines.slice(0, loopStart).forEach(runLine);
-
-    const loopMatch = lines[loopStart].match(/for\s+\w+\s+in\s+range\((\w+)\)\s*:/);
-    const arg = loopMatch ? loopMatch[1] : '0';
-    const count = /^\d+$/.test(arg) ? Number(arg) : Number(vars[arg] ?? 0);
-
-    const firstBodyLine = lines[loopStart + 1] || '';
-    const indent = (firstBodyLine.match(/^\s*/) || [''])[0].length || 4;
-    let bodyEnd = loopStart + 1;
-    while (bodyEnd < lines.length) {
-      const line = lines[bodyEnd];
-      if (line.trim() === '') {
-        bodyEnd += 1;
-        continue;
-      }
-      const thisIndent = (line.match(/^\s*/) || [''])[0].length;
-      if (thisIndent < indent) break;
-      bodyEnd += 1;
-    }
-    const bodyLines = lines.slice(loopStart + 1, bodyEnd).filter((line) => line.trim());
-
-    for (let i = 0; i < count; i += 1) {
-      bodyLines.forEach(runLine);
-    }
-
-    lines.slice(bodyEnd).forEach(runLine);
+    runBlock(lines, 0, lines.length);
 
     return { output: output.join('\n'), vars };
   }
