@@ -358,6 +358,7 @@ button {
     min-width: 130px;
     pointer-events: none;
     z-index: 0;
+    opacity: 0.4;
   }
 
   .side-decor-left {
@@ -381,6 +382,7 @@ button {
   }
 
   .page-mascot-bubble {
+    display: none;
     background: var(--panel);
     border: 1.5px solid var(--border);
     border-radius: 12px;
@@ -390,6 +392,10 @@ button {
     color: var(--muted);
     white-space: nowrap;
     box-shadow: 0 6px 16px var(--shadow);
+  }
+
+  .page-mascot-bubble.is-visible {
+    display: block;
   }
 }
 
@@ -620,9 +626,10 @@ button {
 }
 
 .step-copy {
-  font-size: 15px;
-  color: var(--muted);
-  line-height: 1.6;
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.65;
 }
 
 .step-copy strong {
@@ -661,9 +668,10 @@ button {
 }
 
 .callout-body p {
-  font-size: 14.5px;
+  font-size: 15.5px;
+  font-weight: 600;
   line-height: 1.6;
-  color: var(--muted);
+  color: var(--text);
 }
 
 .callout-gold {
@@ -726,7 +734,7 @@ details.callout p {
   border: 2px solid var(--border);
   background: #ffffff;
   color: var(--text);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 15px;
   text-align: left;
   cursor: pointer;
@@ -868,7 +876,7 @@ details.callout p {
   padding: 18px 16px;
 }
 
-.concept-visual svg {
+.concept-visual > svg {
   width: 100%;
   height: auto;
   display: block;
@@ -1360,6 +1368,47 @@ details.callout p {
 
 .code-output.has-run {
   color: #b7e4c7;
+}
+
+.code-static {
+  margin: 0;
+  padding: 16px;
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #e8eee6;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.code-walk-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+}
+
+.code-inline {
+  display: inline-block;
+  background: #1b2a20;
+  color: #e8eee6;
+  font-family: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 8px 12px;
+  border-radius: 8px;
+  white-space: pre;
+  width: fit-content;
+}
+
+.code-walk-item p {
+  font-size: 14.5px;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.6;
 }
 
 /* ---------- Challenge box ---------- */

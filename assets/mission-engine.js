@@ -11,8 +11,16 @@
 
   function setPageMascot(pose, text) {
     if (!pageMascotFigure || typeof window.renderMascot !== 'function') return;
-    pageMascotFigure.innerHTML = window.renderMascot(pose, 150);
-    if (pageMascotBubble) pageMascotBubble.textContent = text;
+    pageMascotFigure.innerHTML = window.renderMascot(pose, 185);
+    if (pageMascotBubble) {
+      if (text) {
+        pageMascotBubble.textContent = text;
+        pageMascotBubble.classList.add('is-visible');
+      } else {
+        pageMascotBubble.textContent = '';
+        pageMascotBubble.classList.remove('is-visible');
+      }
+    }
   }
 
   /* ---------- Step navigation / progress ---------- */
@@ -36,7 +44,7 @@
     if (introCard) introCard.classList.add('is-hidden');
     currentStep = index;
     updateProgress();
-    setPageMascot('idle', 'Hi there!');
+    setPageMascot('idle');
   }
 
   if (startMissionBtn) {
@@ -81,7 +89,7 @@
       if (currentStep < steps.length - 1) {
         currentStep += 1;
         updateProgress();
-        setPageMascot('idle', 'Hi there!');
+        setPageMascot('idle');
       }
     });
   });
@@ -107,7 +115,7 @@
           if (currentStep > 0) {
             currentStep -= 1;
             updateProgress();
-            setPageMascot('idle', 'Hi there!');
+            setPageMascot('idle');
           }
         });
         footer.appendChild(back);
@@ -379,36 +387,112 @@
     codeHighlight.innerHTML = highlightCode(value);
   }
 
+  function mountStaticCode() {
+    document.querySelectorAll('[data-code-static]').forEach((el) => {
+      el.innerHTML = highlightCode(el.textContent);
+    });
+  }
+
+  /* A small, deliberately limited Python-subset interpreter: variable
+     assignment, "var + N" / "var - N" expressions, a single top-level
+     for-loop over range(N), and print() with comma-separated args.
+     Handles the two-variable growth model used in this mission's code
+     step, plus reasonable student edits (different numbers, loop count). */
   function runSimplePythonCode(code) {
+    const vars = {};
     const output = [];
-    const lines = code.replace(/\r/g, '').split('\n').map((line) => line.trim());
-    const vars = { direction: 'window', days: 5 };
 
-    lines.forEach((line) => {
-      if (!line) return;
-
-      const strAssign = line.match(/^direction\s*=\s*["']([^"']*)["']/);
-      if (strAssign) {
-        vars.direction = strAssign[1];
-        return;
+    function evalExpr(expr) {
+      const trimmed = expr.trim();
+      const strMatch = trimmed.match(/^["']([^"']*)["']$/);
+      if (strMatch) return strMatch[1];
+      if (/^-?\d+(\.\d+)?$/.test(trimmed)) return Number(trimmed);
+      const binMatch = trimmed.match(/^(\w+)\s*([+-])\s*(-?\d+(?:\.\d+)?)$/);
+      if (binMatch) {
+        const base = Number(vars[binMatch[1]] ?? 0);
+        const delta = Number(binMatch[3]);
+        return binMatch[2] === '+' ? base + delta : base - delta;
       }
+      if (Object.prototype.hasOwnProperty.call(vars, trimmed)) return vars[trimmed];
+      return trimmed;
+    }
 
-      const numAssign = line.match(/^days\s*=\s*(\d+)/);
-      if (numAssign) {
-        vars.days = Number(numAssign[1]);
-        return;
-      }
-
-      const loopMatch = line.match(/^for day in range\((\w+)\)/);
-      if (loopMatch) {
-        const arg = loopMatch[1];
-        const count = /^\d+$/.test(arg) ? Number(arg) : arg === 'days' ? vars.days : 0;
-        for (let day = 0; day < count; day += 1) {
-          output.push(`Day ${day + 1}`);
-          output.push(`Growing toward the ${vars.direction}`);
+    function splitArgs(argsStr) {
+      const parts = [];
+      let current = '';
+      let quote = null;
+      for (const ch of argsStr) {
+        if (quote) {
+          current += ch;
+          if (ch === quote) quote = null;
+        } else if (ch === '"' || ch === "'") {
+          quote = ch;
+          current += ch;
+        } else if (ch === ',') {
+          parts.push(current);
+          current = '';
+        } else {
+          current += ch;
         }
       }
-    });
+      if (current.trim()) parts.push(current);
+      return parts;
+    }
+
+    function runLine(line) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+
+      const printMatch = trimmed.match(/^print\((.*)\)$/);
+      if (printMatch) {
+        const rendered = splitArgs(printMatch[1]).map((part) => {
+          const strPart = part.trim().match(/^["']([^"']*)["']$/);
+          return strPart ? strPart[1] : String(evalExpr(part));
+        });
+        output.push(rendered.join(' '));
+        return;
+      }
+
+      const assignMatch = trimmed.match(/^(\w+)\s*=\s*(.+)$/);
+      if (assignMatch) {
+        vars[assignMatch[1]] = evalExpr(assignMatch[2]);
+      }
+    }
+
+    const lines = code.replace(/\r/g, '').split('\n');
+    const loopStart = lines.findIndex((line) => /^\s*for\s+\w+\s+in\s+range\(/.test(line));
+
+    if (loopStart === -1) {
+      lines.forEach(runLine);
+      return { output: output.join('\n'), vars };
+    }
+
+    lines.slice(0, loopStart).forEach(runLine);
+
+    const loopMatch = lines[loopStart].match(/for\s+\w+\s+in\s+range\((\w+)\)\s*:/);
+    const arg = loopMatch ? loopMatch[1] : '0';
+    const count = /^\d+$/.test(arg) ? Number(arg) : Number(vars[arg] ?? 0);
+
+    const firstBodyLine = lines[loopStart + 1] || '';
+    const indent = (firstBodyLine.match(/^\s*/) || [''])[0].length || 4;
+    let bodyEnd = loopStart + 1;
+    while (bodyEnd < lines.length) {
+      const line = lines[bodyEnd];
+      if (line.trim() === '') {
+        bodyEnd += 1;
+        continue;
+      }
+      const thisIndent = (line.match(/^\s*/) || [''])[0].length;
+      if (thisIndent < indent) break;
+      bodyEnd += 1;
+    }
+    const bodyLines = lines.slice(loopStart + 1, bodyEnd).filter((line) => line.trim());
+
+    for (let i = 0; i < count; i += 1) {
+      bodyLines.forEach(runLine);
+    }
+
+    lines.slice(bodyEnd).forEach(runLine);
 
     return { output: output.join('\n'), vars };
   }
@@ -537,6 +621,7 @@
 
   buildProgressDots();
   updateEditorView();
+  mountStaticCode();
   updateProgress();
   if (introCard) {
     steps.forEach((step) => step.classList.remove('active'));
