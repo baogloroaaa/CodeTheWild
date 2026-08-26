@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- TODO: update the title -->
+    <title>Mission X | [Your Mission Title]</title>
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <!--
+      HOW TO USE THIS TEMPLATE
+      =========================
+      This is a copy of Mission 1, trimmed down to one example of each
+      reusable pattern the shared engine (assets/mission-engine.js) supports.
+      To build a new mission:
+        1. Copy this whole "_template" folder to "missions/mission-N/".
+        2. Replace every TODO / [bracketed] placeholder below with real
+           content for the new mission.
+        3. Duplicate whichever step patterns you need (a mission can have
+           as many steps as it wants — the engine counts .step-card
+           elements automatically and builds the progress bar from that).
+        4. Renumber the data-step="N" attributes sequentially starting at 1.
+        5. Add a new mission card to the top-level index.html pointing at
+           missions/mission-N/index.html.
+        6. Do not touch style.css or assets/mission-engine.js / mascot.js
+           for mission-specific changes — those are shared by every
+           mission. Only mission.js and this index.html are per-mission.
+    -->
+
+    <div class="site-header">
+      <a class="site-brand" href="../../index.html">
+        <span class="site-brand-mark">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+        </span>
+        <span class="site-brand-name">Science Missions</span>
+      </a>
+    </div>
+
+    <div class="page-mascot" id="page-mascot">
+      <div data-mascot="idle" data-mascot-size="185" id="page-mascot-figure"></div>
+      <span class="page-mascot-bubble" id="page-mascot-bubble"></span>
+    </div>
+
+    <svg class="side-decor side-decor-left" viewBox="0 0 130 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M55,20 C118,150 12,280 78,410 C142,540 8,670 70,800 C110,880 30,950 55,990" fill="none" stroke="var(--muted-soft)" stroke-width="4" stroke-dasharray="1 16" stroke-linecap="round" opacity="0.8"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(-20 55 20)"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--primary)" opacity="0.55" transform="rotate(30 55 20)"/>
+      <ellipse cx="70" cy="500" rx="10" ry="20" fill="var(--primary)" opacity="0.5" transform="rotate(10 70 500)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--primary)" opacity="0.6" transform="rotate(-15 55 990)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(35 55 990)"/>
+    </svg>
+    <svg class="side-decor side-decor-right" viewBox="0 0 130 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M55,20 C118,150 12,280 78,410 C142,540 8,670 70,800 C110,880 30,950 55,990" fill="none" stroke="var(--muted-soft)" stroke-width="4" stroke-dasharray="1 16" stroke-linecap="round" opacity="0.8"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(-20 55 20)"/>
+      <ellipse cx="55" cy="20" rx="11" ry="24" fill="var(--primary)" opacity="0.55" transform="rotate(30 55 20)"/>
+      <ellipse cx="70" cy="500" rx="10" ry="20" fill="var(--primary)" opacity="0.5" transform="rotate(10 70 500)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--primary)" opacity="0.6" transform="rotate(-15 55 990)"/>
+      <ellipse cx="55" cy="990" rx="11" ry="24" fill="var(--gold)" opacity="0.75" transform="rotate(35 55 990)"/>
+    </svg>
+
+    <div class="hero-wrap">
+      <header class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+        <!-- TODO: replace hero copy -->
+        <span class="eyebrow">Mission X &middot; Science + Coding</span>
+        <h1>[Your mission's mystery question?]</h1>
+        <p class="hero-text">
+          [One or two sentences describing what this mission investigates.]
+        </p>
+
+        <div class="hero-meta">
+          <span>Middle school &ndash; early high school</span>
+          <span>25&ndash;35 minutes</span>
+        </div>
+
+        <div class="hero-badges">
+          <!-- TODO: set the star ratings (filled vs empty star, 1-5) -->
+          <span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6E4B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+            Science &#9733;&#9733;&#9733;&#9734;&#9734;
+          </span>
+          <span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6E4B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"></polyline><polyline points="16 7 21 12 16 17"></polyline></svg>
+            Coding &#9733;&#9733;&#9734;&#9734;&#9734;
+          </span>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-top">
+            <span>Mission progress</span>
+            <!-- Text here is just a fallback; mission-engine.js overwrites it once the page loads -->
+            <span id="progress-label">Step 1 of 10</span>
+          </div>
+          <div class="progress-track" id="progress-track">
+            <div class="progress-line"></div>
+            <div class="progress-line-fill" id="progress-line-fill"></div>
+          </div>
+        </div>
+        </div>
+      </header>
+    </div>
+
+    <main class="mission-shell">
+
+      <!-- Intro card : shown before Step 1. TODO: replace learning goals. -->
+      <div class="intro-card" id="mission-intro">
+        <div style="display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 14px;">
+            <h2>&#128300; Ready to investigate?</h2>
+            <p class="step-copy">Here's what you'll walk away understanding by the end of this mission:</p>
+            <ul class="learn-list">
+              <li><span>&#127811;</span> [Learning goal 1.]</li>
+              <li><span>&#127811;</span> [Learning goal 2.]</li>
+              <li><span>&#127811;</span> [Learning goal 3.]</li>
+            </ul>
+          </div>
+          <div data-mascot="idle" data-mascot-size="140" style="flex-shrink: 0;"></div>
+        </div>
+        <button class="btn btn-accent" id="start-mission-btn" type="button" style="align-self: flex-end;">
+          Start Mission <span class="icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- ============================================================
+           STEP 1 : PATTERN = prediction with no correct answer
+           Use data-mode="ack" when you just want the student to commit
+           to a guess and move on, with a fixed acknowledgment message
+           (no right/wrong styling, no mascot reaction).
+      ============================================================= -->
+      <section class="step-card" data-step="1">
+        <div class="step-header">
+          <span class="step-number">Step 1</span>
+          <h2>&#127793; [Hook: a strange observation or question]</h2>
+        </div>
+        <p class="step-copy">
+          [Set up the mystery in 2-3 sentences. Give the student something concrete to picture.]
+        </p>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>[Prediction question?]</strong></p>
+          <div class="choice-grid" data-mode="ack" data-message="[Message shown after any choice is submitted — no correct/incorrect styling.]">
+            <button class="choice-btn" type="button">[Option A]</button>
+            <button class="choice-btn" type="button">[Option B]</button>
+            <button class="choice-btn" type="button">[Option C]</button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- ============================================================
+           STEP 2 : PATTERN = graded question + concept diagram
+           Use data-mode="reveal" with data-correct="true"/"false" on each
+           button when there IS a right answer. It shows check/x icons,
+           colors the choices, and triggers the mascot celebrate/sad
+           reaction. .concept-visual holds any explanatory SVG diagram —
+           replace the placeholder shapes with a real diagram, or delete
+           the whole block if this step doesn't need one.
+      ============================================================= -->
+      <section class="step-card" data-step="2">
+        <div class="step-header">
+          <span class="step-number">Step 2</span>
+          <h2>[Section title]</h2>
+        </div>
+        <p class="step-copy">[A short explanation that sets up the diagram below.]</p>
+
+        <div class="concept-visual">
+          <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- TODO: replace with a real diagram. This placeholder just shows
+                 the box/label/arrow pattern used elsewhere in the site. -->
+            <rect x="30" y="45" width="90" height="50" rx="8" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <text x="75" y="75" text-anchor="middle" font-size="13" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">A</text>
+            <path d="M130,70 h60" stroke="var(--muted-soft)" stroke-width="2.5"/>
+            <polygon points="190,63 204,70 190,77" fill="var(--muted-soft)"/>
+            <rect x="210" y="45" width="90" height="50" rx="8" fill="var(--accent)" opacity="0.85"/>
+            <text x="255" y="75" text-anchor="middle" font-size="13" font-weight="800" fill="#ffffff" font-family="'Baloo 2', sans-serif">B</text>
+          </svg>
+          <p class="concept-visual-caption">[One sentence explaining what the diagram shows.]</p>
+        </div>
+
+        <div class="question-block">
+          <p class="step-copy"><strong>[Quick-check question with one right answer?]</strong></p>
+          <div class="choice-grid" data-mode="reveal" data-explain="[Sentence shown after submitting, added to 'Correct!' or 'Not quite'.]">
+            <button class="choice-btn" type="button" data-correct="true">[Correct option]<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <button class="choice-btn" type="button" data-correct="false">[Wrong option]<span class="result-icon icon-check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+          </div>
+          <button class="check-btn" type="button">Submit</button>
+          <div class="feedback-box">Pick a choice and submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- ============================================================
+           STEP 3 : PATTERN = hands-on observation + notebook + callout
+           .mini-card groups one observation prompt with its own ack-mode
+           choice-grid. .notebook-textarea is a free-response box. The
+           callout at the end is a tip/aside (use callout-primary,
+           callout-tip, or callout-gold for different accent colors).
+      ============================================================= -->
+      <section class="step-card" data-step="3">
+        <div class="step-header">
+          <span class="step-number">Step 3</span>
+          <h2>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -3px; margin-right: 4px;"><circle cx="10.5" cy="10.5" r="6"></circle><path d="m20.5 20.5-4.6-4.6"></path></svg>
+            [Become a ___ scientist]
+          </h2>
+        </div>
+        <p class="step-copy">
+          [Instructions for a hands-on observation the student can do right now — find an object, watch something happen,
+          look something up, etc.]
+        </p>
+
+        <div class="mini-card">
+          <h3>Observation 1 &middot; [what to look at]</h3>
+          <p>[Observation prompt?]</p>
+          <div class="question-block">
+            <div class="choice-grid compact" data-mode="ack" data-message="[Acknowledgment message.]">
+              <button class="choice-btn" type="button">[Option A]</button>
+              <button class="choice-btn" type="button">[Option B]</button>
+              <button class="choice-btn" type="button">[Option C]</button>
+            </div>
+            <button class="check-btn" type="button">Submit</button>
+            <div class="feedback-box">Pick a choice and submit.</div>
+          </div>
+          <label class="notebook-label" for="notebook-1">&#128300; Scientist's Notebook &mdash; [what to describe]</label>
+          <textarea id="notebook-1" class="notebook-textarea" placeholder="[Example of the kind of answer you're looking for.]"></textarea>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>[Callout title]</h3>
+            <p>[A tip, aside, or piece of context that supports the observation above.]</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- ============================================================
+           STEP 4 : PATTERN = tap-to-order sequence builder
+           .sequence-builder's data-answer is a JSON array (as a string)
+           of the labels in their correct order. The engine shuffles them
+           into .sequence-pool as tappable chips; tapping moves a chip
+           into the next empty .sequence-slots slot (tap again to send it
+           back to the pool). After 5 failed Submits, a "Reveal answer"
+           button appears automatically.
+      ============================================================= -->
+      <section class="step-card" data-step="4">
+        <div class="step-header">
+          <span class="step-number">Step 4</span>
+          <h2>[Section title]</h2>
+        </div>
+        <p class="step-copy">[Set up why putting these items in order matters.]</p>
+
+        <div class="sequence-block">
+          <p class="step-copy"><strong>Challenge</strong> &mdash; put these in the correct order.</p>
+          <div class="sequence-builder" data-answer='["First","Second","Third","Fourth"]'>
+            <div class="sequence-pool"></div>
+            <div class="sequence-slots"></div>
+          </div>
+          <button class="check-btn" type="button">Submit order</button>
+          <div class="feedback-box">Tap the cards to build the sequence, then submit.</div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- ============================================================
+           STEP 5 : PATTERN = static (read-only) code explainer
+           Use <pre class="code-static" data-code-static> for code the
+           student reads but doesn't run yet — mission-engine.js
+           syntax-highlights it automatically. Good for introducing one
+           coding concept at a time before the live console in Step 6.
+      ============================================================= -->
+      <section class="step-card" data-step="5">
+        <div class="step-header">
+          <span class="step-number">Step 5</span>
+          <h2>&#128260; [A coding concept, e.g. "What is a variable?"]</h2>
+        </div>
+        <p class="step-copy">[Plain-language explanation of the concept, no jargon.]</p>
+        <div class="code-console">
+          <div class="code-toolbar">
+            <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
+          </div>
+          <pre class="code-static" data-code-static>count = 0</pre>
+        </div>
+        <p class="step-copy">[Explain what that line means in plain language.]</p>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- ============================================================
+           STEP 6 : PATTERN = live, runnable code console
+           #mission-code / #run-code-btn / #code-output / #line-numbers /
+           #code-highlight are fixed ids the engine wires up automatically
+           — keep them exactly as-is, there is only ever one live console
+           per mission page. The interpreter (runSimplePythonCode in
+           mission-engine.js) supports: variable assignment, var = var +/- N,
+           ONE top-level "for x in range(N):" loop, and print() with
+           comma-separated string/variable args. Keep example code inside
+           that subset so it actually runs correctly.
+      ============================================================= -->
+      <section class="step-card" data-step="6">
+        <div class="step-header">
+          <span class="step-number">Step 6</span>
+          <h2>&#127919; Run the model</h2>
+        </div>
+        <p class="step-copy">Before you run it, what number do you predict?</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <label style="flex: 1; min-width: 150px; display: flex; flex-direction: column; gap: 6px;">
+            <span class="notebook-label">Your guess</span>
+            <input type="text" class="notebook-textarea" style="min-height: auto; padding: 10px 12px;" placeholder="?">
+          </label>
+        </div>
+
+        <div class="code-console">
+          <div class="code-toolbar">
+            <div class="code-toolbar-left">
+              <span>Python console</span>
+              <span class="lang-pill">Python</span>
+            </div>
+            <button id="run-code-btn" class="console-btn" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1B2A20" stroke="none"><polygon points="6 4 20 12 6 20"></polygon></svg>
+              Run
+            </button>
+          </div>
+          <div class="code-editor-shell">
+            <div class="line-numbers" id="line-numbers"></div>
+            <div class="code-editor-wrapper">
+              <textarea id="mission-code" spellcheck="false">count = 0
+
+for step in range(5):
+    count = count + 1
+
+print("Count:", count)</textarea>
+              <pre id="code-highlight" class="code-highlight" aria-hidden="true"></pre>
+            </div>
+          </div>
+          <pre id="code-output" class="code-output">Output will appear here.</pre>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Think about it</h3>
+            <p>[Explain what the output means once the student runs it.]</p>
+          </div>
+        </div>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- ============================================================
+           STEP 7 : PATTERN = final checkpoint (free response + reveal)
+           <details><summary> is a native, no-JS "click to reveal" —
+           used here so the student writes their own answer before
+           peeking at a model answer.
+      ============================================================= -->
+      <section class="step-card" data-step="7">
+        <div class="step-header">
+          <span class="step-number">Step 7</span>
+          <h2>&#129504; Can you explain the mystery?</h2>
+        </div>
+        <p class="step-copy"><strong>Complete the sentence:</strong> [Prompt tying back to the mission's opening mystery]...</p>
+        <textarea class="notebook-textarea" style="min-height: 100px;" placeholder="Write your explanation here."></textarea>
+
+        <details class="callout callout-primary">
+          <summary>Reveal a possible answer</summary>
+          <p>[A model answer summarizing the mission's key idea.]</p>
+        </details>
+
+        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </span></button>
+      </section>
+
+      <!-- ============================================================
+           STEP 8 : PATTERN = teaser for the next mission
+           The final step has no Next button — swap it for a link back
+           to the landing page (or to the next mission once it's live).
+      ============================================================= -->
+      <section class="step-card" data-step="8">
+        <div class="step-header">
+          <span class="step-number">Step 8</span>
+          <h2>&#127775; Next mystery</h2>
+        </div>
+        <div class="callout callout-gold">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+          </div>
+          <div class="callout-body">
+            <h3>[Recap sentence of what this mission answered.]</h3>
+            <p>[Tease the question the next mission will investigate.]</p>
+          </div>
+        </div>
+
+        <a class="btn btn-accent" href="../../index.html" style="align-self: flex-end;">
+          [Mission N+1 &middot; Next mission title]
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </section>
+
+    </main>
+
+    <script src="mission.js"></script>
+    <script src="../../assets/mascot.js"></script>
+    <script src="../../assets/mission-engine.js"></script>
+  </body>
+</html>
