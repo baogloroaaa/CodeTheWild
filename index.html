@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body style="background: #F7F1EA;">
     <div class="site-header">
       <a class="site-brand" href="index.html">
         <span class="site-brand-mark">
@@ -36,57 +36,213 @@
         </span>
         <span class="site-brand-name">Code the Wild</span>
       </a>
+      <nav class="site-tabs">
+        <a class="site-tab is-active" href="index.html">Home</a>
+        <a class="site-tab" href="missions.html">Missions</a>
+      </nav>
     </div>
 
-    <div class="site-shell">
-      <div class="landing-hero" style="flex-direction: row; align-items: center; flex-wrap: wrap; max-width: none; gap: 20px;">
-        <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 12px;">
-          <h1 class="headline" style="font-size: clamp(28px, 4vw, 38px);">Little mysteries. Real science.</h1>
-          <p>Each mission turns a real-life question into an investigation &mdash; predictions, evidence, a bit of chemistry or physics, and a tiny coding challenge.</p>
+    <svg class="side-decor side-decor-left" viewBox="0 0 130 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M66,15 C102,95 28,155 62,245 C98,335 24,405 58,505 C96,605 20,675 60,765 C92,835 54,895 66,985" fill="none" stroke="#767D5C" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+      <ellipse cx="80" cy="58" rx="6" ry="11" fill="#8E9857" opacity="0.5" transform="rotate(35 80 58)"/>
+      <ellipse cx="38" cy="195" rx="5" ry="10" fill="#8E9857" opacity="0.45" transform="rotate(-25 38 195)"/>
+      <ellipse cx="76" cy="455" rx="5" ry="10" fill="#8E9857" opacity="0.45" transform="rotate(20 76 455)"/>
+      <ellipse cx="34" cy="705" rx="6" ry="11" fill="#8E9857" opacity="0.5" transform="rotate(-30 34 705)"/>
+      <ellipse cx="70" cy="905" rx="5" ry="10" fill="#8E9857" opacity="0.4" transform="rotate(15 70 905)"/>
+      <g transform="translate(62,130)">
+        <circle r="26" fill="#DFCCF0" opacity="0.5"/>
+        <g stroke="#4a4030" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" transform="scale(0.95)">
+          <circle cx="0" cy="0" r="1.7" fill="#4a4030" stroke="none"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.2"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.2" transform="rotate(60)"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.2" transform="rotate(120)"/>
+        </g>
+      </g>
+      <g transform="translate(58,420)">
+        <circle r="26" fill="#E5A19E" opacity="0.5"/>
+        <g stroke="#4a4030" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" transform="scale(0.95)">
+          <path d="M-3,-10 h6"/>
+          <path d="M-2,-10 v6 l-5.5,10 a2 2 0 0 0 1.8,3 h11.4 a2 2 0 0 0 1.8,-3 L2,-4 V-10"/>
+          <path d="M-5,3 h10"/>
+        </g>
+      </g>
+      <g transform="translate(68,720)">
+        <circle r="26" fill="#8E9857" opacity="0.4"/>
+        <g stroke="#4a4030" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" transform="scale(0.95)">
+          <path d="M-6,-9 c0 4 12 4 12 8 s-12 4-12 8"/>
+          <path d="M6,-9 c0 4-12 4-12 8 s12 4 12 8"/>
+          <path d="M-5,-5 h10"/>
+          <path d="M-6,0 h12"/>
+          <path d="M-5,5 h10"/>
+        </g>
+      </g>
+    </svg>
+    <svg class="side-decor side-decor-right" viewBox="0 0 130 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M66,15 C102,95 28,155 62,245 C98,335 24,405 58,505 C96,605 20,675 60,765 C92,835 54,895 66,985" fill="none" stroke="#767D5C" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+      <ellipse cx="80" cy="58" rx="6" ry="11" fill="#8E9857" opacity="0.5" transform="rotate(35 80 58)"/>
+      <ellipse cx="38" cy="195" rx="5" ry="10" fill="#8E9857" opacity="0.45" transform="rotate(-25 38 195)"/>
+      <ellipse cx="76" cy="455" rx="5" ry="10" fill="#8E9857" opacity="0.45" transform="rotate(20 76 455)"/>
+      <ellipse cx="34" cy="705" rx="6" ry="11" fill="#8E9857" opacity="0.5" transform="rotate(-30 34 705)"/>
+      <ellipse cx="70" cy="905" rx="5" ry="10" fill="#8E9857" opacity="0.4" transform="rotate(15 70 905)"/>
+      <g transform="translate(62,130)">
+        <circle r="26" fill="#DFCCF0" opacity="0.5"/>
+        <g stroke="#4a4030" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" transform="scale(0.95)">
+          <circle cx="0" cy="0" r="1.7" fill="#4a4030" stroke="none"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.2"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.2" transform="rotate(60)"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.2" transform="rotate(120)"/>
+        </g>
+      </g>
+      <g transform="translate(58,420)">
+        <circle r="26" fill="#E5A19E" opacity="0.5"/>
+        <g stroke="#4a4030" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" transform="scale(0.95)">
+          <path d="M-3,-10 h6"/>
+          <path d="M-2,-10 v6 l-5.5,10 a2 2 0 0 0 1.8,3 h11.4 a2 2 0 0 0 1.8,-3 L2,-4 V-10"/>
+          <path d="M-5,3 h10"/>
+        </g>
+      </g>
+      <g transform="translate(68,720)">
+        <circle r="26" fill="#8E9857" opacity="0.4"/>
+        <g stroke="#4a4030" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.8" transform="scale(0.95)">
+          <path d="M-6,-9 c0 4 12 4 12 8 s-12 4-12 8"/>
+          <path d="M6,-9 c0 4-12 4-12 8 s12 4 12 8"/>
+          <path d="M-5,-5 h10"/>
+          <path d="M-6,0 h12"/>
+          <path d="M-5,5 h10"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="hero-wrap">
+      <header class="hero" style="background: #767D5C;">
+        <div class="hero-glow" style="background: radial-gradient(circle, rgba(223, 204, 240, 0.35) 0%, rgba(223, 204, 240, 0) 70%);"></div>
+        <div class="hero-content" style="flex-direction: row; align-items: center; flex-wrap: wrap; max-width: 1040px; gap: 28px;">
+          <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 16px;">
+            <h1 style="font-size: clamp(30px, 4.5vw, 44px);">&#127758; Welcome to Code the Wild</h1>
+            <p class="hero-text" style="font-size: 18px; font-weight: 700; color: #DECBB5;">The world is full of questions. Go investigate them.</p>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <span style="padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); color: #ffffff; font-weight: 700; font-size: 14px;">Why do apples turn brown? &#127822;</span>
+              <span style="padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); color: #ffffff; font-weight: 700; font-size: 14px;">Why do plants grow toward light? &#127793;</span>
+              <span style="padding: 8px 16px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,0.35); color: #ffffff; font-weight: 700; font-size: 14px;">Where does salt go when it dissolves? &#129474;</span>
+            </div>
+
+            <p class="hero-text" style="font-size: 16.5px;">
+              Code the Wild turns everyday mysteries into short, interactive science missions. Make predictions,
+              investigate the world around you, discover how biology, chemistry, and physics connect, and use simple
+              code to model what you find.
+            </p>
+            <p class="hero-text" style="font-size: 16.5px;">No prior coding experience needed. Just bring your curiosity.</p>
+            <a class="btn" href="missions.html" style="align-self: flex-start; text-decoration: none; background: #E5A19E; color: #3A2E22; font-size: 15.5px;">
+              Start Exploring <span class="icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </span>
+            </a>
+          </div>
+          <div class="hedgehog-mascot" style="flex-shrink: 0; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
+            <div data-mascot="idle" data-mascot-size="100"></div>
+          </div>
         </div>
-        <div data-mascot="idle" data-mascot-size="110" style="flex-shrink: 0;"></div>
+      </header>
+    </div>
+
+    <div class="home-band" style="background: #DECBB5; margin-top: 56px;">
+      <div class="home-wrap" style="display: flex; gap: 56px; flex-wrap: wrap; align-items: center;">
+        <h2 style="font-size: 30px; color: #3A2E22; width: 260px; flex-shrink: 0; line-height: 1.15;">&#128161; Our Objective</h2>
+        <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 14px;">
+          <p style="color: #5c5142; font-size: 16.5px; line-height: 1.7; margin: 0;">
+            At <strong>Code the Wild</strong>, we believe students should have the opportunity to explore advanced
+            scientific ideas and computational thinking earlier.
+          </p>
+          <p style="color: #5c5142; font-size: 16.5px; line-height: 1.7; margin: 0;">
+            Biology, chemistry, physics, and computer science are often taught as separate subjects, and coding is
+            still rarely integrated into everyday science education. Yet <strong>computation, data, and artificial
+            intelligence are becoming increasingly important</strong> across nearly every field. Our goal is to help
+            students build that foundation early.
+          </p>
+          <p style="color: #5c5142; font-size: 16.5px; line-height: 1.7; margin: 0;">
+            Through <strong>short, interactive science missions</strong>, students explore <strong>molecular-level
+            science</strong> while discovering how <strong>different disciplines work together</strong> to explain
+            the world around them. Each mission ends with a <strong>simple coding activity</strong>, helping students
+            see computation not just as a subject to learn, but as a tool for investigating scientific questions.
+          </p>
+          <p style="color: #5c5142; font-size: 16.5px; line-height: 1.7; margin: 0;">
+            We hope Code the Wild helps students become <strong>more curious, more confident with technology, and
+            better prepared to explore and contribute to the science of the future</strong>.
+          </p>
+        </div>
       </div>
+    </div>
 
-      <div class="mission-grid">
-        <a class="mission-card is-live" href="missions/mission-1/index.html">
-          <span class="mission-card-tag">Mission 1</span>
-          <h3>Why do plants grow toward light?</h3>
-          <p>Predict, investigate a real plant, uncover wavelength and photon energy, meet the hormone auxin, and model it with a few lines of code.</p>
-          <div class="mission-card-meta">
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
-              Science &#9733;&#9733;&#9733;&#9733;&#9733;
+    <div class="home-wrap" style="padding-bottom: 0;">
+      <section style="margin-top: 72px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 32px;">
+          <h2 style="font-size: 26px;">&#128300; How It Works</h2>
+          <p style="color: var(--muted); font-size: 15.5px; margin: 0;">Each 25&ndash;50 minute mission begins with a real-world question.</p>
+        </div>
+        <div class="how-it-works">
+          <div class="how-step" style="background: #767D5C;">
+            <span class="how-step-num" style="background: rgba(255,255,255,0.18); color: #ffffff;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="21" x2="19" y2="21"/><path d="M9 21a6 6 0 1 1 8-8"/><circle cx="15" cy="9" r="2.6"/><line x1="15" y1="6.4" x2="15" y2="3"/><line x1="13.5" y1="3" x2="16.5" y2="3"/><line x1="7" y1="15" x2="10" y2="15"/></svg>
             </span>
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"></polyline><polyline points="16 7 21 12 16 17"></polyline></svg>
-              Coding &#9733;&#9734;&#9734;&#9734;&#9734;
-            </span>
-            <span>25&ndash;35 min</span>
+            <h3 style="color: #ffffff; font-size: 16.5px;">Observe</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 14px;">Start with something you can see in everyday life.</p>
           </div>
-          <span class="mission-card-cta">
-            Start mission
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-        </a>
+          <div class="how-step" style="background: #E5A19E;">
+            <span class="how-step-num" style="background: rgba(58,46,34,0.14); color: #3A2E22;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6"/><path d="M10 2v6l-5.5 10a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3L14 8V2"/><path d="M7 15h10"/></svg>
+            </span>
+            <h3 style="color: #3A2E22; font-size: 16.5px;">Predict</h3>
+            <p style="color: #5c4038; font-size: 14px;">Make a hypothesis before learning the answer.</p>
+          </div>
+          <div class="how-step" style="background: #DFCCF0;">
+            <span class="how-step-num" style="background: rgba(58,46,34,0.1); color: #3A2E22;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3c0 4 12 4 12 8s-12 4-12 8"/><path d="M18 3c0 4-12 4-12 8s12 4 12 8"/><path d="M7 7h10"/><path d="M6 12h12"/><path d="M7 17h10"/></svg>
+            </span>
+            <h3 style="color: #3A2E22; font-size: 16.5px;">Investigate</h3>
+            <p style="color: #544a63; font-size: 14px;">Follow the evidence into biology, chemistry, and physics.</p>
+          </div>
+          <div class="how-step" style="background: #8E9857;">
+            <span class="how-step-num" style="background: rgba(46,42,28,0.14); color: #2E2A1C;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="13" r="2.6"/><circle cx="7" cy="19" r="2.2"/><circle cx="17" cy="19" r="2.2"/><line x1="7.6" y1="7.8" x2="10.6" y2="11.2"/><line x1="16.4" y1="7.8" x2="13.4" y2="11.2"/><line x1="10.2" y1="14.8" x2="8.2" y2="17.4"/><line x1="13.8" y1="14.8" x2="15.8" y2="17.4"/></svg>
+            </span>
+            <h3 style="color: #2E2A1C; font-size: 16.5px;">Connect</h3>
+            <p style="color: #43401e; font-size: 14px;">See how different areas of science work together to explain one phenomenon.</p>
+          </div>
+          <div class="how-step" style="background: #DECBB5;">
+            <span class="how-step-num" style="background: rgba(58,46,34,0.1); color: #3A2E22;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="10" ry="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)"/></svg>
+            </span>
+            <h3 style="color: #3A2E22; font-size: 16.5px;">Code</h3>
+            <p style="color: #5c5142; font-size: 14px;">Use a simple computational model to explore the science you just discovered.</p>
+          </div>
+        </div>
+      </section>
+    </div>
 
-        <a class="mission-card is-live" href="missions/mission-2/index.html">
-          <span class="mission-card-tag">Mission 2</span>
-          <h3>Why do apples turn brown?</h3>
-          <p>Watch a real apple change, meet the enzyme behind it, uncover oxygen and pH clues, and model it with an if statement.</p>
-          <div class="mission-card-meta">
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
-              Science &#9733;&#9733;&#9733;&#9733;&#9734;
-            </span>
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 7 3 12 8 17"></polyline><polyline points="16 7 21 12 16 17"></polyline></svg>
-              Coding &#9733;&#9734;&#9734;&#9734;&#9734;
-            </span>
-            <span>25&ndash;35 min</span>
-          </div>
-          <span class="mission-card-cta">
-            Start mission
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    <div class="home-band" style="background: #767D5C; margin-top: 72px;">
+      <div class="home-wrap">
+        <h2 style="font-size: 26px; color: #ffffff; margin-bottom: 28px;">&#128640; Choose a Mission</h2>
+        <div class="mission-grid">
+          <a class="mission-card is-live" href="missions/mission-1/index.html" style="border-top: 6px solid #DFCCF0;">
+            <span class="mission-card-tag" style="background: #f3ecfa; color: #8467a3;">Mission 1</span>
+            <h3>&#129474; Where does salt go when it dissolves?</h3>
+            <p>Zoom into matter and discover atoms, elements, and ions.</p>
+          </a>
+          <a class="mission-card is-live" href="missions/mission-2/index.html" style="border-top: 6px solid #E5A19E;">
+            <span class="mission-card-tag" style="background: #fbeae7; color: #b5615c;">Mission 2</span>
+            <h3>&#127822; Why do apples turn brown?</h3>
+            <p>Explore cells, enzymes, chemical reactions, oxidation, and pH.</p>
+          </a>
+          <a class="mission-card is-live" href="missions/mission-3/index.html" style="border-top: 6px solid #8E9857;">
+            <span class="mission-card-tag" style="background: #eef1e5; color: #697429;">Mission 3</span>
+            <h3>&#127793; Why do plants grow toward light?</h3>
+            <p>Connect light, photons, photosynthesis, plant cells, and growth.</p>
+          </a>
+        </div>
+        <a class="btn" href="missions.html" style="margin-top: 26px; text-decoration: none; background: #E5A19E; color: #3A2E22; font-size: 15.5px;">
+          Explore All Missions <span class="icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3A2E22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </span>
         </a>
       </div>

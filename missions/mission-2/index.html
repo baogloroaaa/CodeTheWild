@@ -36,6 +36,10 @@
         </span>
         <span class="site-brand-name">Code the Wild</span>
       </a>
+      <a class="btn-exit" href="../../missions.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        Exit mission
+      </a>
     </div>
 
     <div class="page-mascot" id="page-mascot">
@@ -73,7 +77,7 @@
 
         <div class="hero-meta">
           <span>Middle school &ndash; early high school</span>
-          <span>25&ndash;35 minutes</span>
+          <span>30&ndash;45 minutes</span>
         </div>
 
         <div class="hero-badges">
@@ -119,9 +123,15 @@
               <li><span>&#127811;</span> Use an if statement to represent a simple scientific condition.</li>
               <li><span>&#127811;</span> Connect observations from a real experiment to a simple computer model.</li>
             </ul>
-            <p style="font-size: 13px; color: var(--muted); font-weight: 700;">
-              &#127865;&#65039; What you'll need: an apple (cut in half partway through), and optionally a lemon.
-            </p>
+            <div class="callout callout-gold">
+              <div class="callout-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              </div>
+              <div class="callout-body">
+                <h3>What you'll need</h3>
+                <p>An apple (cut in half partway through), and optionally a lemon.</p>
+              </div>
+            </div>
           </div>
           <div data-mascot="idle" data-mascot-size="140" style="flex-shrink: 0;"></div>
         </div>
@@ -246,7 +256,8 @@
               The inside of the apple was not brown when it was inside the apple. So what changed when we cut it? Something
               from the environment was suddenly able to reach the inside of the apple. What could that be?
             </p>
-            <p><strong>&#127788;&#65039; Air.</strong></p>
+            <button class="reveal-btn" type="button" data-reveal-target="think-answer-step3">Reveal answer</button>
+            <p id="think-answer-step3" class="is-hidden"><strong>&#127788;&#65039; Air.</strong></p>
           </div>
         </div>
 
@@ -275,31 +286,35 @@
         <p class="step-copy">This gives us our first major clue.</p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 480 250" xmlns="http://www.w3.org/2000/svg">
-            <!-- sealed apple -->
-            <circle cx="120" cy="125" r="95" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-            <circle cx="120" cy="125" r="55" fill="none" stroke="var(--primary-dark)" stroke-width="2" stroke-dasharray="4 3"/>
-            <rect x="98" y="88" width="24" height="24" rx="5" fill="var(--primary-dark)"/>
-            <text x="110" y="78" text-anchor="middle" font-size="10.5" font-weight="800" fill="var(--primary-dark)" font-family="'Baloo 2', sans-serif">PPO</text>
-            <polygon points="100,150 132,136 132,164" fill="var(--gold)"/>
-            <text x="127" y="188" text-anchor="middle" font-size="10" font-weight="800" fill="var(--gold-dark)" font-family="'Baloo 2', sans-serif">polyphenol</text>
-            <circle cx="45" cy="35" r="6" fill="var(--accent)"/>
-            <circle cx="59" cy="35" r="6" fill="var(--accent)"/>
-            <text x="52" y="22" text-anchor="middle" font-size="11" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">O&#8322;</text>
+          <div style="width:100%; overflow-x:auto;">
+            <div style="position:relative; width:600px; height:245px; margin:0 auto;">
+              <div style="position:absolute; left:20px; top:20px; width:190px; height:190px; border-radius:50%; background:var(--primary-soft); border:2px solid var(--primary);"></div>
+              <div style="position:absolute; left:75px; top:75px; width:80px; height:80px; border-radius:50%; border:2px solid var(--primary-dark);"></div>
+              <div style="position:absolute; left:100px; top:92px; width:22px; height:22px; border-radius:5px; background:var(--primary-dark);"></div>
+              <div style="position:absolute; left:81px; top:117px; width:60px; font-size:10px; font-weight:800; color:var(--primary-dark); text-align:center;">enzyme</div>
+              <div style="position:absolute; left:148px; top:72px; width:30px; height:26px; background:var(--gold); clip-path:polygon(0% 50%,100% 0%,100% 100%);"></div>
+              <div style="position:absolute; left:120px; top:100px; width:90px; font-size:10px; font-weight:800; color:var(--gold-dark); text-align:center;">target</div>
+              <div style="position:absolute; left:22px; top:14px; width:11px; height:11px; border-radius:50%; background:var(--accent);"></div>
+              <div style="position:absolute; left:34px; top:14px; width:11px; height:11px; border-radius:50%; background:var(--accent);"></div>
+              <div style="position:absolute; left:14px; top:0px; width:34px; font-size:10px; font-weight:800; color:var(--accent-dark); text-align:center;">O2</div>
 
-            <path d="M223,125 h28" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="251,118 265,125 251,132" fill="var(--muted-soft)"/>
-            <line x1="227" y1="95" x2="257" y2="65" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="4 3" stroke-linecap="round"/>
+              <div style="position:absolute; left:210px; top:68px; width:80px; font-size:11px; font-weight:800; color:var(--muted); text-align:center;">cut</div>
+              <div style="position:absolute; left:220px; top:92px; width:60px; font-size:30px; color:var(--muted-soft); text-align:center;">&rarr;</div>
 
-            <!-- cut apple -->
-            <circle cx="360" cy="125" r="95" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
-            <path d="M360,78 a47,47 0 1,0 28,14" fill="none" stroke="var(--primary-dark)" stroke-width="2" stroke-dasharray="4 3"/>
-            <rect x="336" y="102" width="24" height="24" rx="5" fill="var(--primary-dark)"/>
-            <polygon points="362,114 394,100 394,128" fill="var(--gold)"/>
-            <circle cx="404" cy="60" r="6" fill="var(--accent)"/>
-            <circle cx="418" cy="60" r="6" fill="var(--accent)"/>
-            <path d="M408,69 q-15,16 -24,27" fill="none" stroke="var(--accent-dark)" stroke-width="1.5" stroke-dasharray="2 3"/>
-          </svg>
+              <div style="position:absolute; left:310px; top:20px; width:190px; height:190px; border-radius:50%; background:var(--accent-soft); border:2px solid var(--accent);"></div>
+              <div style="position:absolute; left:365px; top:75px; width:80px; height:80px; border-radius:50%; border:2px solid var(--primary-dark);"></div>
+              <div style="position:absolute; left:424px; top:74px; width:18px; height:18px; background:var(--accent-soft);"></div>
+              <div style="position:absolute; left:385px; top:85px; width:22px; height:22px; border-radius:5px; background:var(--primary-dark);"></div>
+              <div style="position:absolute; left:405px; top:80px; width:30px; height:26px; background:var(--gold); clip-path:polygon(0% 50%,100% 0%,100% 100%);"></div>
+              <div style="position:absolute; left:470px; top:12px; width:11px; height:11px; border-radius:50%; background:var(--accent);"></div>
+              <div style="position:absolute; left:482px; top:12px; width:11px; height:11px; border-radius:50%; background:var(--accent);"></div>
+              <div style="position:absolute; left:468px; top:30px; width:61px; height:0; border-top:3px solid var(--accent-dark); transform:rotate(125deg); transform-origin:left center;"></div>
+              <div style="position:absolute; left:432px; top:74px; width:13px; height:13px; background:var(--accent-dark); clip-path:polygon(0% 0%,0% 100%,100% 50%); transform:rotate(125deg); transform-origin:left center;"></div>
+
+              <div style="position:absolute; left:20px; top:214px; width:190px; font-size:12px; font-weight:800; color:var(--text); text-align:center;">sealed</div>
+              <div style="position:absolute; left:310px; top:214px; width:190px; font-size:12px; font-weight:800; color:var(--text); text-align:center;">cut</div>
+            </div>
+          </div>
           <p class="concept-visual-caption">Sealed inside the cell, the enzyme and its target molecule never touch. Cut the apple, and the seal breaks &mdash; O&#8322; from the air moves in, and the enzyme and its target end up side by side.</p>
         </div>
 
@@ -337,29 +352,35 @@
         <div class="concept-visual">
           <svg viewBox="0 0 800 190" xmlns="http://www.w3.org/2000/svg">
             <!-- panel 1: apart -->
-            <path d="M35,40 L95,40 Q108,40 108,53 L108,65 L135,80 L108,95 L108,107 Q108,120 95,120 L35,120 Q22,120 22,107 L22,53 Q22,40 35,40 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-            <text x="65" y="30" text-anchor="middle" font-size="10.5" font-weight="800" fill="var(--primary-dark)" font-family="'Baloo 2', sans-serif">PPO</text>
-            <polygon points="180,80 210,65 210,95" fill="var(--gold)"/>
-            <text x="195" y="115" text-anchor="middle" font-size="10" font-weight="800" fill="var(--gold-dark)" font-family="'Baloo 2', sans-serif">polyphenol</text>
+            <path d="M15,95 C15,60 30,32 60,30 C75,28 88,40 95,58 C102,40 115,28 130,30 C160,32 175,60 175,95 C178,125 145,138 95,138 C45,138 12,125 15,95 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+            <text x="95" y="20" text-anchor="middle" font-size="11" font-weight="800" fill="var(--primary-dark)" font-family="'Baloo 2', sans-serif">Enzyme</text>
+            <polygon points="74.0,12.0 93.1,23.0 93.1,45.0 74.0,56.0 54.9,45.0 54.9,23.0" fill="var(--gold)" stroke="var(--gold-dark)" stroke-width="1.5" transform="translate(60,0)"/>
+            <polygon points="108.0,12.0 127.1,23.0 127.1,45.0 108.0,56.0 88.9,45.0 88.9,23.0" fill="var(--gold)" stroke="var(--gold-dark)" stroke-width="1.5" transform="translate(60,0)"/>
+            <line x1="150" y1="34" x2="160" y2="34" stroke="var(--accent)" stroke-width="3"/>
+            <text x="155" y="92" text-anchor="middle" font-size="10" font-weight="800" fill="var(--gold-dark)" font-family="'Baloo 2', sans-serif">Substrate</text>
             <path d="M228,95 h24" stroke="var(--muted-soft)" stroke-width="2.5"/>
             <polygon points="252,88 266,95 252,102" fill="var(--muted-soft)"/>
 
-            <!-- panel 2: fitted / bound -->
+            <!-- panel 2: fitted / bound (Enzyme-Substrate complex) -->
             <g transform="translate(300,0)">
-              <path d="M35,40 L95,40 Q108,40 108,53 L108,65 L135,80 L108,95 L108,107 Q108,120 95,120 L35,120 Q22,120 22,107 L22,53 Q22,40 35,40 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
-              <polygon points="112,80 142,65 142,95" fill="var(--gold)"/>
+              <path d="M15,95 C15,60 30,32 60,30 C75,28 88,40 95,58 C102,40 115,28 130,30 C160,32 175,60 175,95 C178,125 145,138 95,138 C45,138 12,125 15,95 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+              <polygon points="76.0,30.0 98.5,43.0 98.5,69.0 76.0,82.0 53.5,69.0 53.5,43.0" fill="var(--gold)" stroke="var(--gold-dark)" stroke-width="1.5"/>
+              <polygon points="114.0,30.0 136.5,43.0 136.5,69.0 114.0,82.0 91.5,69.0 91.5,43.0" fill="var(--gold)" stroke="var(--gold-dark)" stroke-width="1.5"/>
+              <line x1="92" y1="56" x2="98" y2="56" stroke="var(--accent)" stroke-width="3.5"/>
+              <text x="95" y="20" text-anchor="middle" font-size="10" font-weight="800" fill="var(--muted)" font-family="'Baloo 2', sans-serif">Enzyme&ndash;substrate complex</text>
             </g>
             <path d="M528,95 h24" stroke="var(--muted-soft)" stroke-width="2.5"/>
             <polygon points="552,88 566,95 552,102" fill="var(--muted-soft)"/>
 
             <!-- panel 3: released, enzyme unchanged, product transformed -->
             <g transform="translate(600,0)">
-              <path d="M35,40 L95,40 Q108,40 108,53 L108,65 L135,80 L108,95 L108,107 Q108,120 95,120 L35,120 Q22,120 22,107 L22,53 Q22,40 35,40 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+              <path d="M15,95 C15,60 30,32 60,30 C75,28 88,40 95,58 C102,40 115,28 130,30 C160,32 175,60 175,95 C178,125 145,138 95,138 C45,138 12,125 15,95 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
+              <polygon points="148.0,12.0 165.3,22.0 165.3,42.0 148.0,52.0 130.7,42.0 130.7,22.0" fill="var(--accent-dark)"/>
+              <polygon points="180.0,12.0 197.3,22.0 197.3,42.0 180.0,52.0 162.7,42.0 162.7,22.0" fill="var(--accent-dark)"/>
             </g>
-            <polygon points="750,65 782,80 750,95" fill="var(--accent-dark)"/>
             <text x="760" y="115" text-anchor="middle" font-size="10" font-weight="800" fill="var(--accent-dark)" font-family="'Baloo 2', sans-serif">brown pigment</text>
           </svg>
-          <p class="concept-visual-caption">The enzyme's shape lets one specific molecule fit, like a puzzle piece. The reaction happens, a new molecule is released &mdash; and the enzyme comes out unchanged, ready to do it again.</p>
+          <p class="concept-visual-caption">The enzyme's shape has a pocket that only the substrate fits into, like a puzzle piece. The reaction happens, a new molecule is released &mdash; and the enzyme comes out unchanged, ready to do it again.</p>
         </div>
 
         <p class="step-copy">
@@ -380,38 +401,144 @@
         </div>
         <p class="step-copy">
           When you cut an apple, cells are damaged and their contents become mixed together. The enzyme <strong>polyphenol
-          oxidase (PPO)</strong> can now interact with molecules called <strong>polyphenols</strong>.
+          oxidase (PPO)</strong> can now interact with molecules called <strong>polyphenols</strong> &mdash; the molecule
+          that PPO acts on, so polyphenols are this enzyme's <strong>substrate</strong>.
         </p>
         <p class="step-copy">
-          When oxygen is also present, a series of chemical reactions occurs. These reactions produce new compounds that
-          eventually form <strong>brown-colored pigments</strong>.
+          The enzyme can only do its job when both its substrate and oxygen are present. When oxygen is also present, a
+          series of chemical reactions occurs. These reactions produce new compounds that eventually form <strong>brown-colored
+          pigments</strong>.
         </p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="65" cy="95" r="52" fill="#fdf8ec" stroke="var(--primary)" stroke-width="2"/>
-            <circle cx="225" cy="95" r="52" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="2"/>
-            <circle cx="385" cy="95" r="52" fill="#e3bd76" stroke="var(--accent)" stroke-width="2"/>
-            <circle cx="545" cy="95" r="52" fill="var(--accent-dark)" stroke="var(--accent-dark)" stroke-width="2"/>
+          <div style="display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; padding:14px 0;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <div style="width:26px; height:26px; border-radius:6px; background:var(--primary-dark);"></div>
+              <div style="font-size:10.5px; font-weight:800; color:var(--primary-dark);">enzyme</div>
+            </div>
+            <div style="font-size:20px; font-weight:800; color:var(--muted-soft);">+</div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <div style="width:0; height:0; border-left:15px solid transparent; border-right:15px solid transparent; border-bottom:26px solid var(--gold);"></div>
+              <div style="font-size:10.5px; font-weight:800; color:var(--gold-dark);">substrate</div>
+            </div>
+            <div style="font-size:20px; font-weight:800; color:var(--muted-soft);">+</div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <div style="display:flex; gap:3px;">
+                <div style="width:11px; height:11px; border-radius:50%; background:var(--accent);"></div>
+                <div style="width:11px; height:11px; border-radius:50%; background:var(--accent);"></div>
+              </div>
+              <div style="font-size:10.5px; font-weight:800; color:var(--accent-dark);">O2</div>
+            </div>
+            <div style="font-size:26px; color:var(--muted-soft); padding:0 4px;">&rarr;</div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <div style="width:0; height:0; border-left:18px solid transparent; border-right:18px solid transparent; border-bottom:32px solid var(--accent-dark);"></div>
+              <div style="font-size:10.5px; font-weight:800; color:var(--accent-dark);">brown pigment</div>
+            </div>
+          </div>
+          <p class="concept-visual-caption">When enzyme, substrate, and O&#8322; all come together, a chain of reactions produces brown pigment. Each step depends on the one before it &mdash; break the chain anywhere, and the apple stays paler for longer.</p>
+        </div>
 
-            <path d="M124,95 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="150,88 164,95 150,102" fill="var(--muted-soft)"/>
-            <line x1="130" y1="65" x2="160" y2="35" stroke="var(--muted)" stroke-width="2.5" stroke-dasharray="4 3" stroke-linecap="round"/>
-
-            <path d="M284,95 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="310,88 324,95 310,102" fill="var(--muted-soft)"/>
-            <rect x="286" y="42" width="14" height="14" rx="3" fill="var(--primary-dark)"/>
-            <polygon points="304,49 316,42 316,56" fill="var(--gold)"/>
-            <circle cx="322" cy="45" r="4" fill="var(--accent)"/>
-            <circle cx="330" cy="45" r="4" fill="var(--accent)"/>
-
-            <path d="M444,95 h30" stroke="var(--muted-soft)" stroke-width="2.5"/>
-            <polygon points="470,88 484,95 470,102" fill="var(--muted-soft)"/>
-
-            <text x="65" y="163" text-anchor="middle" font-size="12" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">fresh cut</text>
-            <text x="545" y="163" text-anchor="middle" font-size="12" font-weight="800" fill="var(--text)" font-family="'Baloo 2', sans-serif">browned</text>
+        <div class="concept-visual">
+          <div style="display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-bottom:6px; font-size:11px; font-weight:800;">
+            <div style="display:flex; align-items:center; gap:6px; color:var(--gold-dark);">
+              <div style="width:18px; height:3px; border-radius:2px; background:var(--gold);"></div> unreacted substrate
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; color:var(--accent-dark);">
+              <div style="width:18px; height:3px; border-radius:2px; background:var(--accent-dark);"></div> brown pigment
+            </div>
+          </div>
+          <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+            <line x1="55" y1="15" x2="55" y2="175" stroke="var(--muted-soft)" stroke-width="2"/>
+            <polygon points="55,8 50,18 60,18" fill="var(--muted-soft)"/>
+            <line x1="55" y1="175" x2="495" y2="175" stroke="var(--muted-soft)" stroke-width="2"/>
+            <polygon points="502,175 492,170 492,180" fill="var(--muted-soft)"/>
+            <path d="M65,30 C150,36 220,110 310,145 C370,163 430,171 490,173" stroke="var(--gold)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M65,173 C150,165 220,90 310,55 C370,35 430,22 490,17" stroke="var(--accent-dark)" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <text x="275" y="198" text-anchor="middle" font-size="11.5" font-weight="800" fill="var(--muted)" font-family="'Baloo 2', sans-serif">time since the apple was cut &rarr;</text>
+            <text x="16" y="100" text-anchor="middle" font-size="11.5" font-weight="800" fill="var(--muted)" font-family="'Baloo 2', sans-serif" transform="rotate(-90 16 100)">amount</text>
           </svg>
-          <p class="concept-visual-caption">Cut &rarr; enzyme, target molecule, and O&#8322; come together &rarr; the color deepens over time. Each step depends on the one before it &mdash; break the chain anywhere, and the apple stays paler for longer.</p>
+          <p class="concept-visual-caption">Right after cutting, there's plenty of unreacted substrate and almost no brown pigment. As the reaction runs, the substrate gets used up while brown pigment keeps accumulating &mdash; which is why the apple keeps getting browner the longer it sits.</p>
+
+          <div style="display:flex; align-items:flex-start; justify-content:center; gap:22px; flex-wrap:wrap; padding:8px 0 4px;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <svg viewBox="0 0 120 140" width="100" height="117" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="browning-g1" cx="50%" cy="62%" r="65%">
+                    <stop offset="0%" stop-color="#fdf8ec"/>
+                    <stop offset="100%" stop-color="#fdf8ec"/>
+                  </radialGradient>
+                </defs>
+                <path d="M60,30 C48,18 35,12 22,20 C10,28 4,45 6,65 C8,90 20,108 45,118 C50,120 55,121 60,121 C65,121 70,120 75,118 C100,108 112,90 114,65 C116,45 110,28 98,20 C85,12 72,18 60,30 Z" fill="url(#browning-g1)" stroke="var(--accent-dark)" stroke-width="7"/>
+                <path d="M60,50 C50,60 47,80 55,100 C58,108 62,108 65,100 C73,80 70,60 60,50 Z" fill="#f6ead0" stroke="#d9c093" stroke-width="1"/>
+                <ellipse cx="55" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(-15 55 85)"/>
+                <ellipse cx="65" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(15 65 85)"/>
+                <path d="M58,32 C57,20 58,10 62,4 L66,6 C63,14 62,24 62,32 Z" fill="#6b4423"/>
+                <path d="M62,10 C50,-2 25,-4 14,6 C26,18 48,18 62,10 Z" fill="var(--primary)"/>
+                <path d="M16,7 L58,10" stroke="var(--primary-dark)" stroke-width="1" fill="none"/>
+              </svg>
+              <div style="font-size:11px; font-weight:800; color:var(--text);">0 min</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <svg viewBox="0 0 120 140" width="100" height="117" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="browning-g2" cx="50%" cy="62%" r="65%">
+                    <stop offset="0%" stop-color="#fdf8ec"/>
+                    <stop offset="55%" stop-color="#fdf8ec"/>
+                    <stop offset="100%" stop-color="#d9a462"/>
+                  </radialGradient>
+                </defs>
+                <path d="M60,30 C48,18 35,12 22,20 C10,28 4,45 6,65 C8,90 20,108 45,118 C50,120 55,121 60,121 C65,121 70,120 75,118 C100,108 112,90 114,65 C116,45 110,28 98,20 C85,12 72,18 60,30 Z" fill="url(#browning-g2)" stroke="var(--accent-dark)" stroke-width="7"/>
+                <path d="M60,50 C50,60 47,80 55,100 C58,108 62,108 65,100 C73,80 70,60 60,50 Z" fill="#f6ead0" stroke="#d9c093" stroke-width="1"/>
+                <ellipse cx="55" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(-15 55 85)"/>
+                <ellipse cx="65" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(15 65 85)"/>
+                <path d="M58,32 C57,20 58,10 62,4 L66,6 C63,14 62,24 62,32 Z" fill="#6b4423"/>
+                <path d="M62,10 C50,-2 25,-4 14,6 C26,18 48,18 62,10 Z" fill="var(--primary)"/>
+                <path d="M16,7 L58,10" stroke="var(--primary-dark)" stroke-width="1" fill="none"/>
+              </svg>
+              <div style="font-size:11px; font-weight:800; color:var(--text);">10 min</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <svg viewBox="0 0 120 140" width="100" height="117" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="browning-g3" cx="50%" cy="62%" r="65%">
+                    <stop offset="0%" stop-color="#fdf8ec"/>
+                    <stop offset="30%" stop-color="#f3e6c8"/>
+                    <stop offset="75%" stop-color="#b97a3f"/>
+                    <stop offset="100%" stop-color="#8b5a2b"/>
+                  </radialGradient>
+                </defs>
+                <path d="M60,30 C48,18 35,12 22,20 C10,28 4,45 6,65 C8,90 20,108 45,118 C50,120 55,121 60,121 C65,121 70,120 75,118 C100,108 112,90 114,65 C116,45 110,28 98,20 C85,12 72,18 60,30 Z" fill="url(#browning-g3)" stroke="var(--accent-dark)" stroke-width="7"/>
+                <path d="M60,50 C50,60 47,80 55,100 C58,108 62,108 65,100 C73,80 70,60 60,50 Z" fill="#f6ead0" stroke="#d9c093" stroke-width="1"/>
+                <ellipse cx="55" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(-15 55 85)"/>
+                <ellipse cx="65" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(15 65 85)"/>
+                <path d="M58,32 C57,20 58,10 62,4 L66,6 C63,14 62,24 62,32 Z" fill="#6b4423"/>
+                <path d="M62,10 C50,-2 25,-4 14,6 C26,18 48,18 62,10 Z" fill="var(--primary)"/>
+                <path d="M16,7 L58,10" stroke="var(--primary-dark)" stroke-width="1" fill="none"/>
+              </svg>
+              <div style="font-size:11px; font-weight:800; color:var(--text);">30 min</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
+              <svg viewBox="0 0 120 140" width="100" height="117" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="browning-g4" cx="50%" cy="62%" r="65%">
+                    <stop offset="0%" stop-color="#c9924f"/>
+                    <stop offset="20%" stop-color="#a9713a"/>
+                    <stop offset="60%" stop-color="#8b5a2b"/>
+                    <stop offset="100%" stop-color="#5b3a24"/>
+                  </radialGradient>
+                </defs>
+                <path d="M60,30 C48,18 35,12 22,20 C10,28 4,45 6,65 C8,90 20,108 45,118 C50,120 55,121 60,121 C65,121 70,120 75,118 C100,108 112,90 114,65 C116,45 110,28 98,20 C85,12 72,18 60,30 Z" fill="url(#browning-g4)" stroke="var(--accent-dark)" stroke-width="7"/>
+                <path d="M60,50 C50,60 47,80 55,100 C58,108 62,108 65,100 C73,80 70,60 60,50 Z" fill="#c9a876" stroke="#8b5a2b" stroke-width="1"/>
+                <ellipse cx="55" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(-15 55 85)"/>
+                <ellipse cx="65" cy="85" rx="5" ry="9" fill="#3d2515" transform="rotate(15 65 85)"/>
+                <path d="M58,32 C57,20 58,10 62,4 L66,6 C63,14 62,24 62,32 Z" fill="#6b4423"/>
+                <path d="M62,10 C50,-2 25,-4 14,6 C26,18 48,18 62,10 Z" fill="var(--primary)"/>
+                <path d="M16,7 L58,10" stroke="var(--primary-dark)" stroke-width="1" fill="none"/>
+              </svg>
+              <div style="font-size:11px; font-weight:800; color:var(--text);">60+ min</div>
+            </div>
+          </div>
+          <p class="concept-visual-caption">Same apple, same cut &mdash; just more time. The browning starts at the cut surface and spreads inward, matching the curves above.</p>
         </div>
 
         <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
@@ -473,34 +600,76 @@
           <span class="step-number">Step 8</span>
           <h2>&#127788;&#65039; What is oxidation?</h2>
         </div>
+        <p class="step-copy">Remember those tiny electrons we met in Mission 1? They're about to become important.</p>
+        <p class="step-copy">
+          In Mission 1, we learned that atoms contain negatively charged particles called <strong>electrons</strong>.
+          During a chemical reaction, electrons can be transferred or redistributed between atoms and molecules.
+        </p>
         <p class="step-copy">You may have heard the word <strong>oxidation</strong> before.</p>
         <p class="step-copy">
-          In everyday life, oxidation often involves a substance reacting with oxygen. For example, iron can react with
-          oxygen and form rust. Apples can also undergo oxidation.
+          The word originally became associated with reactions involving oxygen, because oxygen commonly participates
+          in these reactions. But chemists use a more precise definition.
         </p>
-        <div class="callout callout-primary">
-          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+        <p class="step-copy" style="text-align: center;"><strong>Oxidation is the loss of electrons.</strong></p>
+        <p class="step-copy">
+          So when a substance is oxidized, it loses electrons. This doesn't mean an electron visibly flies away from
+          the substance like a tiny ball &mdash; instead, during a chemical reaction, electrons can be transferred or
+          redistributed between atoms and molecules.
+        </p>
+
+        <div class="callout callout-gold">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
+          </div>
           <div class="callout-body">
-            <h3>In chemistry</h3>
-            <p>
-              Oxidation is a chemical process involving the loss of electrons. You don't need to memorize the electron
-              details for this mission &mdash; for now, remember: <strong>oxidation = a chemical change involving electron
-              transfer.</strong> In a cut apple, oxygen participates in a series of reactions that ultimately contribute to
-              the formation of brown compounds.
-            </p>
+            <h3>A simple way to remember it</h3>
+            <p><strong>OIL</strong> &mdash; <strong>O</strong>xidation <strong>I</strong>s <strong>L</strong>oss (of electrons).</p>
+          </div>
+        </div>
+
+        <p class="step-copy"><strong>Where does oxygen come in?</strong></p>
+        <p class="step-copy">
+          Oxygen is often involved in oxidation reactions because oxygen atoms have a strong tendency to interact with
+          electrons.
+        </p>
+        <p class="step-copy">
+          In our apple, oxygen from the air participates in a series of chemical reactions involving molecules in the
+          damaged apple tissue. These reactions change the molecules and eventually lead to the formation of
+          brown-colored compounds.
+        </p>
+
+        <p class="step-copy">So the story is becoming:</p>
+
+        <div class="concept-visual">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 0;">
+            <div style="font-weight:800; color:var(--text); font-size:14px; text-align:center;">Cut the apple</div>
+            <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
+            <div style="font-weight:800; color:var(--text); font-size:14px; text-align:center;">Cells are damaged</div>
+            <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
+            <div style="font-weight:800; color:var(--text); font-size:14px; text-align:center;">PPO (enzyme) can interact with its substrates</div>
+            <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
+            <div style="font-weight:800; color:var(--text); font-size:14px; text-align:center;">Oxygen enters the reaction</div>
+            <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
+            <div style="font-weight:800; color:var(--primary-dark); font-size:14px; text-align:center;">Electrons are rearranged during chemical reactions</div>
+            <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
+            <div style="font-weight:800; color:var(--primary-dark); font-size:14px; text-align:center;">Oxidation occurs</div>
+            <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
+            <div style="font-weight:800; color:var(--text); font-size:14px; text-align:center;">New compounds form</div>
+            <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
+            <div style="font-weight:800; color:var(--accent-dark); font-size:15px; text-align:center;">&#127794; Brown pigments appear</div>
           </div>
         </div>
 
         <p class="step-copy"><strong>&#9989; Quick check</strong></p>
 
         <div class="mini-card">
-          <p>Which molecule from the air is important for the browning reaction?</p>
+          <p>What happens during oxidation?</p>
           <div class="question-block">
-            <div class="choice-grid compact" data-mode="reveal" data-explain="Oxygen is the key ingredient from the air.">
-              <button class="choice-btn" type="button" data-correct="false">Nitrogen<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="true">Oxygen<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="false">Carbon dioxide<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="false">Water vapor<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Oxidation is the loss of electrons.">
+              <button class="choice-btn" type="button" data-correct="false">A substance gains electrons.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="true">A substance loses electrons.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">An atom disappears.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">Oxygen disappears.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
             </div>
             <button class="check-btn" type="button">Submit</button>
             <div class="feedback-box">Pick a choice and submit.</div>
@@ -508,27 +677,13 @@
         </div>
 
         <div class="mini-card">
-          <p>What helps the chemical reactions involved in browning happen faster?</p>
+          <p>Why are electrons important in chemistry?</p>
           <div class="question-block">
-            <div class="choice-grid compact" data-mode="reveal" data-explain="Enzymes are the tiny molecular helpers behind the reaction.">
-              <button class="choice-btn" type="button" data-correct="true">Enzymes<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="false">Water<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="false">Sugar<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="false">Light<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-            </div>
-            <button class="check-btn" type="button">Submit</button>
-            <div class="feedback-box">Pick a choice and submit.</div>
-          </div>
-        </div>
-
-        <div class="mini-card">
-          <p>What is the enzyme involved in apple browning called?</p>
-          <div class="question-block">
-            <div class="choice-grid compact" data-mode="reveal" data-explain="Polyphenol oxidase, or PPO for short.">
-              <button class="choice-btn" type="button" data-correct="false">Chlorophyll<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="true">Polyphenol oxidase (PPO)<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="false">Amylase<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="false">Insulin<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+            <div class="choice-grid compact" data-mode="reveal" data-explain="Electrons are involved in how atoms interact and bond, and their transfer or rearrangement is at the heart of reactions like oxidation.">
+              <button class="choice-btn" type="button" data-correct="true">They are involved in how atoms interact and in the transfer of electrons during some chemical reactions.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">They determine how much an apple weighs.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">They make plants green.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
+              <button class="choice-btn" type="button" data-correct="false">They are found only in oxygen.<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
             </div>
             <button class="check-btn" type="button">Submit</button>
             <div class="feedback-box">Pick a choice and submit.</div>
@@ -1002,10 +1157,24 @@ else:
             <p>
               Try changing <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = False</code>
               to <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = True</code> and press
-              Run again &mdash; that's Apple C. Then try setting
-              <code class="code-inline" style="display: inline; padding: 1px 6px;">oxygen = False</code> too &mdash; that's Apple B.
+              Run again &mdash; that's Apple C.
             </p>
           </div>
+        </div>
+
+        <div class="challenge-box">
+          <div class="challenge-head">
+            <h3 id="challenge-title">Now you try</h3>
+            <span id="challenge-counter">Try 0 of 5</span>
+          </div>
+          <p id="challenge-prompt">In the code above, change <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = False</code> to <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = True</code>. Then press Check answer.</p>
+          <p id="challenge-hint" class="challenge-hint is-hidden">Find the line that says <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = False</code> and change <code class="code-inline" style="display: inline; padding: 1px 6px;">False</code> to <code class="code-inline" style="display: inline; padding: 1px 6px;">True</code>.</p>
+          <div class="challenge-actions">
+            <button id="check-challenge" class="check-btn" type="button">Check answer</button>
+            <button id="hint-btn" class="hint-btn" type="button">Hint</button>
+          </div>
+          <button id="reveal-challenge-btn" class="reveal-btn is-hidden" type="button">Show me the answer</button>
+          <div id="challenge-feedback" class="challenge-feedback">Edit the code above and press Check answer.</div>
         </div>
 
         <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
@@ -1083,12 +1252,12 @@ else:
           </div>
           <div class="callout-body">
             <h3>We've figured out why apples turn brown.</h3>
-            <p>There are more everyday mysteries hiding all around you &mdash; more missions are on the way.</p>
+            <p>There are more everyday mysteries hiding all around you. Why do plants grow toward light?</p>
           </div>
         </div>
 
-        <a class="btn btn-accent" href="../../index.html" style="align-self: flex-end;">
-          Back to all missions
+        <a class="btn btn-accent" href="../mission-3/index.html" style="align-self: flex-end;">
+          Mission 3 &middot; Why Do Plants Grow Toward Light?
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </section>

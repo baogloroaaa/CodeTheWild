@@ -352,13 +352,18 @@
     });
   });
 
-  /* ---------- Code console ---------- */
+  /* ---------- Generic reveal toggle ---------- */
 
-  const runCodeButton = document.getElementById('run-code-btn');
-  const missionCode = document.getElementById('mission-code');
-  const codeOutput = document.getElementById('code-output');
-  const lineNumbers = document.getElementById('line-numbers');
-  const codeHighlight = document.getElementById('code-highlight');
+  document.querySelectorAll('[data-reveal-target]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.revealTarget);
+      if (!target) return;
+      const nowHidden = target.classList.toggle('is-hidden');
+      btn.textContent = nowHidden ? 'Reveal answer' : 'Hide answer';
+    });
+  });
+
+  /* ---------- Code console ---------- */
 
   function escapeHtml(value) {
     return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -378,13 +383,6 @@
       if (number) return `<span class="token-number">${number}</span>`;
       return match;
     });
-  }
-
-  function updateEditorView() {
-    if (!missionCode) return;
-    const value = missionCode.value || '';
-    lineNumbers.textContent = value.split('\n').map((_, index) => index + 1).join('\n');
-    codeHighlight.innerHTML = highlightCode(value);
   }
 
   function mountStaticCode() {
@@ -412,11 +410,15 @@
       const strMatch = trimmed.match(/^["']([^"']*)["']$/);
       if (strMatch) return strMatch[1];
       if (/^-?\d+(\.\d+)?$/.test(trimmed)) return Number(trimmed);
-      const binMatch = trimmed.match(/^(\w+)\s*([+-])\s*(-?\d+(?:\.\d+)?)$/);
+      const binMatch = trimmed.match(/^(\w+|-?\d+(?:\.\d+)?)\s*([+\-*/])\s*(\w+|-?\d+(?:\.\d+)?)$/);
       if (binMatch) {
-        const base = Number(vars[binMatch[1]] ?? 0);
-        const delta = Number(binMatch[3]);
-        return binMatch[2] === '+' ? base + delta : base - delta;
+        const resolveOperand = (token) => (/^-?\d+(\.\d+)?$/.test(token) ? Number(token) : Number(vars[token] ?? 0));
+        const left = resolveOperand(binMatch[1]);
+        const right = resolveOperand(binMatch[3]);
+        if (binMatch[2] === '+') return left + right;
+        if (binMatch[2] === '-') return left - right;
+        if (binMatch[2] === '*') return left * right;
+        return left / right;
       }
       if (Object.prototype.hasOwnProperty.call(vars, trimmed)) return vars[trimmed];
       return trimmed;
@@ -566,7 +568,9 @@
             const strPart = part.trim().match(/^["']([^"']*)["']$/);
             if (strPart) return strPart[1];
             const val = evalValue(part);
-            return typeof val === 'boolean' ? (val ? 'True' : 'False') : String(val);
+            if (typeof val === 'boolean') return val ? 'True' : 'False';
+            if (typeof val === 'number' && !Number.isInteger(val)) return String(Math.round(val * 10000) / 10000);
+            return String(val);
           });
           output.push(rendered.join(' '));
           i += 1;
@@ -590,31 +594,67 @@
     return { output: output.join('\n'), vars };
   }
 
-  if (runCodeButton && missionCode && codeOutput) {
-    runCodeButton.addEventListener('click', () => {
-      codeOutput.textContent = 'Running...';
-      codeOutput.classList.remove('has-run');
-      try {
-        const result = runSimplePythonCode(missionCode.value);
-        codeOutput.textContent = result.output || 'No output yet.';
-        codeOutput.classList.add('has-run');
-      } catch (error) {
-        codeOutput.textContent = `Error: ${error.message}`;
-      }
-    });
+  /* Each .code-console on the page is wired up independently, so a single
+     mission can have several runnable consoles (not just one shared editor).
+     A console is matched by #mission-code (legacy single-console missions)
+     or .mission-code-input (any number of consoles per page). */
+  const consoleRefs = new Map();
+
+  function initCodeConsole(consoleEl) {
+    const ta = consoleEl.querySelector('#mission-code, .mission-code-input');
+    if (!ta) return null;
+    const output = consoleEl.querySelector('#code-output, .code-output');
+    const runBtn = consoleEl.querySelector('#run-code-btn, .console-btn');
+    const lineNumbersEl = consoleEl.querySelector('#line-numbers, .line-numbers');
+    const highlightEl = consoleEl.querySelector('#code-highlight, .code-highlight');
+
+    function updateView() {
+      const value = ta.value || '';
+      if (lineNumbersEl) lineNumbersEl.textContent = value.split('\n').map((_, index) => index + 1).join('\n');
+      if (highlightEl) highlightEl.innerHTML = highlightCode(value);
+    }
+
+    updateView();
+
+    if (runBtn && output) {
+      runBtn.addEventListener('click', () => {
+        output.textContent = 'Running...';
+        output.classList.remove('has-run');
+        try {
+          const result = runSimplePythonCode(ta.value);
+          output.textContent = result.output || 'No output yet.';
+          output.classList.add('has-run');
+        } catch (error) {
+          output.textContent = `Error: ${error.message}`;
+        }
+      });
+    }
+
+    ta.addEventListener('input', updateView);
+    if (highlightEl) {
+      ta.addEventListener('scroll', () => {
+        highlightEl.scrollTop = ta.scrollTop;
+        highlightEl.scrollLeft = ta.scrollLeft;
+      });
+    }
+
+    return { ta, updateView };
   }
 
-  if (missionCode) {
-    missionCode.addEventListener('input', updateEditorView);
-    missionCode.addEventListener('scroll', () => {
-      codeHighlight.scrollTop = missionCode.scrollTop;
-      codeHighlight.scrollLeft = missionCode.scrollLeft;
-    });
-  }
+  document.querySelectorAll('.code-console').forEach((consoleEl) => {
+    const refs = initCodeConsole(consoleEl);
+    if (refs) consoleRefs.set(consoleEl, refs);
+  });
 
   /* ---------- Challenge stepper ----------
      window.MISSION_CHALLENGES, set by the mission's own mission.js, is an array of:
-     { title, prompt, hint, validate(code) -> boolean, successMessage } */
+     { title, prompt, hint, validate(code) -> boolean, successMessage }
+     The challenge box always binds to the #mission-code console (there is at
+     most one challenge-box per mission page). */
+
+  const challengeMissionCode = document.getElementById('mission-code');
+  const challengeConsoleEl = challengeMissionCode ? challengeMissionCode.closest('.code-console') : null;
+  const challengeConsoleRefs = challengeConsoleEl ? consoleRefs.get(challengeConsoleEl) : null;
 
   const challengeTitle = document.getElementById('challenge-title');
   const challengePrompt = document.getElementById('challenge-prompt');
@@ -665,13 +705,13 @@
     });
   }
 
-  if (checkChallengeButton && missionCode) {
+  if (checkChallengeButton && challengeMissionCode) {
     checkChallengeButton.addEventListener('click', () => {
       const challenge = challenges[challengeIndex];
       attempts[challengeIndex] += 1;
       challengeCounter.textContent = `Try ${attempts[challengeIndex]} of 5`;
 
-      if (challenge.validate(missionCode.value)) {
+      if (challenge.validate(challengeMissionCode.value)) {
         passed[challengeIndex] = true;
         renderChallenge();
         return;
@@ -688,12 +728,12 @@
     });
   }
 
-  if (revealChallengeButton && missionCode) {
+  if (revealChallengeButton && challengeMissionCode) {
     revealChallengeButton.addEventListener('click', () => {
       const challenge = challenges[challengeIndex];
       if (!challenge.solution) return;
-      missionCode.value = challenge.solution;
-      updateEditorView();
+      challengeMissionCode.value = challenge.solution;
+      if (challengeConsoleRefs) challengeConsoleRefs.updateView();
       challengeFeedback.innerHTML = "<strong>Here's one way to do it</strong> &mdash; press Submit to confirm.";
       challengeFeedback.classList.remove('is-correct');
       revealChallengeButton.classList.add('is-hidden');
@@ -713,7 +753,6 @@
   /* ---------- Init ---------- */
 
   buildProgressDots();
-  updateEditorView();
   mountStaticCode();
   updateProgress();
   if (introCard) {

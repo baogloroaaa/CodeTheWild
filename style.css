@@ -98,6 +98,56 @@ button {
   padding: 0 clamp(16px, 4vw, 40px) 64px;
 }
 
+.site-tabs {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.site-tab {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.site-tab:hover {
+  color: var(--primary-dark);
+  background: var(--primary-soft);
+}
+
+.site-tab.is-active {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn-exit {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  text-decoration: none;
+  background: var(--panel);
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.btn-exit:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+}
+
 /* ---------- Icons ---------- */
 
 .icon {
@@ -293,13 +343,80 @@ button {
   color: var(--muted-soft);
 }
 
+.home-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 6vw, 56px);
+}
+
+.home-band {
+  padding: 88px clamp(20px, 6vw, 56px);
+}
+
+@keyframes hedgehog-bop {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+.hedgehog-mascot {
+  animation: hedgehog-bop 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: 50% 100%;
+}
+
+.how-it-works {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .how-it-works {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+.how-step {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.how-step-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.how-step h3 {
+  font-size: 16px;
+}
+
+.how-step p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 /* ---------- Mission hero ---------- */
 
 .hero {
   position: relative;
   overflow: hidden;
-  margin: 24px clamp(16px, 4vw, 40px) 0;
-  padding: 36px clamp(20px, 5vw, 44px);
+  margin: 32px clamp(20px, 6vw, 56px) 0;
+  padding: 44px clamp(24px, 6vw, 56px);
   background: var(--primary);
   border-radius: 28px;
 }
@@ -352,11 +469,10 @@ button {
     position: fixed;
     top: 0;
     height: 100vh;
-    width: calc(50% - 470px);
-    min-width: 130px;
+    width: 130px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.4;
+    opacity: 0.85;
   }
 
   .side-decor-left {
@@ -888,6 +1004,29 @@ details.callout p {
   max-width: 520px;
 }
 
+.ion-na,
+.ion-cl {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.ion-na {
+  background: var(--gold);
+  border: 1.5px solid var(--gold-dark);
+}
+
+.ion-cl {
+  background: var(--primary);
+  border: 1.5px solid var(--primary-dark);
+}
+
+.ion-na.small,
+.ion-cl.small {
+  width: 16px;
+  height: 16px;
+}
+
 .compare-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1306,11 +1445,15 @@ details.callout p {
   flex: 1;
 }
 
-#mission-code {
+#mission-code,
+.mission-code-input {
   position: relative;
   z-index: 1;
   width: 100%;
+  height: 100%;
   min-height: 110px;
+  margin: 0;
+  padding: 0;
   resize: vertical;
   background: transparent;
   color: transparent;
@@ -1323,7 +1466,8 @@ details.callout p {
   overflow: auto;
 }
 
-#mission-code:focus {
+#mission-code:focus,
+.mission-code-input:focus {
   outline: none;
 }
 
@@ -1331,7 +1475,11 @@ details.callout p {
   position: absolute;
   inset: 0;
   margin: 0;
+  padding: 0;
   color: #e8eee6;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
   pointer-events: none;
   white-space: pre;
   overflow: hidden;
@@ -1457,6 +1605,12 @@ details.callout p {
 .challenge-actions .hint-btn {
   padding: 7px 16px;
   font-size: 12.5px;
+}
+
+.challenge-actions .check-btn {
+  background: var(--primary);
+  color: #ffffff;
+  cursor: pointer;
 }
 
 .hint-btn {

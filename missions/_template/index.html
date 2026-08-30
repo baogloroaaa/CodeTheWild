@@ -57,6 +57,10 @@
         </span>
         <span class="site-brand-name">Code the Wild</span>
       </a>
+      <a class="btn-exit" href="../../missions.html">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        Exit mission
+      </a>
     </div>
 
     <div class="page-mascot" id="page-mascot">
@@ -137,6 +141,15 @@
               <li><span>&#127811;</span> [Learning goal 2.]</li>
               <li><span>&#127811;</span> [Learning goal 3.]</li>
             </ul>
+            <div class="callout callout-gold">
+              <div class="callout-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              </div>
+              <div class="callout-body">
+                <h3>What you'll need</h3>
+                <p>[List any physical materials needed, or write "No materials &mdash; just your imagination" if none.]</p>
+              </div>
+            </div>
           </div>
           <div data-mascot="idle" data-mascot-size="140" style="flex-shrink: 0;"></div>
         </div>
@@ -387,6 +400,34 @@ print("Count:", count)</textarea>
           </div>
         </div>
 
+        <!-- OPTIONAL PATTERN = "now you try" challenge box
+             Put this at the end of whichever step holds the live console
+             above, so the student edits the SAME #mission-code textarea.
+             #challenge-title / #challenge-prompt / #challenge-hint /
+             #challenge-counter / #check-challenge / #hint-btn /
+             #reveal-challenge-btn / #challenge-feedback are fixed ids the
+             engine wires up automatically — keep them exactly as-is, there
+             is only ever one challenge flow per mission page. Define the
+             matching { title, prompt, hint, solution, validate(code),
+             successMessage } entry in mission.js's window.MISSION_CHALLENGES
+             array (currently empty in this template). validate(code)
+             should be a small regex check for the one edit you're asking
+             for — don't try to fully re-run the student's code. -->
+        <div class="challenge-box">
+          <div class="challenge-head">
+            <h3 id="challenge-title">Now you try</h3>
+            <span id="challenge-counter">Try 0 of 5</span>
+          </div>
+          <p id="challenge-prompt">[One simple edit — e.g. "Change count = 0 to count = 10. Then press Check answer."]</p>
+          <p id="challenge-hint" class="challenge-hint is-hidden">[A more specific hint, shown if the student taps Hint.]</p>
+          <div class="challenge-actions">
+            <button id="check-challenge" class="check-btn" type="button">Check answer</button>
+            <button id="hint-btn" class="hint-btn" type="button">Hint</button>
+          </div>
+          <button id="reveal-challenge-btn" class="reveal-btn is-hidden" type="button">Show me the answer</button>
+          <div id="challenge-feedback" class="challenge-feedback">Edit the code above and press Check answer.</div>
+        </div>
+
         <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </span></button>
@@ -436,7 +477,7 @@ print("Count:", count)</textarea>
           </div>
         </div>
 
-        <a class="btn btn-accent" href="../../index.html" style="align-self: flex-end;">
+        <a class="btn btn-accent" href="../mission-N+1/index.html" style="align-self: flex-end;">
           [Mission N+1 &middot; Next mission title]
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
