@@ -739,6 +739,14 @@ button {
   font-size: 22px;
 }
 
+/* A second topic inside a merged step: a divider line, then a smaller heading. */
+.step-subhead {
+  font-size: 19px;
+  margin-top: 10px;
+  padding-top: 22px;
+  border-top: 1.5px dashed var(--border);
+}
+
 .step-copy {
   font-size: 16.5px;
   font-weight: 600;

@@ -6,6 +6,7 @@
     <title>Mission 2 | Why Do Apples Turn Brown?</title>
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
     <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../assets/animations.css" /> <!-- animations: delete this line + the script below to turn off -->
   </head>
   <body>
     <div class="site-header">
@@ -94,7 +95,7 @@
         <div class="progress-card">
           <div class="progress-top">
             <span>Mission progress</span>
-            <span id="progress-label">Step 1 of 22</span>
+            <span id="progress-label">Step 1 of 15</span>
           </div>
           <div class="progress-track" id="progress-track">
             <div class="progress-line"></div>
@@ -169,7 +170,7 @@
         </span></button>
       </section>
 
-      <!-- Step 2 : GET READY TO INVESTIGATE -->
+      <!-- Step 2 : GET READY TO INVESTIGATE + OBSERVE -->
       <section class="step-card" data-step="2">
         <div class="step-header">
           <span class="step-number">Step 2</span>
@@ -224,17 +225,7 @@
           <textarea id="notebook-2" class="notebook-textarea" placeholder="Write a short reason for your guess."></textarea>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 3 : OBSERVE -->
-      <section class="step-card" data-step="3">
-        <div class="step-header">
-          <span class="step-number">Step 3</span>
-          <h2>&#128064; Watch the apple</h2>
-        </div>
+        <h3 class="step-subhead">&#128064; Watch the apple</h3>
         <p class="step-copy">
           Now leave your apple sitting out while we investigate what is happening inside it. Take a close look at your apple.
         </p>
@@ -266,10 +257,10 @@
         </span></button>
       </section>
 
-      <!-- Step 4 : WHAT HAPPENS WHEN WE CUT AN APPLE -->
-      <section class="step-card" data-step="4">
+      <!-- Step 3 : WHAT HAPPENS WHEN WE CUT AN APPLE -->
+      <section class="step-card" data-step="3">
         <div class="step-header">
-          <span class="step-number">Step 4</span>
+          <span class="step-number">Step 3</span>
           <h2>&#128298; Cells get exposed</h2>
         </div>
         <p class="step-copy">
@@ -285,7 +276,7 @@
         <p class="step-copy" style="text-align: center;"><strong>Oxygen (O&#8322;)</strong></p>
         <p class="step-copy">This gives us our first major clue.</p>
 
-        <div class="concept-visual">
+        <div class="concept-visual" data-anim="cellcut">
           <div style="width:100%; overflow-x:auto;">
             <div style="position:relative; width:600px; height:245px; margin:0 auto;">
               <div style="position:absolute; left:20px; top:20px; width:190px; height:190px; border-radius:50%; background:var(--primary-soft); border:2px solid var(--primary);"></div>
@@ -335,10 +326,10 @@
         </span></button>
       </section>
 
-      <!-- Step 5 : MEET THE ENZYMES -->
-      <section class="step-card" data-step="5">
+      <!-- Step 4 : MEET THE ENZYMES -->
+      <section class="step-card" data-step="4">
         <div class="step-header">
-          <span class="step-number">Step 5</span>
+          <span class="step-number">Step 4</span>
           <h2>&#129514; What is an enzyme?</h2>
         </div>
         <p class="step-copy">Inside living cells, thousands of different chemical reactions are happening.</p>
@@ -349,7 +340,7 @@
           the reaction happen more easily.
         </p>
 
-        <div class="concept-visual">
+        <div class="concept-visual" data-anim="enzyme">
           <svg viewBox="0 0 800 190" xmlns="http://www.w3.org/2000/svg">
             <!-- panel 1: apart -->
             <path d="M15,95 C15,60 30,32 60,30 C75,28 88,40 95,58 C102,40 115,28 130,30 C160,32 175,60 175,95 C178,125 145,138 95,138 C45,138 12,125 15,95 Z" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
@@ -393,10 +384,10 @@
         </span></button>
       </section>
 
-      <!-- Step 6 : THE BROWNING REACTION -->
-      <section class="step-card" data-step="6">
+      <!-- Step 5 : THE BROWNING REACTION -->
+      <section class="step-card" data-step="5">
         <div class="step-header">
-          <span class="step-number">Step 6</span>
+          <span class="step-number">Step 5</span>
           <h2>&#129514; The browning reaction</h2>
         </div>
         <p class="step-copy">
@@ -411,7 +402,7 @@
         </p>
 
         <div class="concept-visual">
-          <div style="display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; padding:14px 0;">
+          <div style="display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; padding:14px 0;" data-anim-loop data-anim="zoom">
             <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
               <div style="width:26px; height:26px; border-radius:6px; background:var(--primary-dark);"></div>
               <div style="font-size:10.5px; font-weight:800; color:var(--primary-dark);">enzyme</div>
@@ -447,7 +438,7 @@
               <div style="width:18px; height:3px; border-radius:2px; background:var(--accent-dark);"></div> brown pigment
             </div>
           </div>
-          <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" data-anim-loop data-anim="draw">
             <line x1="55" y1="15" x2="55" y2="175" stroke="var(--muted-soft)" stroke-width="2"/>
             <polygon points="55,8 50,18 60,18" fill="var(--muted-soft)"/>
             <line x1="55" y1="175" x2="495" y2="175" stroke="var(--muted-soft)" stroke-width="2"/>
@@ -459,7 +450,7 @@
           </svg>
           <p class="concept-visual-caption">Right after cutting, there's plenty of unreacted substrate and almost no brown pigment. As the reaction runs, the substrate gets used up while brown pigment keeps accumulating &mdash; which is why the apple keeps getting browner the longer it sits.</p>
 
-          <div style="display:flex; align-items:flex-start; justify-content:center; gap:22px; flex-wrap:wrap; padding:8px 0 4px;">
+          <div style="display:flex; align-items:flex-start; justify-content:center; gap:22px; flex-wrap:wrap; padding:8px 0 4px;" data-anim-loop data-anim="zoom">
             <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
               <svg viewBox="0 0 120 140" width="100" height="117" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -546,10 +537,10 @@
         </span></button>
       </section>
 
-      <!-- Step 7 : OBSERVE AGAIN -->
-      <section class="step-card" data-step="7">
+      <!-- Step 6 : OBSERVE AGAIN -->
+      <section class="step-card" data-step="6">
         <div class="step-header">
-          <span class="step-number">Step 7</span>
+          <span class="step-number">Step 6</span>
           <h2>&#128064; Check on your apple</h2>
         </div>
         <p class="step-copy">
@@ -594,10 +585,10 @@
         </span></button>
       </section>
 
-      <!-- Step 8 : WHAT IS OXIDATION -->
-      <section class="step-card" data-step="8">
+      <!-- Step 7 : WHAT IS OXIDATION + WHY DOESN'T THE APPLE BROWN BEFORE WE CUT IT -->
+      <section class="step-card" data-step="7">
         <div class="step-header">
-          <span class="step-number">Step 8</span>
+          <span class="step-number">Step 7</span>
           <h2>&#127788;&#65039; What is oxidation?</h2>
         </div>
         <p class="step-copy">Remember those tiny electrons we met in Mission 1? They're about to become important.</p>
@@ -641,7 +632,7 @@
         <p class="step-copy">So the story is becoming:</p>
 
         <div class="concept-visual">
-          <div style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 0;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:4px; padding:4px 0;" data-anim="zoom">
             <div style="font-weight:800; color:var(--text); font-size:14px; text-align:center;">Cut the apple</div>
             <div style="color:var(--muted-soft); font-size:16px;">&darr;</div>
             <div style="font-weight:800; color:var(--text); font-size:14px; text-align:center;">Cells are damaged</div>
@@ -690,17 +681,7 @@
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 9 : WHY DOESN'T THE APPLE BROWN BEFORE WE CUT IT -->
-      <section class="step-card" data-step="9">
-        <div class="step-header">
-          <span class="step-number">Step 9</span>
-          <h2>Why doesn't the apple brown before we cut it?</h2>
-        </div>
+        <h3 class="step-subhead">Why doesn't the apple brown before we cut it?</h3>
         <p class="step-copy">Think back to the beginning of the mission. The inside of a whole apple is usually not brown.</p>
         <p class="step-copy">But after we cut it, browning begins. Why?</p>
         <p class="step-copy">
@@ -728,10 +709,10 @@
         </span></button>
       </section>
 
-      <!-- Step 10 : CAN WE SLOW DOWN THE BROWNING -->
-      <section class="step-card" data-step="10">
+      <!-- Step 8 : CAN WE SLOW DOWN THE BROWNING -->
+      <section class="step-card" data-step="8">
         <div class="step-header">
-          <span class="step-number">Step 10</span>
+          <span class="step-number">Step 8</span>
           <h2>&#128300; Can we slow down the browning?</h2>
         </div>
         <p class="step-copy">Now let's become experimental scientists. Imagine you have three identical apple slices.</p>
@@ -788,10 +769,10 @@
         </span></button>
       </section>
 
-      <!-- Step 11 : THE LEMON JUICE CLUE -->
-      <section class="step-card" data-step="11">
+      <!-- Step 9 : THE LEMON JUICE CLUE -->
+      <section class="step-card" data-step="9">
         <div class="step-header">
-          <span class="step-number">Step 11</span>
+          <span class="step-number">Step 9</span>
           <h2>&#127819; The lemon juice clue</h2>
         </div>
         <p class="step-copy">
@@ -828,10 +809,10 @@
         </span></button>
       </section>
 
-      <!-- Step 12 : A LITTLE MORE ABOUT pH -->
-      <section class="step-card" data-step="12">
+      <!-- Step 10 : A LITTLE MORE ABOUT pH + WHY pH MATTERS TO ENZYMES + pH QUICK CHECK -->
+      <section class="step-card" data-step="10">
         <div class="step-header">
-          <span class="step-number">Step 12</span>
+          <span class="step-number">Step 10</span>
           <h2>&#129514; A little more about pH</h2>
         </div>
         <p class="step-copy">You may have heard people describe lemons as <strong>acidic</strong>. But what does that actually mean?</p>
@@ -859,17 +840,7 @@
           <div class="spectrum-chip" style="background:#3b7dd8;"><span>&#129474; Baking soda</span><span>pH ~9 &middot; basic</span></div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 13 : WHY pH MATTERS TO ENZYMES -->
-      <section class="step-card" data-step="13">
-        <div class="step-header">
-          <span class="step-number">Step 13</span>
-          <h2>&#127777;&#65039; Why pH matters to enzymes</h2>
-        </div>
+        <h3 class="step-subhead">&#127777;&#65039; Why pH matters to enzymes</h3>
         <p class="step-copy">Remember that enzymes are proteins that help chemical reactions happen faster.</p>
         <p class="step-copy">
           But enzymes don't work equally well under every condition. An enzyme has a particular <strong>shape</strong>,
@@ -899,17 +870,7 @@
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 14 : pH QUICK CHECK -->
-      <section class="step-card" data-step="14">
-        <div class="step-header">
-          <span class="step-number">Step 14</span>
-          <h2>&#9989; pH quick check</h2>
-        </div>
+        <h3 class="step-subhead">&#9989; pH quick check</h3>
 
         <div class="mini-card">
           <p>Which has a lower pH?</p>
@@ -966,10 +927,10 @@
         </span></button>
       </section>
 
-      <!-- Step 15 : SOLVE THE MYSTERY -->
-      <section class="step-card" data-step="15">
+      <!-- Step 11 : SOLVE THE MYSTERY -->
+      <section class="step-card" data-step="11">
         <div class="step-header">
-          <span class="step-number">Step 15</span>
+          <span class="step-number">Step 11</span>
           <h2>&#129514; Solve the mystery</h2>
         </div>
         <p class="step-copy">Let's put all of our clues together. Why does an apple turn brown?</p>
@@ -999,10 +960,10 @@
         </span></button>
       </section>
 
-      <!-- Step 16 : CODE IT (intro) -->
-      <section class="step-card" data-step="16">
+      <!-- Step 12 : CODE IT (intro) + WHAT IS AN IF STATEMENT -->
+      <section class="step-card" data-step="12">
         <div class="step-header">
-          <span class="step-number">Step 16</span>
+          <span class="step-number">Step 12</span>
           <h2>&#128187; Code it</h2>
         </div>
         <p class="step-copy">We've just learned that the apple behaves differently depending on its environment. For example:</p>
@@ -1019,24 +980,14 @@
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 17 : WHAT IS AN IF STATEMENT -->
-      <section class="step-card" data-step="17">
-        <div class="step-header">
-          <span class="step-number">Step 17</span>
-          <h2>&#10067; What is an if statement?</h2>
-        </div>
+        <h3 class="step-subhead">&#10067; What is an if statement?</h3>
         <p class="step-copy">Sometimes a computer needs to make a decision.</p>
         <p class="step-copy">An <strong>if statement</strong> tells the computer: "If this condition is true, do something. Otherwise, do something else."</p>
         <div class="code-console">
           <div class="code-toolbar">
             <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
           </div>
-          <pre class="code-static" data-code-static>oxygen = True
+          <pre class="code-static" data-code-static data-anim="type">oxygen = True
 
 if oxygen:
     print("The apple begins to brown!")
@@ -1056,10 +1007,10 @@ else:
         </span></button>
       </section>
 
-      <!-- Step 18 : READ THE CODE -->
-      <section class="step-card" data-step="18">
+      <!-- Step 13 : READ THE CODE -->
+      <section class="step-card" data-step="13">
         <div class="step-header">
-          <span class="step-number">Step 18</span>
+          <span class="step-number">Step 13</span>
           <h2>&#128064; Read the code</h2>
         </div>
         <p class="step-copy">
@@ -1070,7 +1021,7 @@ else:
           <div class="code-toolbar">
             <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
           </div>
-          <pre class="code-static" data-code-static>oxygen = True
+          <pre class="code-static" data-code-static data-anim="type">oxygen = True
 lemon_juice = False
 
 if lemon_juice:
@@ -1104,10 +1055,10 @@ lemon_juice = False</code>
         </span></button>
       </section>
 
-      <!-- Step 19 : RUN THE MODEL -->
-      <section class="step-card" data-step="19">
+      <!-- Step 14 : RUN THE MODEL + WHICH APPLE BROWNS FASTEST -->
+      <section class="step-card" data-step="14">
         <div class="step-header">
-          <span class="step-number">Step 19</span>
+          <span class="step-number">Step 14</span>
           <h2>&#127919; Run the model</h2>
         </div>
         <div class="question-block">
@@ -1177,17 +1128,7 @@ else:
           <div id="challenge-feedback" class="challenge-feedback">Edit the code above and press Check answer.</div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 20 : WHICH APPLE BROWNS FASTEST -->
-      <section class="step-card" data-step="20">
-        <div class="step-header">
-          <span class="step-number">Step 20</span>
-          <h2>&#127822; Which apple browns fastest?</h2>
-        </div>
+        <h3 class="step-subhead">&#127822; Which apple browns fastest?</h3>
         <p class="step-copy">
           Suppose you changed the code so that <code class="code-inline" style="display: inline; padding: 1px 6px;">lemon_juice = True</code>,
           while <code class="code-inline" style="display: inline; padding: 1px 6px;">oxygen</code> stayed
@@ -1210,10 +1151,10 @@ else:
         </span></button>
       </section>
 
-      <!-- Step 21 : FINAL CHECKPOINT -->
-      <section class="step-card" data-step="21">
+      <!-- Step 15 : FINAL CHECKPOINT + NEXT MYSTERY -->
+      <section class="step-card" data-step="15">
         <div class="step-header">
-          <span class="step-number">Step 21</span>
+          <span class="step-number">Step 15</span>
           <h2>&#129504; Can you explain the mystery?</h2>
         </div>
         <p class="step-copy"><strong>Complete the sentence:</strong> An apple turns brown because...</p>
@@ -1235,17 +1176,7 @@ else:
           <p>Lemon juice is acidic (low pH), and changing the pH around an enzyme can change its shape and slow its activity &mdash; it doesn't wash the brown color away, it changes the chemistry.</p>
         </details>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 22 : NEXT MYSTERY -->
-      <section class="step-card" data-step="22">
-        <div class="step-header">
-          <span class="step-number">Step 22</span>
-          <h2>&#127775; Next mystery</h2>
-        </div>
+        <h3 class="step-subhead">&#127775; Next mystery</h3>
         <div class="callout callout-gold">
           <div class="callout-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
@@ -1267,5 +1198,6 @@ else:
     <script src="mission.js"></script>
     <script src="../../assets/mascot.js"></script>
     <script src="../../assets/mission-engine.js"></script>
+    <script src="../../assets/animations.js"></script>
   </body>
 </html>

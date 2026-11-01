@@ -6,6 +6,7 @@
     <title>Mission 1 | Why Does Salt Disappear in Water?</title>
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
     <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../assets/animations.css" /> <!-- animations: delete this line + the script below to turn off -->
   </head>
   <body>
     <div class="site-header">
@@ -94,7 +95,7 @@
         <div class="progress-card">
           <div class="progress-top">
             <span>Mission progress</span>
-            <span id="progress-label">Step 1 of 29</span>
+            <span id="progress-label">Step 1 of 17</span>
           </div>
           <div class="progress-track" id="progress-track">
             <div class="progress-line"></div>
@@ -170,7 +171,7 @@
         </span></button>
       </section>
 
-      <!-- Step 2 : GET READY TO INVESTIGATE -->
+      <!-- Step 2 : GET READY TO INVESTIGATE + TEST IT -->
       <section class="step-card" data-step="2">
         <div class="step-header">
           <span class="step-number">Step 2</span>
@@ -213,17 +214,7 @@
           <textarea id="notebook-2" class="notebook-textarea" placeholder="Write a short reason for your guess."></textarea>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 3 : TEST IT -->
-      <section class="step-card" data-step="3">
-        <div class="step-header">
-          <span class="step-number">Step 3</span>
-          <h2>&#128167; Test it</h2>
-        </div>
+        <h3 class="step-subhead">&#128167; Test it</h3>
         <p class="step-copy">Add a small amount of salt to your water. Stir for about 20&ndash;30 seconds. Now look carefully.</p>
 
         <div class="mini-card">
@@ -260,10 +251,10 @@
         </span></button>
       </section>
 
-      <!-- Step 4 : HOW COULD WE TEST WHETHER THE SALT IS STILL THERE -->
-      <section class="step-card" data-step="4">
+      <!-- Step 3 : HOW COULD WE TEST WHETHER THE SALT IS STILL THERE -->
+      <section class="step-card" data-step="3">
         <div class="step-header">
-          <span class="step-number">Step 4</span>
+          <span class="step-number">Step 3</span>
           <h2>&#129504; How could we test whether the salt is still there?</h2>
         </div>
         <p class="step-copy">Scientists don't rely only on what they can see. They look for other evidence.</p>
@@ -326,10 +317,10 @@
         </span></button>
       </section>
 
-      <!-- Step 5 : ZOOM IN -->
-      <section class="step-card" data-step="5">
+      <!-- Step 4 : ZOOM IN + WHAT IS MATTER MADE OF -->
+      <section class="step-card" data-step="4">
         <div class="step-header">
-          <span class="step-number">Step 5</span>
+          <span class="step-number">Step 4</span>
           <h2>&#128269; Zoom in</h2>
         </div>
         <p class="step-copy">
@@ -338,7 +329,7 @@
         </p>
 
         <div class="concept-visual">
-          <div style="display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap; gap:6px 4px; padding:6px 0;">
+          <div style="display:flex; align-items:flex-start; justify-content:center; flex-wrap:wrap; gap:6px 4px; padding:6px 0;" data-anim-loop data-anim="zoom">
 
             <div style="display:flex; flex-direction:column; align-items:center; gap:8px; width:104px;">
               <svg width="60" height="60" viewBox="0 0 64 64">
@@ -410,17 +401,7 @@
           <p class="concept-visual-caption">We have reached a scale far too small to see with our eyes.</p>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 6 : WHAT IS MATTER MADE OF -->
-      <section class="step-card" data-step="6">
-        <div class="step-header">
-          <span class="step-number">Step 6</span>
-          <h2>&#9883; What is matter made of?</h2>
-        </div>
+        <h3 class="step-subhead">&#9883; What is matter made of?</h3>
         <p class="step-copy">Everything you can touch is made of matter.</p>
         <ul class="learn-list" style="grid-template-columns: 1fr 1fr;">
           <li><span>&#128221;</span> Your desk is matter.</li>
@@ -440,10 +421,10 @@
         </span></button>
       </section>
 
-      <!-- Step 7 : WHAT IS INSIDE AN ATOM -->
-      <section class="step-card" data-step="7">
+      <!-- Step 5 : WHAT IS INSIDE AN ATOM -->
+      <section class="step-card" data-step="5">
         <div class="step-header">
-          <span class="step-number">Step 7</span>
+          <span class="step-number">Step 5</span>
           <h2>&#9883; What is inside an atom?</h2>
         </div>
         <p class="step-copy">Atoms themselves contain even smaller particles. There are three especially important ones:</p>
@@ -455,7 +436,7 @@
         <p class="step-copy">Protons and neutrons are found together in the center of the atom &mdash; this center is called the <strong>nucleus</strong>. Electrons occupy the space around the nucleus.</p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 320 340" width="100%" style="max-width:360px; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+          <svg data-anim="orbit" viewBox="0 0 320 340" width="100%" style="max-width:360px; display:block; margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
             <!-- shells -->
             <circle cx="160" cy="170" r="60" fill="none" stroke="var(--text)" stroke-width="2"/>
             <circle cx="160" cy="170" r="95" fill="none" stroke="var(--text)" stroke-width="2"/>
@@ -561,10 +542,10 @@
         </span></button>
       </section>
 
-      <!-- Step 8 : DIFFERENT ATOMS MAKE DIFFERENT ELEMENTS -->
-      <section class="step-card" data-step="8">
+      <!-- Step 6 : DIFFERENT ATOMS MAKE DIFFERENT ELEMENTS + WHAT ABOUT WATER -->
+      <section class="step-card" data-step="6">
         <div class="step-header">
-          <span class="step-number">Step 8</span>
+          <span class="step-number">Step 6</span>
           <h2>&#129514; Different atoms make different elements</h2>
         </div>
         <p class="step-copy">Not every atom is the same. The type of atom is determined by how many protons it has.</p>
@@ -615,17 +596,7 @@
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 9 : WHAT ABOUT WATER -->
-      <section class="step-card" data-step="9">
-        <div class="step-header">
-          <span class="step-number">Step 9</span>
-          <h2>&#128167; What about water?</h2>
-        </div>
+        <h3 class="step-subhead">&#128167; What about water?</h3>
         <p class="step-copy">
           The water in your cup is made of water molecules. A <strong>molecule</strong> forms when atoms are chemically
           joined together. One water molecule contains two hydrogen atoms and one oxygen atom.
@@ -655,10 +626,10 @@
         </span></button>
       </section>
 
-      <!-- Step 10 : NOW ZOOM IN ON SALT -->
-      <section class="step-card" data-step="10">
+      <!-- Step 7 : NOW ZOOM IN ON SALT + WHAT IS AN ION -->
+      <section class="step-card" data-step="7">
         <div class="step-header">
-          <span class="step-number">Step 10</span>
+          <span class="step-number">Step 7</span>
           <h2>&#129474; Now zoom in on salt</h2>
         </div>
         <p class="step-copy">Table salt is called <strong>sodium chloride</strong>. Its chemical formula is:</p>
@@ -677,17 +648,7 @@
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 11 : WHAT IS AN ION -->
-      <section class="step-card" data-step="11">
-        <div class="step-header">
-          <span class="step-number">Step 11</span>
-          <h2>&#9889; What is an ion?</h2>
-        </div>
+        <h3 class="step-subhead">&#9889; What is an ion?</h3>
         <p class="step-copy">Remember: protons have positive charge, electrons have negative charge.</p>
         <p class="step-copy">
           Normally, an atom has equal numbers of protons and electrons &mdash; the positive and negative charges balance.
@@ -777,10 +738,10 @@
         </span></button>
       </section>
 
-      <!-- Step 12 : INSIDE A SALT CRYSTAL -->
-      <section class="step-card" data-step="12">
+      <!-- Step 8 : INSIDE A SALT CRYSTAL -->
+      <section class="step-card" data-step="8">
         <div class="step-header">
-          <span class="step-number">Step 12</span>
+          <span class="step-number">Step 8</span>
           <h2>&#128296; Inside a salt crystal</h2>
         </div>
         <p class="step-copy">
@@ -789,7 +750,7 @@
           crystal together.
         </p>
 
-        <div class="concept-visual">
+        <div class="concept-visual" data-anim="crystal3d">
           <div style="display:flex; justify-content:center;">
             <svg width="214" height="178" viewBox="26.0 130.9 213.8 177.8" style="max-width:340px; display:block; margin:0 auto;">
               <line x1="40.0" y1="210.0" x2="86.0" y2="210.0" stroke="#BFB8AC" stroke-width="2.2"/>
@@ -921,10 +882,10 @@
         </span></button>
       </section>
 
-      <!-- Step 13 : WHAT HAPPENS WHEN WATER ARRIVES -->
-      <section class="step-card" data-step="13">
+      <!-- Step 9 : WHAT HAPPENS WHEN WATER ARRIVES + DISSOLVING -->
+      <section class="step-card" data-step="9">
         <div class="step-header">
-          <span class="step-number">Step 13</span>
+          <span class="step-number">Step 9</span>
           <h2>&#128167; What happens when water arrives?</h2>
         </div>
         <p class="step-copy">
@@ -958,20 +919,10 @@
           crystal. This process is what we commonly call <strong>dissolving</strong>.
         </p>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 14 : DISSOLVING -->
-      <section class="step-card" data-step="14">
-        <div class="step-header">
-          <span class="step-number">Step 14</span>
-          <h2>&#129474;&#8594;&#128167; Dissolving</h2>
-        </div>
+        <h3 class="step-subhead">&#129474;&#8594;&#128167; Dissolving</h3>
         <p class="step-copy">Imagine the salt crystal like this &mdash; ions packed tightly together. When water surrounds the crystal:</p>
 
-        <div class="concept-visual">
+        <div class="concept-visual" data-anim="dissolve">
           <div style="display:flex; align-items:center; justify-content:center; gap:24px; flex-wrap:wrap; padding:8px 0;">
             <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
               <div style="display:grid; grid-template-columns:repeat(4, 22px); grid-template-rows:repeat(4, 22px); gap:3px; padding:8px; border-radius:10px; background:var(--primary-soft); border:2px solid var(--primary);">
@@ -1087,10 +1038,10 @@
         </span></button>
       </section>
 
-      <!-- Step 15 : DID THE SALT DISAPPEAR -->
-      <section class="step-card" data-step="15">
+      <!-- Step 10 : DID THE SALT DISAPPEAR -->
+      <section class="step-card" data-step="10">
         <div class="step-header">
-          <span class="step-number">Step 15</span>
+          <span class="step-number">Step 10</span>
           <h2>&#129300; Did the salt disappear?</h2>
         </div>
         <p class="step-copy" style="text-align: center;"><strong>No.</strong></p>
@@ -1142,10 +1093,10 @@
         </span></button>
       </section>
 
-      <!-- Step 16 : RETURN TO YOUR EXPERIMENT -->
-      <section class="step-card" data-step="16">
+      <!-- Step 11 : RETURN TO YOUR EXPERIMENT + SOLVE THE MYSTERY -->
+      <section class="step-card" data-step="11">
         <div class="step-header">
-          <span class="step-number">Step 16</span>
+          <span class="step-number">Step 11</span>
           <h2>&#128269; Return to your experiment</h2>
         </div>
         <p class="step-copy">Look at your cup again. You started with visible salt crystals. Now you may see only clear water.</p>
@@ -1156,17 +1107,7 @@
           Try to include at least one of these ideas: ions &middot; particles &middot; water molecules &middot; dissolved &middot; too small to see
         </p>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 17 : SOLVE THE MYSTERY -->
-      <section class="step-card" data-step="17">
-        <div class="step-header">
-          <span class="step-number">Step 17</span>
-          <h2>&#129504; Solve the mystery</h2>
-        </div>
+        <h3 class="step-subhead">&#129504; Solve the mystery</h3>
         <p class="step-copy">Let's put all of our evidence together. Where does salt go when it dissolves?</p>
 
         <div class="concept-visual">
@@ -1190,10 +1131,10 @@
         </span></button>
       </section>
 
-      <!-- Step 18 : CODE IT PART 1 - RECORDING OUR EXPERIMENT -->
-      <section class="step-card" data-step="18">
+      <!-- Step 12 : CODE IT PART 1 - RECORDING OUR EXPERIMENT -->
+      <section class="step-card" data-step="12">
         <div class="step-header">
-          <span class="step-number">Step 18</span>
+          <span class="step-number">Step 12</span>
           <h2>&#128187; Code it: Part 1 &mdash; Recording our experiment</h2>
         </div>
         <p class="step-copy">Scientists collect observations during experiments. Computers can help us store and organize that information.</p>
@@ -1287,10 +1228,10 @@
         </span></button>
       </section>
 
-      <!-- Step 19 : RECORD WHAT WE OBSERVED -->
-      <section class="step-card" data-step="19">
+      <!-- Step 13 : RECORD WHAT WE OBSERVED + DISPLAYING OUR RECORD -->
+      <section class="step-card" data-step="13">
         <div class="step-header">
-          <span class="step-number">Step 19</span>
+          <span class="step-number">Step 13</span>
           <h2>&#129514; Record what we observed</h2>
         </div>
         <p class="step-copy">Now let's use variables to record our actual salt experiment. Think back to what you observed. Our experiment might look like this:</p>
@@ -1299,7 +1240,7 @@
           <div class="code-toolbar">
             <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
           </div>
-          <pre class="code-static" data-code-static>substance = "salt"
+          <pre class="code-static" data-code-static data-anim="type">substance = "salt"
 salt_grams = 5
 water_mL = 100
 crystals_visible = False
@@ -1347,17 +1288,7 @@ water_clear = True</pre>
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 20 : DISPLAYING OUR RECORD -->
-      <section class="step-card" data-step="20">
-        <div class="step-header">
-          <span class="step-number">Step 20</span>
-          <h2>&#128421;&#65039; Displaying our record</h2>
-        </div>
+        <h3 class="step-subhead">&#128421;&#65039; Displaying our record</h3>
         <p class="step-copy">Storing information is useful, but sometimes we want the computer to show us what it stored. We can do this using the <code class="code-inline" style="display: inline; padding: 1px 6px;">print()</code> function.</p>
         <p class="step-copy"><code class="code-inline" style="display: inline; padding: 1px 6px;">print()</code> tells Python: display something on the screen. For example:</p>
 
@@ -1395,10 +1326,10 @@ water_clear = True</pre>
         </span></button>
       </section>
 
-      <!-- Step 21 : CODE IT PART 2 - USING CODE TO CALCULATE -->
-      <section class="step-card" data-step="21">
+      <!-- Step 14 : CODE IT PART 2 - USING CODE TO CALCULATE + WHAT IS CONCENTRATION -->
+      <section class="step-card" data-step="14">
         <div class="step-header">
-          <span class="step-number">Step 21</span>
+          <span class="step-number">Step 14</span>
           <h2>&#128187; Code it: Part 2 &mdash; Using code to calculate</h2>
         </div>
         <p class="step-copy">Imagine you have two cups of salt water. Both look clear.</p>
@@ -1445,17 +1376,7 @@ water_clear = True</pre>
         <p class="step-copy"><strong>This is where computation becomes useful.</strong></p>
         <p class="step-copy">We can give the computer our measurements and ask it to calculate the concentration for us.</p>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 22 : WHAT IS CONCENTRATION -->
-      <section class="step-card" data-step="22">
-        <div class="step-header">
-          <span class="step-number">Step 22</span>
-          <h2>&#129689; What is concentration?</h2>
-        </div>
+        <h3 class="step-subhead">&#129689; What is concentration?</h3>
         <p class="step-copy">Imagine these two cups:</p>
 
         <div style="display:flex; gap:14px; flex-wrap:wrap; padding:6px 0;">
@@ -1496,10 +1417,10 @@ water_clear = True</pre>
         </span></button>
       </section>
 
-      <!-- Step 23 : LET THE COMPUTER DO THE MATH -->
-      <section class="step-card" data-step="23">
+      <!-- Step 15 : LET THE COMPUTER DO THE MATH + RUN THE CALCULATION -->
+      <section class="step-card" data-step="15">
         <div class="step-header">
-          <span class="step-number">Step 23</span>
+          <span class="step-number">Step 15</span>
           <h2>&#129504; Let the computer do the math</h2>
         </div>
         <p class="step-copy">For our experiment:</p>
@@ -1518,7 +1439,7 @@ water_mL = 100</pre>
         <p class="step-copy"><strong>Read the code:</strong></p>
         <div class="code-console">
           <div class="code-toolbar"><div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div></div>
-          <pre class="code-static" data-code-static>salt_grams = 5
+          <pre class="code-static" data-code-static data-anim="type">salt_grams = 5
 water_mL = 100
 
 salt_per_mL = salt_grams / water_mL
@@ -1540,17 +1461,7 @@ print("Salt per mL:", salt_per_mL)</pre>
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 24 : RUN THE CALCULATION -->
-      <section class="step-card" data-step="24">
-        <div class="step-header">
-          <span class="step-number">Step 24</span>
-          <h2>&#9654;&#65039; Run the calculation</h2>
-        </div>
+        <h3 class="step-subhead">&#9654;&#65039; Run the calculation</h3>
         <p class="step-copy">Run the code below. You should get <code class="code-inline" style="display: inline; padding: 1px 6px;">Salt per mL: 0.05</code>.</p>
 
         <div class="code-console">
@@ -1586,128 +1497,10 @@ print("Salt per mL:", salt_per_mL)</textarea>
         </span></button>
       </section>
 
-      <!-- Step 25 : COMPARE TWO CUPS -->
-      <section class="step-card" data-step="25">
+      <!-- Step 16 : YOUR TURN - CHANGE THE MODEL -->
+      <section class="step-card" data-step="16">
         <div class="step-header">
-          <span class="step-number">Step 25</span>
-          <h2>&#129380; Compare two cups</h2>
-        </div>
-        <p class="step-copy">Now let's let the computer compare two experiments.</p>
-
-        <div style="display:flex; flex-direction:column; gap:14px; padding:6px 0;">
-          <div>
-            <p style="font-size:12.5px; font-weight:800; margin:0 0 4px 2px;">Cup A</p>
-            <div class="code-console" style="margin:0;">
-              <div class="code-toolbar"><div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div></div>
-              <pre class="code-static" data-code-static>salt_A = 5
-water_A = 100
-
-concentration_A = salt_A / water_A
-
-print("Cup A:", concentration_A, "grams per mL")</pre>
-            </div>
-          </div>
-          <div>
-            <p style="font-size:12.5px; font-weight:800; margin:0 0 4px 2px;">Cup B</p>
-            <div class="code-console" style="margin:0;">
-              <div class="code-toolbar"><div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div></div>
-              <pre class="code-static" data-code-static>salt_B = 10
-water_B = 100
-
-concentration_B = salt_B / water_B
-
-print("Cup B:", concentration_B, "grams per mL")</pre>
-            </div>
-          </div>
-        </div>
-
-        <div class="question-block">
-          <p class="step-copy"><strong>Prediction &mdash; </strong>before you run the code, which cup do you think will have the larger concentration?</p>
-          <div class="choice-grid" data-mode="ack" data-message="Let's find out &mdash; press Run below.">
-            <button class="choice-btn" type="button">Cup A</button>
-            <button class="choice-btn" type="button">Cup B</button>
-            <button class="choice-btn" type="button">They will be the same</button>
-          </div>
-          <button class="check-btn" type="button">Submit</button>
-          <div class="feedback-box">Pick a choice and submit.</div>
-        </div>
-
-        <div class="code-console">
-          <div class="code-toolbar">
-            <div class="code-toolbar-left">
-              <span>Python console</span>
-              <span class="lang-pill">Python</span>
-            </div>
-            <button class="console-btn" type="button">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#1B2A20" stroke="none"><polygon points="6 4 20 12 6 20"></polygon></svg>
-              Run
-            </button>
-          </div>
-          <div class="code-editor-shell">
-            <div class="line-numbers"></div>
-            <div class="code-editor-wrapper">
-              <textarea class="mission-code-input" spellcheck="false">salt_A = 5
-water_A = 100
-concentration_A = salt_A / water_A
-print("Cup A:", concentration_A, "grams per mL")
-
-salt_B = 10
-water_B = 100
-concentration_B = salt_B / water_B
-print("Cup B:", concentration_B, "grams per mL")</textarea>
-              <pre class="code-highlight" aria-hidden="true"></pre>
-            </div>
-          </div>
-          <pre class="code-output">Output will appear here.</pre>
-        </div>
-
-        <div class="mini-card">
-          <p>Which cup is more concentrated?</p>
-          <div class="question-block">
-            <div class="choice-grid compact" data-mode="reveal" data-explain="Cup B: 0.1 grams per mL is greater than Cup A: 0.05 grams per mL.">
-              <button class="choice-btn" type="button" data-correct="false">Cup A<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-              <button class="choice-btn" type="button" data-correct="true">Cup B<span class="result-icon icon-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span class="result-icon icon-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span></button>
-            </div>
-            <button class="check-btn" type="button">Submit</button>
-            <div class="feedback-box">Pick a choice and submit.</div>
-          </div>
-        </div>
-
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 26 : WHY WAS THE CODE USEFUL -->
-      <section class="step-card" data-step="26">
-        <div class="step-header">
-          <span class="step-number">Step 26</span>
-          <h2>&#129504; Why was the code useful?</h2>
-        </div>
-        <p class="step-copy">Both cups might look like ordinary clear water. But the computer helped us calculate something we couldn't determine just by looking.</p>
-        <p class="step-copy">We started with measurements: grams of salt, and milliliters of water. Then the computer used those measurements to calculate how much salt there is compared with the amount of water.</p>
-        <p class="step-copy" style="text-align:center;"><strong>Record data &rarr; perform calculations &rarr; discover information that isn't obvious from observation alone.</strong></p>
-
-        <div style="display:flex; gap:14px; flex-wrap:wrap; padding:6px 0;">
-          <div class="mini-card" style="flex:1; min-width:220px; margin:0;">
-            <h3>Part 1</h3>
-            <p>Code remembers what we observed.</p>
-          </div>
-          <div class="mini-card" style="flex:1; min-width:220px; margin:0;">
-            <h3>Part 2</h3>
-            <p>Code helps us figure out something new.</p>
-          </div>
-        </div>
-
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 27 : YOUR TURN - CHANGE THE MODEL -->
-      <section class="step-card" data-step="27">
-        <div class="step-header">
-          <span class="step-number">Step 27</span>
+          <span class="step-number">Step 16</span>
           <h2>&#9999;&#65039; Your turn: change the model</h2>
         </div>
         <p class="step-copy">Now you get to change the code. You do not need to write a program from scratch &mdash; use the template below and change only the numbers.</p>
@@ -1788,10 +1581,10 @@ print("Concentration:", concentration, "grams per mL")</textarea>
         </span></button>
       </section>
 
-      <!-- Step 28 : FINAL QUESTION -->
-      <section class="step-card" data-step="28">
+      <!-- Step 17 : FINAL QUESTION + NEXT MYSTERY -->
+      <section class="step-card" data-step="17">
         <div class="step-header">
-          <span class="step-number">Step 28</span>
+          <span class="step-number">Step 17</span>
           <h2>&#10067; Final question</h2>
         </div>
         <div class="mini-card">
@@ -1808,17 +1601,7 @@ print("Concentration:", concentration, "grams per mL")</textarea>
           </div>
         </div>
 
-        <button class="next-btn btn btn-accent" type="button">Next <span class="icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </span></button>
-      </section>
-
-      <!-- Step 29 : NEXT MYSTERY -->
-      <section class="step-card" data-step="29">
-        <div class="step-header">
-          <span class="step-number">Step 29</span>
-          <h2>&#127775; Next mystery</h2>
-        </div>
+        <h3 class="step-subhead">&#127775; Next mystery</h3>
         <p class="step-copy">
           Today, we learned that the world around us is made of atoms &mdash; and that electrons help determine the
           electrical charge of particles.
@@ -1848,5 +1631,6 @@ print("Concentration:", concentration, "grams per mL")</textarea>
     <script src="mission.js"></script>
     <script src="../../assets/mascot.js"></script>
     <script src="../../assets/mission-engine.js"></script>
+    <script src="../../assets/animations.js"></script>
   </body>
 </html>
