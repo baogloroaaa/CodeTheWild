@@ -11,6 +11,7 @@
    data-anim="draw"     – an SVG graph's lines draw themselves
    data-anim="cellcut"  – an apple cell is cut open and starts browning
    data-anim="enzyme"   – one enzyme turns substrate after substrate into pigment
+   data-anim="ph"       – pH scale marker + a cup of H+ ions (lemon, water, baking soda)
    data-anim="steps"    – a step-by-step chain revealed one step at a time
    data-anim="oxidize"  – an electron moves between two atoms; charges change
    Add data-anim-loop to a "zoom" or "draw" element to play it slowly on repeat. */
@@ -740,83 +741,104 @@
     return looper(step);
   }
 
-  /* ---------- Oxidation: one electron moves from atom A to atom B ----------
-     Both atoms start neutral (3 protons, 3 electrons). One electron leaves A
-     and joins B; A's charge becomes +1 (oxidized) and B's becomes -1. Loops. */
+  /* ---------- Oxidation, told in three panels ----------
+     One panel per step, stacked so each appears as you scroll down:
+     1) both atoms balanced, 2) an electron moves from A to B (repeats),
+     3) A is oxidized (+1) and B is -1. Electrons keep orbiting in every panel. */
 
   function buildOxidize(host) {
     const W = 520;
-    const H = 230;
-    const A = { x: 140, y: 100 };
-    const B = { x: 380, y: 100 };
+    const H = 200;
+    const A = { x: 140, y: 90 };
+    const B = { x: 380, y: 90 };
     const R = 52;
-    const CYCLE = 480;
-    const LEAVE = 120;
-    const ARRIVE = 210;
+    const MOVE = 130; // frames for the electron's trip in panel 2
+    const PAUSE = 70;
+
+    const STEPS = [
+      {
+        title: '1 · Both atoms are balanced',
+        note: 'Each atom has 3 protons (+) and 3 electrons (−), so the charges cancel out.',
+        a: 3, b: 3, labels: ['charge 0 (balanced)', 'charge 0 (balanced)'], cls: ['', ''],
+      },
+      {
+        title: '2 · An electron moves from atom A to atom B',
+        note: 'During a chemical reaction, an electron can be transferred from one atom to another.',
+        a: 2, b: 3, move: true, labels: ['losing an electron…', 'gaining an electron…'], cls: ['is-plus', 'is-minus'],
+      },
+      {
+        title: '3 · Atom A has been oxidized',
+        note: 'Atom A now has more protons than electrons, so its charge is +1. Atom B has one extra electron, so its charge is −1.',
+        a: 2, b: 4, landed: true, labels: ['charge +1 → oxidized!', 'charge −1'], cls: ['is-plus', 'is-minus'],
+      },
+    ];
 
     const wrap = document.createElement('div');
-    wrap.className = 'anim-dissolve';
-    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Animation: an electron moves from atom A to atom B. Atom A is oxidized and its charge becomes +1; atom B becomes -1.' }, wrap);
-    const trail = svgEl('path', { d: `M190,80 Q260,0 ${B.x - R},${B.y - 20}`, class: 'anim-trail' }, svg);
+    wrap.className = 'anim-ox-steps';
 
-    const atomLabels = [A, B].map((c, i) => {
-      svgEl('circle', { cx: c.x, cy: c.y, r: R, class: 'anim-shell' }, svg);
-      svgEl('circle', { cx: c.x, cy: c.y, r: 20, class: 'anim-nucleus' }, svg);
-      const n = svgEl('text', { x: c.x, y: c.y + 5, 'text-anchor': 'middle', class: 'anim-nucleus-label' }, svg);
-      n.textContent = '3+';
-      const name = svgEl('text', { x: c.x, y: 185, 'text-anchor': 'middle', class: 'anim-atom-name' }, svg);
-      name.textContent = i === 0 ? 'Atom A' : 'Atom B';
-      return svgEl('text', { x: c.x, y: 207, 'text-anchor': 'middle', class: 'anim-charge' }, svg);
+    const panels = STEPS.map((st) => {
+      const panel = document.createElement('div');
+      panel.className = 'anim-ox-panel';
+      const h = document.createElement('div');
+      h.className = 'anim-ox-title';
+      h.textContent = st.title;
+      panel.appendChild(h);
+      const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `${st.title}. ${st.note}` }, panel);
+      const trail = st.move ? svgEl('path', { d: `M190,70 Q260,-5 ${B.x - R + 4},70`, class: 'anim-trail' }, svg) : null;
+      [A, B].forEach((c, i) => {
+        svgEl('circle', { cx: c.x, cy: c.y, r: R, class: 'anim-shell' }, svg);
+        svgEl('circle', { cx: c.x, cy: c.y, r: 20, class: 'anim-nucleus' }, svg);
+        const n = svgEl('text', { x: c.x, y: c.y + 5, 'text-anchor': 'middle', class: 'anim-nucleus-label' }, svg);
+        n.textContent = '3+';
+        const name = svgEl('text', { x: c.x, y: 168, 'text-anchor': 'middle', class: 'anim-atom-name' }, svg);
+        name.textContent = i === 0 ? 'Atom A' : 'Atom B';
+        const ch = svgEl('text', { x: c.x, y: 190, 'text-anchor': 'middle', class: `anim-charge ${st.cls[i]}` }, svg);
+        ch.textContent = st.labels[i];
+      });
+      const electron = (cls) => svgEl('circle', { r: 6, class: cls }, svg);
+      const aEls = Array.from({ length: st.a }, () => electron('anim-electron'));
+      // In panel 3 the electron that moved is still shown in orange inside atom B.
+      const bEls = Array.from({ length: st.b }, (_, i) => electron(st.landed && i === st.b - 1 ? 'anim-electron anim-electron-moving' : 'anim-electron'));
+      const mover = st.move ? electron('anim-electron anim-electron-moving') : null;
+      const note = document.createElement('p');
+      note.className = 'anim-ox-note';
+      note.textContent = st.note;
+      panel.appendChild(note);
+      wrap.appendChild(panel);
+      return { panel, aEls, bEls, mover, trail };
     });
 
-    const electron = (cls) => svgEl('circle', { r: 6, class: cls }, svg);
-    const aElectrons = [0, 2].map((i) => ({ el: electron('anim-electron'), base: (i * Math.PI * 2) / 3 }));
-    const bElectrons = [0, 1, 2].map((i) => ({ el: electron('anim-electron'), base: (i * Math.PI * 2) / 3 + 0.5 }));
-    const mover = electron('anim-electron anim-electron-moving');
+    // Panels slide in as they scroll into view.
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add('is-visible');
+      }), { threshold: 0.35 });
+      panels.forEach((p) => io.observe(p.panel));
+    } else {
+      panels.forEach((p) => p.panel.classList.add('is-visible'));
+    }
 
-    const status = statusBar(wrap, () => {});
-    let t = 0;
-    let spin = 0;
     const place = (el, c, a) => { el.setAttribute('cx', (c.x + Math.cos(a) * R).toFixed(1)); el.setAttribute('cy', (c.y + Math.sin(a) * R).toFixed(1)); };
     const ease = (k) => (k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2);
-
-    function setCharges(moved) {
-      atomLabels[0].textContent = moved ? 'charge +1 → oxidized!' : 'charge 0 (balanced)';
-      atomLabels[0].setAttribute('class', `anim-charge ${moved ? 'is-plus' : ''}`);
-      atomLabels[1].textContent = moved ? 'charge −1 (gained an electron)' : 'charge 0 (balanced)';
-      atomLabels[1].setAttribute('class', `anim-charge ${moved ? 'is-minus' : ''}`);
-    }
+    let spin = 0;
+    let t = 0;
 
     function step() {
-      t = (t + 1) % CYCLE;
       spin += 0.012;
-      const n = (count) => (Math.PI * 2) / count;
-      // A has 3 electrons before the move and 2 after; B has 3 then 4. Spread them evenly.
-      const moved = t >= ARRIVE;
-      aElectrons.forEach((e, i) => place(e.el, A, spin + i * n(t < LEAVE ? 3 : 2)));
-      bElectrons.forEach((e, i) => place(e.el, B, -spin + i * n(moved ? 4 : 3)));
-
-      if (t < LEAVE) {
-        place(mover, A, spin + 2 * n(3));
-        trail.style.opacity = 0;
-      } else if (t < ARRIVE) {
-        const k = ease((t - LEAVE) / (ARRIVE - LEAVE));
-        const p = trail.getPointAtLength(k * trail.getTotalLength());
-        mover.setAttribute('cx', p.x.toFixed(1));
-        mover.setAttribute('cy', p.y.toFixed(1));
-        trail.style.opacity = 1;
-      } else {
-        place(mover, B, -spin + 3 * n(4));
-        trail.style.opacity = Math.max(0, 1 - (t - ARRIVE) / 60);
-      }
-
-      if (t === 0) { setCharges(false); status.set('Both atoms are balanced: 3 protons (+) and 3 electrons (−) each.'); }
-      if (t === LEAVE) status.set('An electron moves from atom A to atom B…');
-      if (t === ARRIVE) { setCharges(true); status.set('Atom A lost an electron, so it was oxidized. Now it has more + than −.'); }
+      t = (t + 1) % (MOVE + PAUSE);
+      panels.forEach(({ aEls, bEls, mover, trail }) => {
+        aEls.forEach((el, i) => place(el, A, spin + (i * Math.PI * 2) / aEls.length));
+        bEls.forEach((el, i) => place(el, B, -spin + (i * Math.PI * 2) / bEls.length + 0.5));
+        if (mover) {
+          const k = Math.min(1, t / MOVE);
+          const pt = trail.getPointAtLength(ease(k) * trail.getTotalLength());
+          mover.setAttribute('cx', pt.x.toFixed(1));
+          mover.setAttribute('cy', pt.y.toFixed(1));
+          mover.style.opacity = t < MOVE ? 1 : Math.max(0, 1 - (t - MOVE) / 30);
+        }
+      });
     }
 
-    setCharges(false);
-    status.set('Both atoms are balanced: 3 protons (+) and 3 electrons (−) each.');
     replaceStatic(host, wrap);
     return looper(step);
   }
@@ -824,10 +846,11 @@
   /* ---------- A chain of steps revealed one at a time ----------
      Children alternate: step, arrow, step, arrow, ... Each step (with the arrow
      leading into it) appears on its own and is highlighted while it is read.
-     Advances every few seconds; "Next" lets faster readers move on. */
+     After the last step it holds, fades, and starts again. */
 
   function buildSteps(el) {
-    const SECONDS = 3.5;
+    const SECONDS = 3;
+    const HOLD_END = 4;
     const kids = Array.from(el.children);
     const groups = [];
     kids.forEach((kid, i) => {
@@ -836,41 +859,134 @@
       if (i % 2 === 0) kid.classList.add('anim-step-item');
     });
 
-    const bar = document.createElement('div');
-    bar.className = 'anim-dissolve-bar anim-steps-bar';
-    const counter = document.createElement('span');
-    const next = document.createElement('button');
-    next.type = 'button';
-    next.className = 'anim-replay is-visible';
-    bar.append(counter, next);
-    el.after(bar);
-
-    let shown = 0;
     let timer = null;
 
     function show(n) {
-      shown = n;
       groups.forEach((g, i) => {
         g.parts.forEach((p) => p.classList.toggle('anim-step-hidden', i >= n));
         g.text.classList.toggle('anim-step-current', i === n - 1);
       });
-      counter.textContent = `Step ${n} of ${groups.length}`;
-      next.textContent = n < groups.length ? 'Next ▸' : '↻ Replay';
-      clearTimeout(timer);
-      if (n < groups.length) timer = setTimeout(() => show(n + 1), SECONDS * 1000);
+      timer = n < groups.length
+        ? setTimeout(() => show(n + 1), SECONDS * 1000)
+        : setTimeout(() => { show(0); clearTimeout(timer); timer = setTimeout(() => show(1), 800); }, HOLD_END * 1000);
     }
 
-    next.addEventListener('click', () => show(shown < groups.length ? shown + 1 : 1));
-
     return {
-      start() { show(1); },
+      start() { clearTimeout(timer); show(1); },
       stop() { clearTimeout(timer); },
     };
   }
 
+  /* ---------- pH scale with a cup of H+ ions ----------
+     A marker slides along a 0-14 pH scale between lemon juice, water and
+     baking soda while the cup below fills with more or fewer H+ dots.
+     (Real H+ amounts differ 10x per pH step; dot counts are only a hint.) */
+
+  function buildPH(host) {
+    const W = 520;
+    const H = 270;
+    const X0 = 40;
+    const X1 = 480;
+    const HOLD = 300; // frames each substance stays on screen
+    const SLIDE = 70;
+    const LIQ = { x0: 128, x1: 292, y0: 128, y1: 244 };
+    const SUBSTANCES = [
+      { emoji: '🍋', name: 'Lemon juice', ph: 2, kind: 'acidic', dots: 36, amount: 'LOTS of H⁺', liquid: '#f6e9a6' },
+      { emoji: '💧', name: 'Pure water', ph: 7, kind: 'neutral', dots: 6, amount: 'a little H⁺', liquid: '#dcecf7' },
+      { emoji: '🫧', name: 'Baking soda water', ph: 9, kind: 'basic', dots: 1, amount: 'hardly any H⁺', liquid: '#e3e6f5' },
+    ];
+    const xOf = (ph) => X0 + ((X1 - X0) * ph) / 14;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'anim-dissolve';
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Animation: a marker moves along the pH scale from lemon juice (pH 2) to water (pH 7) to baking soda (pH 9), while a cup shows fewer hydrogen ions as the pH goes up.' }, wrap);
+
+    // the scale
+    const defs = svgEl('defs', {}, svg);
+    const grad = svgEl('linearGradient', { id: 'anim-ph-grad', x1: 0, x2: 1, y1: 0, y2: 0 }, defs);
+    [[0, '#c0392b'], [3, '#e67e22'], [5, '#f1c40f'], [7, '#6ab04c'], [9, '#3b7dd8'], [11, '#3c40c6'], [14, '#6c3483']]
+      .forEach(([ph, color]) => svgEl('stop', { offset: `${(ph / 14) * 100}%`, 'stop-color': color }, grad));
+    svgEl('rect', { x: X0, y: 40, width: X1 - X0, height: 16, rx: 8, fill: 'url(#anim-ph-grad)' }, svg);
+    for (let ph = 0; ph <= 14; ph += 1) {
+      const tick = svgEl('text', { x: xOf(ph), y: 72, 'text-anchor': 'middle', class: 'anim-ph-tick' }, svg);
+      tick.textContent = ph;
+    }
+    [['← more acidic', X0, 'start'], ['neutral', xOf(7), 'middle'], ['more basic →', X1, 'end']].forEach(([txt, x, anchor]) => {
+      const t = svgEl('text', { x, y: 90, 'text-anchor': anchor, class: 'anim-ph-end' }, svg);
+      t.textContent = txt;
+    });
+    const marker = svgEl('g', {}, svg);
+    svgEl('polygon', { points: '-9,-14 9,-14 0,0', class: 'anim-ph-marker' }, marker);
+    const markerLabel = svgEl('text', { y: -19, 'text-anchor': 'middle', class: 'anim-ph-marker-label' }, marker);
+
+    // the cup
+    const liquid = svgEl('rect', { x: LIQ.x0 - 4, y: LIQ.y0 - 6, width: LIQ.x1 - LIQ.x0 + 8, height: LIQ.y1 - LIQ.y0 + 12, rx: 6, class: 'anim-ph-liquid' }, svg);
+    const dotLayer = svgEl('g', {}, svg);
+    svgEl('path', { d: 'M114,108 L124,248 Q126,256 134,256 L286,256 Q294,256 296,248 L306,108', class: 'anim-ph-cup' }, svg);
+
+    // the info card
+    const emoji = svgEl('text', { x: 410, y: 160, 'text-anchor': 'middle', class: 'anim-ph-emoji' }, svg);
+    const nameText = svgEl('text', { x: 410, y: 192, 'text-anchor': 'middle', class: 'anim-atom-name' }, svg);
+    const phText = svgEl('text', { x: 410, y: 214, 'text-anchor': 'middle', class: 'anim-ph-info' }, svg);
+    const amountText = svgEl('text', { x: 410, y: 236, 'text-anchor': 'middle', class: 'anim-ph-amount' }, svg);
+
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const dots = Array.from({ length: 36 }, () => {
+      const g = svgEl('g', {}, dotLayer);
+      svgEl('circle', { r: 8, class: 'anim-hplus' }, g);
+      const t = svgEl('text', { y: 3, 'text-anchor': 'middle', class: 'anim-hplus-label' }, g);
+      t.textContent = 'H⁺';
+      return { g, x: rand(LIQ.x0 + 10, LIQ.x1 - 10), y: rand(LIQ.y0 + 10, LIQ.y1 - 10), vx: rand(-0.4, 0.4), vy: rand(-0.4, 0.4), op: 0 };
+    });
+
+    const ease = (k) => (k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2);
+    let t = SLIDE; // start with the marker already resting on lemon juice
+    let markerPh = SUBSTANCES[0].ph;
+
+    function show(sub) {
+      emoji.textContent = sub.emoji;
+      nameText.textContent = sub.name;
+      phText.textContent = `pH ~${sub.ph} · ${sub.kind}`;
+      amountText.textContent = sub.amount;
+      liquid.style.fill = sub.liquid;
+    }
+
+    function step() {
+      t = (t + 1) % (HOLD * SUBSTANCES.length);
+      const i = Math.floor(t / HOLD);
+      const c = t % HOLD;
+      const sub = SUBSTANCES[i];
+      const prev = SUBSTANCES[(i + SUBSTANCES.length - 1) % SUBSTANCES.length];
+      if (c === 0) show(sub);
+      markerPh = c < SLIDE ? prev.ph + (sub.ph - prev.ph) * ease(c / SLIDE) : sub.ph;
+      marker.setAttribute('transform', `translate(${xOf(markerPh).toFixed(1)} 38)`);
+      markerLabel.textContent = `pH ${markerPh.toFixed(c < SLIDE ? 1 : 0)}`;
+
+      dots.forEach((d, n) => {
+        const target = n < sub.dots ? 1 : 0;
+        d.op += (target - d.op) * 0.06;
+        d.vx = Math.max(-0.6, Math.min(0.6, (d.vx + rand(-0.08, 0.08)) * 0.98));
+        d.vy = Math.max(-0.6, Math.min(0.6, (d.vy + rand(-0.08, 0.08)) * 0.98));
+        d.x += d.vx;
+        d.y += d.vy;
+        if (d.x < LIQ.x0 + 8 || d.x > LIQ.x1 - 8) d.vx *= -1;
+        if (d.y < LIQ.y0 + 8 || d.y > LIQ.y1 - 8) d.vy *= -1;
+        d.x = Math.max(LIQ.x0 + 8, Math.min(LIQ.x1 - 8, d.x));
+        d.y = Math.max(LIQ.y0 + 8, Math.min(LIQ.y1 - 8, d.y));
+        d.g.setAttribute('transform', `translate(${d.x.toFixed(1)} ${d.y.toFixed(1)})`);
+        d.g.style.opacity = d.op.toFixed(2);
+      });
+    }
+
+    show(SUBSTANCES[0]);
+    dots.forEach((d, n) => { d.op = n < SUBSTANCES[0].dots ? 1 : 0; });
+    replaceStatic(host, wrap);
+    return looper(step);
+  }
+
   /* ---------- Wiring: play each animation when its step becomes active ---------- */
 
-  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize, steps: buildSteps };
+  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize, steps: buildSteps, ph: buildPH };
   const players = new Map();
   const loopBuilders = { zoom: buildZoomLoop, draw: buildDrawLoop };
   document.querySelectorAll('[data-anim]').forEach((el) => {
