@@ -215,3 +215,28 @@ svg.anim-fade-out path[fill="none"] {
 .anim-charge { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 12.5px; fill: var(--muted, var(--text)); }
 .anim-charge.is-plus { fill: var(--accent-dark); }
 .anim-charge.is-minus { fill: var(--primary-dark); }
+
+/* Step-by-step chain (Mission 2 oxidation story) */
+.anim-step-part {
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.anim-step-hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.anim-step-item {
+  padding: 4px 12px;
+  border-radius: 10px;
+  transition: opacity 0.6s, transform 0.6s, background 0.4s, box-shadow 0.4s;
+}
+
+.anim-step-current {
+  background: var(--gold-soft);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+.anim-steps-bar {
+  margin-top: 8px;
+}

@@ -11,6 +11,7 @@
    data-anim="draw"     – an SVG graph's lines draw themselves
    data-anim="cellcut"  – an apple cell is cut open and starts browning
    data-anim="enzyme"   – one enzyme turns substrate after substrate into pigment
+   data-anim="steps"    – a step-by-step chain revealed one step at a time
    data-anim="oxidize"  – an electron moves between two atoms; charges change
    Add data-anim-loop to a "zoom" or "draw" element to play it slowly on repeat. */
 
@@ -820,9 +821,56 @@
     return looper(step);
   }
 
+  /* ---------- A chain of steps revealed one at a time ----------
+     Children alternate: step, arrow, step, arrow, ... Each step (with the arrow
+     leading into it) appears on its own and is highlighted while it is read.
+     Advances every few seconds; "Next" lets faster readers move on. */
+
+  function buildSteps(el) {
+    const SECONDS = 3.5;
+    const kids = Array.from(el.children);
+    const groups = [];
+    kids.forEach((kid, i) => {
+      if (i % 2 === 0) groups.push({ text: kid, parts: i > 0 ? [kids[i - 1], kid] : [kid] });
+      kid.classList.add('anim-step-part');
+      if (i % 2 === 0) kid.classList.add('anim-step-item');
+    });
+
+    const bar = document.createElement('div');
+    bar.className = 'anim-dissolve-bar anim-steps-bar';
+    const counter = document.createElement('span');
+    const next = document.createElement('button');
+    next.type = 'button';
+    next.className = 'anim-replay is-visible';
+    bar.append(counter, next);
+    el.after(bar);
+
+    let shown = 0;
+    let timer = null;
+
+    function show(n) {
+      shown = n;
+      groups.forEach((g, i) => {
+        g.parts.forEach((p) => p.classList.toggle('anim-step-hidden', i >= n));
+        g.text.classList.toggle('anim-step-current', i === n - 1);
+      });
+      counter.textContent = `Step ${n} of ${groups.length}`;
+      next.textContent = n < groups.length ? 'Next ▸' : '↻ Replay';
+      clearTimeout(timer);
+      if (n < groups.length) timer = setTimeout(() => show(n + 1), SECONDS * 1000);
+    }
+
+    next.addEventListener('click', () => show(shown < groups.length ? shown + 1 : 1));
+
+    return {
+      start() { show(1); },
+      stop() { clearTimeout(timer); },
+    };
+  }
+
   /* ---------- Wiring: play each animation when its step becomes active ---------- */
 
-  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize };
+  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize, steps: buildSteps };
   const players = new Map();
   const loopBuilders = { zoom: buildZoomLoop, draw: buildDrawLoop };
   document.querySelectorAll('[data-anim]').forEach((el) => {
