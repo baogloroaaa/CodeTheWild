@@ -661,23 +661,24 @@
     const wrap = document.createElement('div');
     wrap.className = 'anim-dissolve';
     const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Animation: one enzyme turns substrate after substrate into brown pigment and stays unchanged.' }, wrap);
+    // The substrate's outline and the enzyme's pocket are the same shape, so it fits like a puzzle piece.
+    const SUB = [[-22, -16], [-22, 4], [0, 22], [22, 4], [22, -16]];
+    const top = POCKET_Y - 16;
+    const P = (x, y) => `${(POCKET_X + x).toFixed(1)},${y.toFixed(1)}`;
+    const pocket = SUB.map(([x, y]) => P(x * 1.1, POCKET_Y + (y < 0 ? y : y * 1.12))).join(' L ');
     const enzyme = svgEl('path', {
-      d: 'M15,95 C15,60 30,32 60,30 C75,28 88,40 95,58 C102,40 115,28 130,30 C160,32 175,60 175,95 C178,125 145,138 95,138 C45,138 12,125 15,95 Z',
+      d: `M ${P(-80, top)} L ${pocket} L ${P(80, top)} C ${P(112, top)} ${P(118, top + 55)} ${P(100, top + 88)} `
+        + `C ${P(84, top + 116)} ${P(-84, top + 116)} ${P(-100, top + 88)} C ${P(-118, top + 55)} ${P(-112, top)} ${P(-80, top)} Z`,
       class: 'anim-enzyme',
-      transform: `translate(${POCKET_X - 95} ${POCKET_Y - 56 + 40})`,
     }, svg);
-    const eLabel = svgEl('text', { x: POCKET_X, y: POCKET_Y + 110, 'text-anchor': 'middle', class: 'anim-label anim-label-enzyme' }, svg);
+    const eLabel = svgEl('text', { x: POCKET_X, y: top + 82, 'text-anchor': 'middle', class: 'anim-label anim-label-enzyme' }, svg);
     eLabel.textContent = 'Enzyme (PPO)';
     const products = svgEl('g', {}, svg);
     const mol = svgEl('g', {}, svg);
-    const hex = (cx) => svgEl('polygon', {
-      points: Array.from({ length: 6 }, (_, i) => {
-        const a = Math.PI / 6 + (i * Math.PI) / 3;
-        return `${(cx + Math.cos(a) * 22).toFixed(1)},${(Math.sin(a) * 22).toFixed(1)}`;
-      }).join(' '),
-    }, mol);
-    const h1 = hex(-17);
-    const h2 = hex(17);
+    const turn = svgEl('g', {}, mol);
+    const subShape = svgEl('polygon', { points: SUB.map(([x, y]) => `${x},${y}`).join(' '), class: 'anim-sub-hex' }, turn);
+    // The product has a different shape: it no longer fits the pocket, so it is released.
+    const product = svgEl('circle', { r: 16, class: 'anim-pigment-hex' }, turn);
     const molLabel = svgEl('text', { y: -30, 'text-anchor': 'middle', class: 'anim-label' }, mol);
 
     const TOTAL = 8;
@@ -697,10 +698,11 @@
       if (finished) return;
       t += 1;
       const c = t % CYCLE;
-      let x; let y; let k = 0; let scale = 1;
-      if (c < 90) { // substrate drifts in from the left
+      let x; let y; let k = 0; let scale = 1; let rot = 0;
+      if (c < 90) { // substrate drifts in from the left, turning until it lines up with the pocket
         const e = ease(c / 90);
         x = mix(60, POCKET_X, e); y = mix(40, POCKET_Y, e) + Math.sin(c * 0.15) * 4 * (1 - e);
+        rot = mix(-70, 0, Math.min(1, e * 1.3));
       } else if (c < 150) { // bound: the reaction happens
         x = POCKET_X; y = POCKET_Y;
         k = (c - 90) / 60;
@@ -714,8 +716,9 @@
         count += 1;
         status.set(`Reactions helped by this one enzyme: ${count} — and it’s still unchanged.`);
       }
-      const cls = k < 0.5 ? 'anim-sub-hex' : 'anim-pigment-hex';
-      h1.setAttribute('class', cls); h2.setAttribute('class', cls);
+      subShape.style.display = k < 0.5 ? '' : 'none';
+      product.style.display = k < 0.5 ? 'none' : '';
+      turn.setAttribute('transform', `rotate(${rot.toFixed(1)})`);
       molLabel.textContent = c < 90 ? 'substrate' : c < 150 ? 'reacting…' : 'brown pigment';
       molLabel.setAttribute('class', `anim-label ${k < 0.5 ? 'anim-label-sub' : 'anim-label-pig'}`);
       mol.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${scale.toFixed(2)})`);
