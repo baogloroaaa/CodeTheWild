@@ -6,6 +6,7 @@
     <title>Mission 3 | Why Do Plants Grow Toward Light?</title>
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
     <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../assets/animations.css" /> <!-- animations: delete this line + the script below to turn off -->
   </head>
   <body>
     <div class="site-header">
@@ -340,7 +341,7 @@
           shining on a leaf isn't just making the leaf brighter &mdash; it is delivering energy.
         </p>
 
-        <div class="icon-row">
+        <div class="icon-row" data-anim-loop data-anim="zoom">
           <div class="icon-row-line"></div>
           <div class="icon-node">
             <div class="icon-badge">
@@ -401,7 +402,7 @@
         <p class="step-copy">The distance from one wave peak to the next is called the <strong>wavelength</strong>.</p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg" data-anim="wave">
             <path d="M20,85 Q35,55 50,85 Q65,115 80,85 Q95,55 110,85 Q125,115 140,85 Q155,55 170,85 Q185,115 200,85 Q215,55 230,85 Q245,115 260,85 Q275,55 290,85 Q305,115 320,85 Q335,55 350,85 Q365,115 380,85 Q395,55 410,85 Q425,115 440,85 Q455,55 470,85 Q485,115 500,85 Q515,55 530,85 Q545,115 560,85 Q575,55 590,85 Q605,115 620,85" fill="none" stroke="#3b7dd8" stroke-width="4" stroke-linecap="round"/>
             <line x1="95" y1="55" x2="95" y2="30" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
             <line x1="155" y1="55" x2="155" y2="30" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
@@ -486,7 +487,7 @@
         </p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg" data-anim="wave">
             <path d="M20,90 Q30,60 40,90 Q50,120 60,90 Q70,60 80,90 Q90,120 100,90 Q110,60 120,90 Q130,120 140,90 Q150,60 160,90 Q170,120 180,90 Q190,60 200,90 Q210,120 220,90 Q230,60 240,90 Q250,120 260,90" fill="none" stroke="#3b7dd8" stroke-width="4" stroke-linecap="round"/>
             <line x1="30" y1="60" x2="30" y2="35" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
             <line x1="70" y1="60" x2="70" y2="35" stroke="var(--muted-soft)" stroke-width="1.5" stroke-dasharray="3 3"/>
@@ -587,7 +588,7 @@
         </p>
 
         <div class="concept-visual">
-          <svg viewBox="0 0 700 170" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 700 170" xmlns="http://www.w3.org/2000/svg" data-anim="absorb">
             <ellipse cx="320" cy="85" rx="45" ry="62" fill="var(--primary-soft)" stroke="var(--primary)" stroke-width="2"/>
             <line x1="320" y1="26" x2="320" y2="144" stroke="var(--primary-dark)" stroke-width="2"/>
 
@@ -676,7 +677,7 @@
             </div>
             <div class="compare-panel is-yes">
               <span class="compare-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-              <svg width="320" height="140" viewBox="0 0 320 140">
+              <svg width="320" height="140" viewBox="0 0 320 140" data-anim="grow">
                 <line x1="10" y1="118" x2="310" y2="118" stroke="var(--border)" stroke-width="2"/>
 
                 <circle cx="68" cy="22" r="8" fill="none" stroke="var(--gold)" stroke-width="2"/>
@@ -747,7 +748,7 @@
           grows toward the light.
         </p>
 
-        <div class="concept-visual">
+        <div class="concept-visual" data-anim="auxin">
           <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
             <line x1="20" y1="178" x2="880" y2="178" stroke="var(--border)" stroke-width="2"/>
 
@@ -940,7 +941,7 @@ light_side = 8</pre>
           <div class="code-toolbar">
             <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
           </div>
-          <pre class="code-static" data-code-static>print("Day 1")
+          <pre class="code-static" data-code-static data-anim="type">print("Day 1")
 print("Day 2")
 print("Day 3")
 print("Day 4")
@@ -954,7 +955,7 @@ print("Day 5")</pre>
           <div class="code-toolbar">
             <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
           </div>
-          <pre class="code-static" data-code-static>for day in range(5):
+          <pre class="code-static" data-code-static data-anim="type">for day in range(5):
     print(day)</pre>
         </div>
         <p class="step-copy">
@@ -981,7 +982,7 @@ print("Day 5")</pre>
           <div class="code-toolbar">
             <div class="code-toolbar-left"><span>Python</span><span class="lang-pill">Python</span></div>
           </div>
-          <pre class="code-static" data-code-static>shaded_side = 1
+          <pre class="code-static" data-code-static data-anim="type">shaded_side = 1
 light_side = 1
 
 for day in range(5):
@@ -1157,5 +1158,6 @@ print("Light side:", light_side)</textarea>
     <script src="mission.js"></script>
     <script src="../../assets/mascot.js"></script>
     <script src="../../assets/mission-engine.js"></script>
+    <script src="../../assets/animations.js"></script>
   </body>
 </html>

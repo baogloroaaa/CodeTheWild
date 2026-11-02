@@ -295,3 +295,30 @@ svg.anim-fade-out path[fill="none"] {
 .anim-ph-amount { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 13px; fill: #c0392b; }
 .anim-hplus { fill: #e0533d; stroke: #a4321f; stroke-width: 1; }
 .anim-hplus-label { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 8px; fill: #ffffff; }
+
+/* Mission 3: light and plants */
+.anim-photon { stroke: #ffffff; stroke-width: 2; }
+.anim-ray { stroke: var(--gold); stroke-width: 2; stroke-dasharray: 4 5; opacity: 0.8; }
+.anim-day-label { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 12px; fill: var(--muted, var(--text)); }
+.anim-cell { stroke-width: 1.5; }
+.anim-cell-shade { fill: var(--primary-soft); stroke: var(--primary); }
+.anim-cell-light { fill: #f4f7ef; stroke: var(--primary); }
+.anim-auxin { fill: #8e44ad; stroke: #5e2a75; stroke-width: 1; }
+.anim-legend .dot.aux { background: #8e44ad; }
+.anim-legend .dot.shade { background: var(--primary-soft); border: 1.5px solid var(--primary); border-radius: 3px; }
+.anim-legend .dot.light { background: #f4f7ef; border: 1.5px solid var(--primary); border-radius: 3px; }
+
+.anim-steps-bar {
+  margin-top: 8px;
+}
+
+.anim-replay.is-ready {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  animation: anim-nudge 1.4s ease-in-out infinite;
+}
+
+@keyframes anim-nudge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(226, 112, 58, 0.45); }
+  50% { box-shadow: 0 0 0 6px rgba(226, 112, 58, 0); }
+}

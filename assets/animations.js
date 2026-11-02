@@ -11,6 +11,10 @@
    data-anim="draw"     – an SVG graph's lines draw themselves
    data-anim="cellcut"  – an apple cell is cut open and starts browning
    data-anim="enzyme"   – one enzyme turns substrate after substrate into pigment
+   data-anim="wave"     – light waves travel; shorter wavelengths wiggle past more often
+   data-anim="absorb"   – photons hit a leaf: blue/red absorbed, green goes on to the eye
+   data-anim="grow"     – time-lapse of a plant bending toward the sun
+   data-anim="auxin"    – auxin moves to the shaded side, cells stretch, stem bends
    data-anim="ph"       – pH scale marker + a cup of H+ ions (lemon, water, baking soda)
    data-anim="steps"    – a step-by-step chain revealed one step at a time
    data-anim="oxidize"  – an electron moves between two atoms; charges change
@@ -456,6 +460,38 @@
     };
   }
 
+  /* Tracks whether an element is on screen, so step-by-step pieces further
+     down a long step wait for the student to scroll to them. */
+  function onScreen(el) {
+    const state = { visible: !('IntersectionObserver' in window) };
+    if (!state.visible) {
+      new IntersectionObserver((entries) => entries.forEach((e) => { state.visible = e.isIntersecting; }), { threshold: 0.4 }).observe(el);
+    }
+    return state;
+  }
+
+  /* "Step 2 of 5   [Next ▸]" controls for animations that move in steps. */
+  function stepControls(onNext) {
+    const bar = document.createElement('div');
+    bar.className = 'anim-dissolve-bar anim-steps-bar';
+    const counter = document.createElement('span');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'anim-replay is-visible';
+    button.addEventListener('click', onNext);
+    bar.append(counter, button);
+    return {
+      bar,
+      set(n, total) {
+        counter.textContent = `Step ${n} of ${total}`;
+        button.textContent = n < total ? 'Next \u25B8' : '\u21BB Replay';
+        button.classList.remove('is-ready');
+      },
+      ready() { button.classList.add('is-ready'); }, // gentle pulse: "you can click Next now"
+
+    };
+  }
+
   function legend(wrap, items) {
     const el = document.createElement('div');
     el.className = 'anim-legend';
@@ -501,6 +537,26 @@
     const knife = svgEl('line', { class: 'anim-knife' }, svg);
 
     const status = statusBar(wrap, () => reset());
+    // data-anim-stepped: each stage waits for the Next button so the text can be read.
+    // "min" is how long a stage plays before the Next button starts pulsing.
+    const stepped = host.hasAttribute('data-anim-stepped');
+    const STAGES = [
+      { msg: 'Whole apple: the enzyme can\u2019t reach its targets, and oxygen can\u2019t get in.', min: 300 },
+      { msg: '\uD83D\uDD2A The knife cuts the apple and breaks open its cells.', min: 120 },
+      { msg: 'The cell is broken open! Oxygen from the air drifts in through the cut.', min: 300 },
+      { msg: '' }, // filled in live with the brown count; ready once everything is brown
+      { msg: 'All the targets turned brown \u2014 that\u2019s why a cut apple turns brown!', min: 120 },
+    ];
+    let stage = 0;
+    let stageT = 0;
+    let pulsing = false;
+    const controls = stepped ? stepControls(() => {
+      if (stage === STAGES.length - 1) { reset(); goStage(0); } else goStage(stage + 1);
+    }) : null;
+    if (controls) {
+      wrap.appendChild(controls.bar);
+      wrap.querySelector('.anim-dissolve-bar .anim-replay').style.display = 'none'; // the step controls replace it
+    }
     legend(wrap, [['ppo', 'enzyme (a helper)'], ['sub', 'target molecule'], ['o2', 'oxygen (O₂)'], ['pig', 'turned brown']]);
 
     const rand = (a, b) => a + Math.random() * (b - a);
@@ -561,6 +617,56 @@
       status.set('Whole apple: the enzyme can’t reach its targets, and oxygen can’t get in.');
     }
 
+    function startKnife() {
+      knife.style.opacity = 1;
+      if (!stepped) status.set('🔪 Cutting the apple…');
+    }
+
+    function moveKnife(k) {
+      knife.setAttribute('x1', CX - R - 30); knife.setAttribute('y1', CY - 70);
+      knife.setAttribute('x2', CX - R - 30 + 60 * k); knife.setAttribute('y2', CY - 70 + 140 * k);
+    }
+
+    function doCut() {
+      if (cut) return;
+      cut = true;
+      knife.style.opacity = 0;
+      membrane.setAttribute('d', arcPath(true));
+      vacuole.style.opacity = 0;
+      if (!stepped) status.set('The cell is broken open! Oxygen drifts in, and the enzyme can reach its targets.');
+    }
+
+    function brownMessage() {
+      return `Where the enzyme, a target and oxygen meet, the target turns brown. Turned brown: ${browned} / ${N_SUB}`;
+    }
+
+    function goStage(n) {
+      stage = n;
+      stageT = 0;
+      pulsing = false;
+      if (n >= 2) doCut();
+      if (n === 4) {
+        // Skipping ahead: finish any targets that haven't turned brown yet.
+        parts.filter((p) => p.kind === 'sub' && !p.done).forEach((p) => { p.done = true; p.g.firstChild.setAttribute('class', 'anim-pigment'); });
+        browned = N_SUB;
+        cellFill.style.fill = 'color-mix(in srgb, #b97a3f 55%, var(--primary-soft))';
+      }
+      status.set(n === 3 ? brownMessage() : STAGES[n].msg);
+      controls.set(n + 1, STAGES.length);
+    }
+
+    function runStage() {
+      if (!view.visible) return;
+      stageT += 1;
+      if (stage === 1) {
+        if (stageT === 1) startKnife();
+        if (stageT <= 40) moveKnife(stageT / 40);
+        if (stageT === 41) doCut();
+      }
+      const done = stage === 3 ? browned >= N_SUB : stageT >= STAGES[stage].min;
+      if (done && !pulsing) { pulsing = true; controls.ready(); }
+    }
+
     // Keep a particle inside (or outside) a circle by reflecting it at the edge.
     function contain(p, cx, cy, r, inside, gapOpen) {
       const dx = p.x - cx;
@@ -575,22 +681,14 @@
 
     function step() {
       t += 1;
-      if (t === 150) {
-        knife.style.opacity = 1;
-        status.set('🔪 Cutting the apple…');
+      if (stepped) {
+        runStage();
+      } else {
+        if (t === 150) startKnife();
+        if (t >= 150 && t < 190) moveKnife((t - 150) / 40);
+        if (t === 190) doCut();
       }
-      if (t >= 150 && t < 190) {
-        const k = (t - 150) / 40;
-        knife.setAttribute('x1', CX - R - 30); knife.setAttribute('y1', CY - 70);
-        knife.setAttribute('x2', CX - R - 30 + 60 * k); knife.setAttribute('y2', CY - 70 + 140 * k);
-      }
-      if (t === 190) {
-        cut = true;
-        knife.style.opacity = 0;
-        membrane.setAttribute('d', arcPath(true));
-        vacuole.style.opacity = 0;
-        status.set('The cell is broken open! Oxygen drifts in, and the enzyme can reach its targets.');
-      }
+      const reacting = cut && (!stepped || stage >= 3);
 
       const o2s = parts.filter((p) => p.kind === 'o2' && !p.done);
       parts.forEach((p) => {
@@ -625,7 +723,7 @@
           if (!cut && p.kind === 'ppo') contain(p, VX, VY, VR + 12, false, false);
         }
 
-        if (cut && p.kind === 'sub' && !p.done) {
+        if (reacting && p.kind === 'sub' && !p.done) {
           const enzyme = parts.some((q) => q.kind === 'ppo' && Math.hypot(q.x - p.x, q.y - p.y) < 26);
           const oxygen = o2s.find((q) => Math.hypot(q.x - p.x, q.y - p.y) < 34);
           if (enzyme && oxygen) {
@@ -635,9 +733,12 @@
             oxygen.g.style.opacity = 0;
             browned += 1;
             cellFill.style.fill = `color-mix(in srgb, #b97a3f ${Math.round((browned / N_SUB) * 55)}%, var(--primary-soft))`;
-            status.set(browned < N_SUB
-              ? `Enzyme + target + oxygen → brown! Turned brown: ${browned} / ${N_SUB}`
-              : 'All the targets turned brown — that’s why the cut apple turns brown!', browned >= N_SUB);
+            if (stepped) status.set(brownMessage());
+            else {
+              status.set(browned < N_SUB
+                ? `Enzyme + target + oxygen → brown! Turned brown: ${browned} / ${N_SUB}`
+                : 'All the targets turned brown — that’s why the cut apple turns brown!', browned >= N_SUB);
+            }
           }
         }
         p.g.setAttribute('transform', `translate(${p.x.toFixed(1)} ${p.y.toFixed(1)}) rotate(${p.rot.toFixed(0)})`);
@@ -645,7 +746,9 @@
     }
 
     reset();
+    if (stepped) goStage(0);
     replaceStatic(host, wrap);
+    const view = onScreen(wrap);
     return looper(step);
   }
 
@@ -846,11 +949,11 @@
   /* ---------- A chain of steps revealed one at a time ----------
      Children alternate: step, arrow, step, arrow, ... Each step (with the arrow
      leading into it) appears on its own and is highlighted while it is read.
-     After the last step it holds, fades, and starts again. */
+     It waits for the Next button; once the step has been on screen for a
+     moment, the button pulses as a hint. Replay starts over from step 1. */
 
   function buildSteps(el) {
-    const SECONDS = 3;
-    const HOLD_END = 4;
+    const READ_SECONDS = 2.5;
     const kids = Array.from(el.children);
     const groups = [];
     kids.forEach((kid, i) => {
@@ -859,20 +962,30 @@
       if (i % 2 === 0) kid.classList.add('anim-step-item');
     });
 
+    let shown = 0;
     let timer = null;
+    const controls = stepControls(() => show(shown < groups.length ? shown + 1 : 1));
+    el.after(controls.bar);
+    const view = onScreen(el);
 
     function show(n) {
+      shown = n;
       groups.forEach((g, i) => {
         g.parts.forEach((p) => p.classList.toggle('anim-step-hidden', i >= n));
         g.text.classList.toggle('anim-step-current', i === n - 1);
       });
-      timer = n < groups.length
-        ? setTimeout(() => show(n + 1), SECONDS * 1000)
-        : setTimeout(() => { show(0); clearTimeout(timer); timer = setTimeout(() => show(1), 800); }, HOLD_END * 1000);
+      controls.set(n, groups.length);
+      clearTimeout(timer);
+      timer = setTimeout(nudge, READ_SECONDS * 1000);
+    }
+
+    function nudge() {
+      if (!view.visible) { timer = setTimeout(nudge, 300); return; } // only once it has been seen
+      controls.ready();
     }
 
     return {
-      start() { clearTimeout(timer); show(1); },
+      start() { show(1); },
       stop() { clearTimeout(timer); },
     };
   }
@@ -984,9 +1097,240 @@
     return looper(step);
   }
 
+  /* ---------- Travelling light waves ----------
+     Upgrades wave SVGs in place: every wavy path slides sideways at the same
+     speed (light always travels at the same speed), so shorter wavelengths
+     visibly wiggle past more often. Each path gets one extra wavelength on
+     its left end and a clip, so the motion loops seamlessly. */
+
+  let clipCount = 0;
+
+  function buildWave(svg) {
+    const SPEED = 0.45;
+    const defs = svgEl('defs', {}, svg);
+    const num = String.raw`(-?[\d.]+)`;
+    const head = new RegExp(String.raw`^M\s*${num},${num}\s*Q\s*${num},${num}\s*${num},${num}\s*Q\s*${num},${num}\s*${num},${num}`);
+    const waves = [];
+    svg.querySelectorAll('path[fill="none"]').forEach((p) => {
+      const d = p.getAttribute('d');
+      const m = d.match(head);
+      if (!m) return;
+      const [x0, y0, c1x, c1y, x1, y1, c2x, c2y, x2, y2] = m.slice(1).map(Number);
+      const lam = x2 - x0;
+      const nums = d.match(/-?[\d.]+/g).map(Number);
+      const xEnd = nums[nums.length - 2];
+      const s = (v) => (v - lam).toFixed(1);
+      p.setAttribute('d', `M${s(x0)},${y0} Q${s(c1x)},${c1y} ${s(x1)},${y1} Q${s(c2x)},${c2y} ${s(x2)},${y2} ${d.replace(/^M\s*[\d.]+,[\d.]+\s*/, '')}`);
+      clipCount += 1;
+      const id = `anim-wave-clip-${clipCount}`;
+      const clip = svgEl('clipPath', { id }, defs);
+      svgEl('rect', { x: x0 - 3, y: -50, width: xEnd - x0 + 6, height: 1000 }, clip);
+      const g = svgEl('g', { 'clip-path': `url(#${id})` });
+      p.parentNode.insertBefore(g, p);
+      g.appendChild(p);
+      waves.push({ p, lam });
+    });
+    let off = 0;
+    return looper(() => {
+      off += SPEED;
+      waves.forEach((w) => w.p.setAttribute('transform', `translate(${(off % w.lam).toFixed(2)} 0)`));
+    });
+  }
+
+  /* ---------- Photons hitting a leaf ----------
+     Upgrades the chlorophyll SVG in place: blue and red photons travel to the
+     leaf and are absorbed (the leaf glows); green photons carry on to the eye. */
+
+  function buildAbsorb(svg) {
+    const leaf = svg.querySelector('ellipse');
+    const eye = svg.querySelectorAll('ellipse')[1];
+    const BEAMS = [
+      { color: '#3b7dd8', y: 45, stop: 278, absorbed: true, offset: 0 },
+      { color: '#3f9d5e', y: 82, stop: 652, absorbed: false, offset: 30 },
+      { color: '#b8462f', y: 120, stop: 278, absorbed: true, offset: 60 },
+    ];
+    const layer = svgEl('g', {}, svg);
+    let photons = [];
+    let t = 0;
+    let glow = 0;
+    let look = 0;
+    return looper(() => {
+      t += 1;
+      BEAMS.forEach((b) => {
+        if ((t + b.offset) % 70 === 0) {
+          photons.push({ b, x: 20, el: svgEl('circle', { cx: 20, cy: b.y, r: 7, fill: b.color, class: 'anim-photon' }, layer) });
+        }
+      });
+      photons = photons.filter((ph) => {
+        ph.x += 2.4;
+        ph.el.setAttribute('cx', ph.x.toFixed(1));
+        if (ph.x >= ph.b.stop) {
+          ph.el.remove();
+          if (ph.b.absorbed) glow = 1; else look = 1;
+          return false;
+        }
+        return true;
+      });
+      glow *= 0.94;
+      look *= 0.92;
+      leaf.style.filter = `drop-shadow(0 0 ${(10 * glow).toFixed(1)}px #f1c40f)`;
+      if (eye) eye.style.filter = `drop-shadow(0 0 ${(6 * look).toFixed(1)}px #3f9d5e)`;
+    });
+  }
+
+  /* ---------- Time-lapse: a plant bending toward the sun ----------
+     Replaces the Day 1 / Day 2 / Day 3 strip with one plant that grows and
+     bends toward the light over three "days", then starts over. */
+
+  function buildGrow(orig) {
+    const BX = 110;
+    const GROUND = 118;
+    const svg = svgEl('svg', { width: 320, height: 140, viewBox: '0 0 320 140', role: 'img', 'aria-label': 'Animation: over three days, a plant grows and bends toward the sun.' });
+    svgEl('line', { x1: 10, y1: GROUND, x2: 310, y2: GROUND, stroke: 'var(--border)', 'stroke-width': 2 }, svg);
+    svgEl('circle', { cx: 272, cy: 24, r: 10, fill: 'none', stroke: 'var(--gold)', 'stroke-width': 2.2 }, svg);
+    svgEl('path', { d: 'M272,6v7M272,35v7M254,24h7M283,24h7M259.3,11.3l4.9,4.9M284.7,11.3l-4.9,4.9M259.3,36.7l4.9,-4.9M284.7,36.7l-4.9,-4.9', stroke: 'var(--gold)', 'stroke-width': 2, 'stroke-linecap': 'round' }, svg);
+    [[250, 40, 205, 62], [248, 52, 200, 85], [255, 44, 220, 100]].forEach(([x1, y1, x2, y2]) => {
+      svgEl('line', { x1, y1, x2, y2, class: 'anim-ray' }, svg);
+    });
+    const stem = svgEl('path', { fill: 'none', stroke: 'var(--primary)', 'stroke-width': 4, 'stroke-linecap': 'round' }, svg);
+    const leaves = [0, 1].map(() => svgEl('ellipse', { rx: 9, ry: 5, fill: 'var(--primary-soft)', stroke: 'var(--primary)', 'stroke-width': 1.2 }, svg));
+    const day = svgEl('text', { x: 160, y: 134, 'text-anchor': 'middle', class: 'anim-day-label' }, svg);
+
+    const ease = (k) => (k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2);
+    function shape(k) {
+      const tipX = BX + 72 * k;
+      const tipY = 62 - 30 * k;
+      stem.setAttribute('d', `M${BX},${GROUND} C${BX},${(GROUND - 40).toFixed(1)} ${(BX + 6 * k).toFixed(1)},${(tipY + 28).toFixed(1)} ${tipX.toFixed(1)},${tipY.toFixed(1)}`);
+      const len = stem.getTotalLength();
+      // Each leaf sits on the stem, sticking out sideways (along the stem's normal).
+      [0.45, 0.72].forEach((f, i) => {
+        const p = stem.getPointAtLength(len * f);
+        const q = stem.getPointAtLength(Math.min(len, len * f + 1));
+        const tangent = Math.atan2(q.y - p.y, q.x - p.x);
+        const side = i === 0 ? -1 : 1;
+        const out = tangent + (side * Math.PI) / 2 + (side * -0.6); // angled slightly upward
+        const cx = p.x + Math.cos(out) * 9;
+        const cy = p.y + Math.sin(out) * 9;
+        leaves[i].setAttribute('cx', cx.toFixed(1));
+        leaves[i].setAttribute('cy', cy.toFixed(1));
+        leaves[i].setAttribute('transform', `rotate(${((out * 180) / Math.PI).toFixed(1)} ${cx.toFixed(1)} ${cy.toFixed(1)})`);
+      });
+      day.textContent = `Day ${1 + Math.round(2 * k)}`;
+    }
+
+    orig.classList.add('anim-replaced');
+    orig.parentNode.insertBefore(svg, orig);
+    let t = 0;
+    shape(0);
+    return looper(() => {
+      t = (t + 1) % 600;
+      const k = t < 60 ? 0 : t < 420 ? ease((t - 60) / 360) : 1;
+      shape(k);
+    });
+  }
+
+  /* ---------- Auxin bends the stem ----------
+     A close-up of a stem as two columns of cells (shaded side and light side).
+     1) light from one side, auxin spread evenly; 2) auxin moves to the shaded
+     side; 3) shaded-side cells stretch; 4) the uneven growth bends the stem
+     toward the light. Loops. */
+
+  function buildAuxin(host) {
+    const W = 520;
+    const H = 280;
+    const CX = 250;
+    const BASE = 236;
+    const COL = 40;
+    const CELLS = 5;
+    const GAP = 3;
+    const PHASES = [150, 360, 580, 800, 980]; // ends of: spread, move, stretch, bend, hold
+
+    const wrap = document.createElement('div');
+    wrap.className = 'anim-dissolve';
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Animation: auxin moves to the shaded side of a stem, the cells there stretch, and the stem bends toward the light.' }, wrap);
+    svgEl('line', { x1: 40, y1: BASE, x2: 480, y2: BASE, stroke: 'var(--border)', 'stroke-width': 2 }, svg);
+    svgEl('circle', { cx: 455, cy: 60, r: 14, fill: 'var(--gold-soft)', stroke: 'var(--gold)', 'stroke-width': 2.4 }, svg);
+    svgEl('path', { d: 'M455,34v8M455,78v8M429,60h8M473,60h8M436.6,41.6l5.7,5.7M473.4,41.6l-5.7,5.7M436.6,78.4l5.7,-5.7M473.4,78.4l-5.7,-5.7', stroke: 'var(--gold)', 'stroke-width': 2.2, 'stroke-linecap': 'round' }, svg);
+    [[425, 80, 315, 120], [428, 95, 315, 165], [430, 110, 315, 205]].forEach(([x1, y1, x2, y2]) => {
+      svgEl('line', { x1, y1, x2, y2, class: 'anim-ray' }, svg);
+    });
+    const sunLabel = svgEl('text', { x: 455, y: 108, 'text-anchor': 'middle', class: 'anim-small-label' }, svg);
+    sunLabel.textContent = 'light';
+
+    const stem = svgEl('g', {}, svg);
+    const left = Array.from({ length: CELLS }, () => svgEl('rect', { width: COL, rx: 5, class: 'anim-cell anim-cell-shade' }, stem));
+    const right = Array.from({ length: CELLS }, () => svgEl('rect', { width: COL, rx: 5, class: 'anim-cell anim-cell-light' }, stem));
+    const dotLayer = svgEl('g', {}, stem);
+    const rand = (a, b) => a + Math.random() * (b - a);
+    const dots = Array.from({ length: 12 }, (_, i) => ({
+      el: svgEl('circle', { r: 4, class: 'anim-auxin' }, dotLayer),
+      from: i % 2, // half start on each side
+      fy: rand(0.08, 0.92),
+      fx: rand(0.2, 0.8),
+      wob: rand(0, Math.PI * 2),
+    }));
+    [['shaded side \u2192', CX - COL - 10, 'end'], ['\u2190 light side', CX + COL + 10, 'start']].forEach(([txt, x, anchor]) => {
+      const t = svgEl('text', { x, y: BASE - 10, 'text-anchor': anchor, class: 'anim-small-label' }, svg);
+      t.textContent = txt;
+    });
+
+    const status = statusBar(wrap, () => {});
+    legend(wrap, [['aux', 'auxin (a plant hormone)'], ['shade', 'cells on the shaded side'], ['light', 'cells on the light side']]);
+    const ease = (k) => (k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2);
+    const prog = (t, a, b) => ease(Math.max(0, Math.min(1, (t - a) / (b - a))));
+    const MESSAGES = [
+      '1 · Light comes mainly from one side. Auxin is spread through the stem.',
+      '2 · The plant moves auxin to the shaded side.',
+      '3 · Auxin makes the shaded-side cells stretch (elongate) more.',
+      '4 · One side is longer than the other, so the stem bends toward the light!',
+    ];
+    let t = 0;
+    let phase = -1;
+
+    function layout(colX, cellH, list) {
+      list.forEach((r, i) => {
+        r.setAttribute('x', colX);
+        r.setAttribute('y', (BASE - (i + 1) * cellH - i * GAP).toFixed(1));
+        r.setAttribute('height', cellH.toFixed(1));
+      });
+      return CELLS * cellH + (CELLS - 1) * GAP;
+    }
+
+    function step() {
+      t = (t + 1) % PHASES[4];
+      const p = PHASES.findIndex((end) => t < end);
+      const shown = Math.min(p, 3);
+      if (shown !== phase) { phase = shown; status.set(MESSAGES[shown]); }
+
+      const move = prog(t, PHASES[0], PHASES[1]);
+      const stretch = prog(t, PHASES[1], PHASES[2]);
+      const bend = prog(t, PHASES[2], PHASES[3]);
+
+      const lx = CX - COL - 1;
+      const rx = CX + 1;
+      const lh = layout(lx, 24 + 12 * stretch, left);
+      const rh = layout(rx, 24 + 2 * stretch, right);
+
+      dots.forEach((d) => {
+        const sx = d.from === 0 ? lx : rx;
+        const x = sx + (lx - sx) * move + d.fx * COL + Math.sin(t * 0.05 + d.wob) * 2;
+        const hFrom = d.from === 0 ? lh : rh;
+        const hNow = hFrom + (lh - hFrom) * move;
+        const y = BASE - d.fy * hNow + Math.cos(t * 0.04 + d.wob) * 2;
+        d.el.setAttribute('cx', x.toFixed(1));
+        d.el.setAttribute('cy', y.toFixed(1));
+      });
+
+      stem.setAttribute('transform', `rotate(${(20 * bend).toFixed(2)} ${CX} ${BASE})`);
+    }
+
+    replaceStatic(host, wrap);
+    return looper(step);
+  }
+
   /* ---------- Wiring: play each animation when its step becomes active ---------- */
 
-  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize, steps: buildSteps, ph: buildPH };
+  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize, steps: buildSteps, ph: buildPH, wave: buildWave, absorb: buildAbsorb, grow: buildGrow, auxin: buildAuxin };
   const players = new Map();
   const loopBuilders = { zoom: buildZoomLoop, draw: buildDrawLoop };
   document.querySelectorAll('[data-anim]').forEach((el) => {
