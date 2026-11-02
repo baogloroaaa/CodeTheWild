@@ -203,3 +203,15 @@ svg.anim-fade-out path[fill="none"] {
 .anim-legend .dot.sub { background: var(--gold); }
 .anim-legend .dot.o2 { background: var(--accent); }
 .anim-legend .dot.pig { background: #7a4a24; }
+
+/* Oxidation: electron transfer (Mission 2) */
+.anim-shell { fill: none; stroke: var(--text); stroke-width: 2; }
+.anim-nucleus { fill: var(--gold); stroke: var(--gold-dark); stroke-width: 1.5; }
+.anim-nucleus-label { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 13px; fill: #ffffff; }
+.anim-electron { fill: var(--text); }
+.anim-electron-moving { fill: var(--accent); stroke: var(--accent-dark); stroke-width: 1.5; }
+.anim-trail { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 5 5; transition: opacity 0.3s; }
+.anim-atom-name { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 14px; fill: var(--text); }
+.anim-charge { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 12.5px; fill: var(--muted, var(--text)); }
+.anim-charge.is-plus { fill: var(--accent-dark); }
+.anim-charge.is-minus { fill: var(--primary-dark); }

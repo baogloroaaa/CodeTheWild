@@ -608,6 +608,41 @@
           redistributed between atoms and molecules.
         </p>
 
+        <div class="concept-visual" data-anim="oxidize">
+          <svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg">
+            <!-- atom A: lost one electron -->
+            <circle cx="140" cy="100" r="52" fill="none" stroke="var(--text)" stroke-width="2"/>
+            <circle cx="140" cy="100" r="20" fill="var(--gold)" stroke="var(--gold-dark)" stroke-width="1.5"/>
+            <text x="140" y="105" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="13" fill="#ffffff">3+</text>
+            <circle cx="140" cy="152" r="6" fill="var(--text)"/>
+            <circle cx="95" cy="74" r="6" fill="var(--text)"/>
+
+            <!-- the electron on its way from A to B -->
+            <path d="M190,80 Q260,0 328,80" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 5"/>
+            <polygon points="328,80 316,74 322,66" fill="var(--accent)"/>
+            <circle cx="260" cy="40" r="7" fill="var(--accent)" stroke="var(--accent-dark)" stroke-width="1.5"/>
+            <text x="260" y="22" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="12" fill="var(--accent-dark)">1 electron moves</text>
+
+            <!-- atom B: gains the electron -->
+            <circle cx="380" cy="100" r="52" fill="none" stroke="var(--text)" stroke-width="2"/>
+            <circle cx="380" cy="100" r="20" fill="var(--gold)" stroke="var(--gold-dark)" stroke-width="1.5"/>
+            <text x="380" y="105" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="13" fill="#ffffff">3+</text>
+            <circle cx="425" cy="126" r="6" fill="var(--text)"/>
+            <circle cx="335" cy="126" r="6" fill="var(--text)"/>
+            <circle cx="380" cy="48" r="6" fill="var(--text)"/>
+
+            <text x="140" y="185" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="14" fill="var(--text)">Atom A</text>
+            <text x="140" y="205" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="12" fill="var(--accent-dark)">loses an electron &rarr; charge +1 (oxidized)</text>
+            <text x="380" y="185" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="14" fill="var(--text)">Atom B</text>
+            <text x="380" y="205" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-weight="800" font-size="12" fill="var(--primary-dark)">gains an electron &rarr; charge &minus;1</text>
+          </svg>
+          <p class="concept-visual-caption">
+            A simplified picture. Each atom starts with 3 protons (3+) and 3 electrons, so its charges balance. When atom A
+            loses an electron, it is <strong>oxidized</strong>: it now has more protons than electrons, so its charge becomes
+            +1. Atom B gained that electron, so its charge becomes &minus;1.
+          </p>
+        </div>
+
         <div class="callout callout-gold">
           <div class="callout-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C1801E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"></path><path d="M12 11c0-4 -3-6-7-6 0 4 3 6 7 6Z"></path><path d="M12 14c0-3.5 2.5-5.5 6-5.5 0 3.5 -2.5 5.5 -6 5.5Z"></path></svg>
@@ -820,6 +855,23 @@
           When certain substances dissolve in water, they can affect the amount of <strong>hydrogen ions (H&#8314;)</strong>
           in the solution.
         </p>
+
+        <div class="callout callout-primary">
+          <div class="callout-icon" data-mascot="curious" data-mascot-size="42" style="width: 48px; height: 54px; overflow: visible;"></div>
+          <div class="callout-body">
+            <h3>Think about it</h3>
+            <p>
+              A hydrogen atom is made of just one proton and one electron. If hydrogen is a proton and an electron, then
+              what is H&#8314;? Which component is the +1?
+            </p>
+            <button class="reveal-btn" type="button" data-reveal-target="think-answer-hplus">Reveal answer</button>
+            <p id="think-answer-hplus" class="is-hidden">
+              <strong>H&#8314; is a hydrogen atom that has lost its electron, so all that's left is a single proton.</strong>
+              The proton is the +1. With no electron to balance it, the whole particle has a charge of +1, just like atom A
+              in the oxidation picture after it lost an electron.
+            </p>
+          </div>
+        </div>
         <p class="step-copy">
           Acids increase the concentration of hydrogen ions, and are often what make foods taste sour &mdash; both lemon
           juice and vinegar have a low pH. Bases, on the other hand, have a low concentration of hydrogen ions, and are

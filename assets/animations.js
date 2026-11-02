@@ -11,6 +11,7 @@
    data-anim="draw"     – an SVG graph's lines draw themselves
    data-anim="cellcut"  – an apple cell is cut open and starts browning
    data-anim="enzyme"   – one enzyme turns substrate after substrate into pigment
+   data-anim="oxidize"  – an electron moves between two atoms; charges change
    Add data-anim-loop to a "zoom" or "draw" element to play it slowly on repeat. */
 
 (function () {
@@ -735,9 +736,90 @@
     return looper(step);
   }
 
+  /* ---------- Oxidation: one electron moves from atom A to atom B ----------
+     Both atoms start neutral (3 protons, 3 electrons). One electron leaves A
+     and joins B; A's charge becomes +1 (oxidized) and B's becomes -1. Loops. */
+
+  function buildOxidize(host) {
+    const W = 520;
+    const H = 230;
+    const A = { x: 140, y: 100 };
+    const B = { x: 380, y: 100 };
+    const R = 52;
+    const CYCLE = 480;
+    const LEAVE = 120;
+    const ARRIVE = 210;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'anim-dissolve';
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Animation: an electron moves from atom A to atom B. Atom A is oxidized and its charge becomes +1; atom B becomes -1.' }, wrap);
+    const trail = svgEl('path', { d: `M190,80 Q260,0 ${B.x - R},${B.y - 20}`, class: 'anim-trail' }, svg);
+
+    const atomLabels = [A, B].map((c, i) => {
+      svgEl('circle', { cx: c.x, cy: c.y, r: R, class: 'anim-shell' }, svg);
+      svgEl('circle', { cx: c.x, cy: c.y, r: 20, class: 'anim-nucleus' }, svg);
+      const n = svgEl('text', { x: c.x, y: c.y + 5, 'text-anchor': 'middle', class: 'anim-nucleus-label' }, svg);
+      n.textContent = '3+';
+      const name = svgEl('text', { x: c.x, y: 185, 'text-anchor': 'middle', class: 'anim-atom-name' }, svg);
+      name.textContent = i === 0 ? 'Atom A' : 'Atom B';
+      return svgEl('text', { x: c.x, y: 207, 'text-anchor': 'middle', class: 'anim-charge' }, svg);
+    });
+
+    const electron = (cls) => svgEl('circle', { r: 6, class: cls }, svg);
+    const aElectrons = [0, 2].map((i) => ({ el: electron('anim-electron'), base: (i * Math.PI * 2) / 3 }));
+    const bElectrons = [0, 1, 2].map((i) => ({ el: electron('anim-electron'), base: (i * Math.PI * 2) / 3 + 0.5 }));
+    const mover = electron('anim-electron anim-electron-moving');
+
+    const status = statusBar(wrap, () => {});
+    let t = 0;
+    let spin = 0;
+    const place = (el, c, a) => { el.setAttribute('cx', (c.x + Math.cos(a) * R).toFixed(1)); el.setAttribute('cy', (c.y + Math.sin(a) * R).toFixed(1)); };
+    const ease = (k) => (k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2);
+
+    function setCharges(moved) {
+      atomLabels[0].textContent = moved ? 'charge +1 → oxidized!' : 'charge 0 (balanced)';
+      atomLabels[0].setAttribute('class', `anim-charge ${moved ? 'is-plus' : ''}`);
+      atomLabels[1].textContent = moved ? 'charge −1 (gained an electron)' : 'charge 0 (balanced)';
+      atomLabels[1].setAttribute('class', `anim-charge ${moved ? 'is-minus' : ''}`);
+    }
+
+    function step() {
+      t = (t + 1) % CYCLE;
+      spin += 0.012;
+      const n = (count) => (Math.PI * 2) / count;
+      // A has 3 electrons before the move and 2 after; B has 3 then 4. Spread them evenly.
+      const moved = t >= ARRIVE;
+      aElectrons.forEach((e, i) => place(e.el, A, spin + i * n(t < LEAVE ? 3 : 2)));
+      bElectrons.forEach((e, i) => place(e.el, B, -spin + i * n(moved ? 4 : 3)));
+
+      if (t < LEAVE) {
+        place(mover, A, spin + 2 * n(3));
+        trail.style.opacity = 0;
+      } else if (t < ARRIVE) {
+        const k = ease((t - LEAVE) / (ARRIVE - LEAVE));
+        const p = trail.getPointAtLength(k * trail.getTotalLength());
+        mover.setAttribute('cx', p.x.toFixed(1));
+        mover.setAttribute('cy', p.y.toFixed(1));
+        trail.style.opacity = 1;
+      } else {
+        place(mover, B, -spin + 3 * n(4));
+        trail.style.opacity = Math.max(0, 1 - (t - ARRIVE) / 60);
+      }
+
+      if (t === 0) { setCharges(false); status.set('Both atoms are balanced: 3 protons (+) and 3 electrons (−) each.'); }
+      if (t === LEAVE) status.set('An electron moves from atom A to atom B…');
+      if (t === ARRIVE) { setCharges(true); status.set('Atom A lost an electron, so it was oxidized. Now it has more + than −.'); }
+    }
+
+    setCharges(false);
+    status.set('Both atoms are balanced: 3 protons (+) and 3 electrons (−) each.');
+    replaceStatic(host, wrap);
+    return looper(step);
+  }
+
   /* ---------- Wiring: play each animation when its step becomes active ---------- */
 
-  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme };
+  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize };
   const players = new Map();
   const loopBuilders = { zoom: buildZoomLoop, draw: buildDrawLoop };
   document.querySelectorAll('[data-anim]').forEach((el) => {
