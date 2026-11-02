@@ -12,6 +12,7 @@
    data-anim="cellcut"  – an apple cell is cut open and starts browning
    data-anim="enzyme"   – one enzyme turns substrate after substrate into pigment
    data-anim="wave"     – light waves travel; shorter wavelengths wiggle past more often
+   data-anim="spectrum" – one wave stretches from blue to red above the color chips
    data-anim="absorb"   – photons hit a leaf: blue/red absorbed, green goes on to the eye
    data-anim="grow"     – time-lapse of a plant bending toward the sun
    data-anim="auxin"    – auxin moves to the shaded side, cells stretch, stem bends
@@ -550,6 +551,7 @@
     let stage = 0;
     let stageT = 0;
     let pulsing = false;
+    let lastReact = 0;
     const controls = stepped ? stepControls(() => {
       if (stage === STAGES.length - 1) { reset(); goStage(0); } else goStage(stage + 1);
     }) : null;
@@ -643,6 +645,7 @@
     function goStage(n) {
       stage = n;
       stageT = 0;
+      lastReact = 0;
       pulsing = false;
       if (n >= 2) doCut();
       if (n === 4) {
@@ -689,6 +692,8 @@
         if (t === 190) doCut();
       }
       const reacting = cut && (!stepped || stage >= 3);
+      // In step mode, targets turn brown one at a time (about one per second) once step 4 starts.
+      const canReact = !stepped || (stageT - lastReact >= 55);
 
       const o2s = parts.filter((p) => p.kind === 'o2' && !p.done);
       parts.forEach((p) => {
@@ -700,7 +705,7 @@
           p.vx += Math.sign(CX - R - p.x) * 0.02;
           p.vy += Math.sign(CY - p.y) * 0.02;
         }
-        if (cut && p.kind === 'sub' && !p.done) {
+        if (reacting && p.kind === 'sub' && !p.done) {
           const near = parts.filter((q) => q.kind === 'ppo').sort((a, b) => Math.hypot(a.x - p.x, a.y - p.y) - Math.hypot(b.x - p.x, b.y - p.y))[0];
           p.vx += Math.sign(near.x - p.x) * 0.01;
           p.vy += Math.sign(near.y - p.y) * 0.01;
@@ -723,7 +728,7 @@
           if (!cut && p.kind === 'ppo') contain(p, VX, VY, VR + 12, false, false);
         }
 
-        if (reacting && p.kind === 'sub' && !p.done) {
+        if (reacting && canReact && p.kind === 'sub' && !p.done && (!stepped || stageT - lastReact >= 55)) {
           const enzyme = parts.some((q) => q.kind === 'ppo' && Math.hypot(q.x - p.x, q.y - p.y) < 26);
           const oxygen = o2s.find((q) => Math.hypot(q.x - p.x, q.y - p.y) < 34);
           if (enzyme && oxygen) {
@@ -732,6 +737,7 @@
             oxygen.done = true;
             oxygen.g.style.opacity = 0;
             browned += 1;
+            lastReact = stageT;
             cellFill.style.fill = `color-mix(in srgb, #b97a3f ${Math.round((browned / N_SUB) * 55)}%, var(--primary-soft))`;
             if (stepped) status.set(brownMessage());
             else {
@@ -1137,6 +1143,79 @@
     });
   }
 
+  /* ---------- One wave sweeping through the colors ----------
+     Added above the row of color chips: a single wave travels across while
+     its wavelength stretches from blue (~450 nm) to red (~680 nm) and back,
+     pausing on each color. Its color, the nm label and a one-wavelength bar
+     change with it, and the matching chip below is highlighted. Wave width on
+     screen is proportional to the real wavelength. */
+
+  function buildSpectrum(row) {
+    const W = 640;
+    const H = 150;
+    const X0 = 20;
+    const X1 = 620;
+    const CY = 92;
+    const AMP = 26;
+    const GLIDE = 80; // frames to stretch to the next color
+    const HOLD = 130; // frames resting on a color
+    const chips = Array.from(row.children);
+    const STOPS = [
+      { nm: 450, name: 'Blue', color: [59, 125, 216] },
+      { nm: 525, name: 'Green', color: [63, 157, 94] },
+      { nm: 580, name: 'Yellow', color: [201, 154, 46] },
+      { nm: 625, name: 'Orange', color: [193, 113, 47] },
+      { nm: 680, name: 'Red', color: [184, 70, 47] },
+    ];
+    // there and back again: blue -> red -> blue
+    const ORDER = [0, 1, 2, 3, 4, 3, 2, 1];
+    const pxPerNm = 1 / 5.2;
+
+    const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, class: 'anim-spectrum', role: 'img', 'aria-label': 'Animation: a light wave stretches from short blue wavelengths to long red wavelengths.' });
+    const label = svgEl('text', { x: W / 2, y: 22, 'text-anchor': 'middle', class: 'anim-spectrum-label' }, svg);
+    const bar = svgEl('path', { class: 'anim-spectrum-bar' }, svg);
+    const barText = svgEl('text', { y: 50, 'text-anchor': 'middle', class: 'anim-spectrum-bar-label' }, svg);
+    barText.textContent = 'one wavelength';
+    const wave = svgEl('path', { fill: 'none', 'stroke-width': 5, 'stroke-linecap': 'round' }, svg);
+    row.parentNode.insertBefore(svg, row);
+
+    const ease = (k) => (k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2);
+    const mix = (a, b, k) => a + (b - a) * k;
+    let t = 0;
+    let travel = 0;
+
+    return looper(() => {
+      t = (t + 1) % (ORDER.length * (GLIDE + HOLD));
+      const seg = Math.floor(t / (GLIDE + HOLD));
+      const c = t % (GLIDE + HOLD);
+      const from = STOPS[ORDER[seg]];
+      const to = STOPS[ORDER[(seg + 1) % ORDER.length]];
+      // hold on "from" first, then glide to "to"
+      const k = c < HOLD ? 0 : ease((c - HOLD) / GLIDE);
+      const nm = mix(from.nm, to.nm, k);
+      const col = from.color.map((v, i) => Math.round(mix(v, to.color[i], k)));
+      const rgb = `rgb(${col.join(',')})`;
+      const current = k < 0.5 ? from : to;
+
+      const lam = nm * pxPerNm;
+      travel += 0.9; // the same travel speed for every color
+      let d = '';
+      for (let x = X0; x <= X1; x += 3) {
+        const y = CY - AMP * Math.sin(((x - travel) / lam) * Math.PI * 2);
+        d += `${d ? 'L' : 'M'}${x},${y.toFixed(1)} `;
+      }
+      wave.setAttribute('d', d);
+      wave.setAttribute('stroke', rgb);
+
+      const bx = W / 2 - lam / 2;
+      bar.setAttribute('d', `M${bx.toFixed(1)},62 L${bx.toFixed(1)},56 L${(bx + lam).toFixed(1)},56 L${(bx + lam).toFixed(1)},62`);
+      barText.setAttribute('x', W / 2);
+      label.textContent = `${current.name} light · about ${Math.round(nm / 5) * 5} nm`;
+      label.setAttribute('fill', rgb);
+      chips.forEach((chip, i) => chip.classList.toggle('anim-chip-active', STOPS[i] === current));
+    });
+  }
+
   /* ---------- Photons hitting a leaf ----------
      Upgrades the chlorophyll SVG in place: blue and red photons travel to the
      leaf and are absorbed (the leaf glows); green photons carry on to the eye. */
@@ -1330,7 +1409,7 @@
 
   /* ---------- Wiring: play each animation when its step becomes active ---------- */
 
-  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize, steps: buildSteps, ph: buildPH, wave: buildWave, absorb: buildAbsorb, grow: buildGrow, auxin: buildAuxin };
+  const builders = { dissolve: buildDissolve, orbit: buildOrbit, crystal3d: buildCrystal, cellcut: buildCellCut, enzyme: buildEnzyme, oxidize: buildOxidize, steps: buildSteps, ph: buildPH, wave: buildWave, spectrum: buildSpectrum, absorb: buildAbsorb, grow: buildGrow, auxin: buildAuxin };
   const players = new Map();
   const loopBuilders = { zoom: buildZoomLoop, draw: buildDrawLoop };
   document.querySelectorAll('[data-anim]').forEach((el) => {
